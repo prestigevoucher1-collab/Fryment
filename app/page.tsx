@@ -75,17 +75,17 @@ const BLOG_POSTS = [
   { title: "Top 10 Universities That Accept Duolingo English Test in 2026", excerpt: "The DET is gaining rapid global acceptance. Here are 10 top-ranked universities that now accept your Duolingo score.", tag: "News", date: "May 3, 2026", readTime: "6 min" },
 ];
 
-function cn(...classes) { return classes.filter(Boolean).join(" "); }
+function cn(...classes: any[]) { return classes.filter(Boolean).join(" "); }
 
 export default function FrymentLanding() {
-  const [activeFaq, setActiveFaq] = useState(null);
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [formData, setFormData] = useState({ fullName: "", phone: "", email: "", state: "", quantity: "1", examType: "PTE Academic" });
   const [formStep, setFormStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [activeTestimonialPage, setActiveTestimonialPage] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const [liveCount, setLiveCount] = useState(47);
@@ -103,7 +103,7 @@ export default function FrymentLanding() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (formStep === 1) {
       if (!formData.fullName || !formData.phone || !formData.email || !formData.state) {
@@ -121,7 +121,7 @@ export default function FrymentLanding() {
     }
     setLoading(true);
     setError(null);
-    await new Promise(r => setTimeout(r, 1200));
+    await new Promise<void>(r => setTimeout(r, 1200));
     setSubmitted(true);
     setLoading(false);
   };
@@ -134,7 +134,7 @@ export default function FrymentLanding() {
     setIsBookingModalOpen(true);
   };
 
-  const currentPricing = PRICING_DATA[formData.examType] || PRICING_DATA["PTE Academic"];
+  const currentPricing = (PRICING_DATA as any)[formData.examType] || PRICING_DATA["PTE Academic"];
   const testimonialsPerPage = 3;
   const totalPages = Math.ceil(TESTIMONIALS.length / testimonialsPerPage);
   const visibleTestimonials = TESTIMONIALS.slice(activeTestimonialPage * testimonialsPerPage, (activeTestimonialPage + 1) * testimonialsPerPage);
@@ -202,26 +202,26 @@ export default function FrymentLanding() {
                         <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4">
                           <div className="relative group">
                             <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                            <input value={formData.fullName} onChange={e => setFormData({ ...formData, fullName: e.target.value })} className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f766e]/30 text-sm" placeholder="Student Full Name" />
+                            <input value={formData.fullName} onChange={(e: any) => setFormData({ ...formData, fullName: e.target.value })} className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f766e]/30 text-sm" placeholder="Student Full Name" />
                           </div>
                           <div className="relative group">
                             <Smartphone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                            <input value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f766e]/30 text-sm" placeholder="WhatsApp Number" maxLength={10} />
+                            <input value={formData.phone} onChange={(e: any) => setFormData({ ...formData, phone: e.target.value })} className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f766e]/30 text-sm" placeholder="WhatsApp Number" maxLength={10} />
                           </div>
                           <div className="relative group">
                             <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                            <input value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f766e]/30 text-sm" placeholder="Email Address" type="email" />
+                            <input value={formData.email} onChange={(e: any) => setFormData({ ...formData, email: e.target.value })} className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f766e]/30 text-sm" placeholder="Email Address" type="email" />
                           </div>
                           <div className="grid grid-cols-2 gap-4">
                             <div className="relative">
                               <GraduationCap className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                              <select value={formData.examType} onChange={e => setFormData({ ...formData, examType: e.target.value })} className="w-full pl-9 pr-3 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f766e]/30 text-sm appearance-none bg-white">
+                              <select value={formData.examType} onChange={(e: any) => setFormData({ ...formData, examType: e.target.value })} className="w-full pl-9 pr-3 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f766e]/30 text-sm appearance-none bg-white">
                                 {Object.keys(PRICING_DATA).map(k => <option key={k} value={k}>{k}</option>)}
                               </select>
                             </div>
                             <div className="relative">
                               <LocateFixed className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                              <select value={formData.state} onChange={e => setFormData({ ...formData, state: e.target.value })} className="w-full pl-9 pr-3 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f766e]/30 text-sm appearance-none bg-white">
+                              <select value={formData.state} onChange={(e: any) => setFormData({ ...formData, state: e.target.value })} className="w-full pl-9 pr-3 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f766e]/30 text-sm appearance-none bg-white">
                                 <option value="" disabled>State</option>
                                 {INDIAN_STATES.map(s => <option key={s} value={s}>{s}</option>)}
                               </select>
@@ -247,7 +247,7 @@ export default function FrymentLanding() {
                           <div className="space-y-3">
                             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider text-center">Number of Vouchers</p>
                             <div className="flex justify-center gap-3">
-                              {[1, 2, 3].map(n => (
+                              {[1, 2, 3].map((n: number) => (
                                 <button key={n} type="button" onClick={() => setFormData({ ...formData, quantity: n.toString() })} className={cn("w-14 h-14 rounded-xl flex items-center justify-center font-black transition-all text-lg", formData.quantity === n.toString() ? "bg-[#0f766e] text-white shadow-lg scale-105" : "bg-white border border-slate-200 text-slate-400")}>
                                   {n}
                                 </button>
@@ -375,7 +375,7 @@ export default function FrymentLanding() {
             {/* EXAM CARDS — 6 cards, 3-col on lg */}
             <div id="vouchers" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 md:mt-24">
               {EXAM_CARDS.map(({ key, label, badge, badgeColor, icon: Icon, desc, href }) => {
-                const pricing = PRICING_DATA[key];
+                const pricing = (PRICING_DATA as any)[key];
                 return (
                   <div key={key} className="bg-white rounded-[20px] p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
                     <div className="flex justify-between items-start mb-6">
@@ -393,9 +393,9 @@ export default function FrymentLanding() {
                         <span className="text-xs font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full">Save ₹{pricing.savings.toLocaleString()}</span>
                       </div>
                     )}
-                    <Link href={href} className="w-full bg-[#0f172a] text-white rounded-xl py-3.5 text-[15px] font-semibold hover:bg-slate-800 transition-colors mt-auto text-center block">
+                    <a href={href} className="w-full bg-[#0f172a] text-white rounded-xl py-3.5 text-[15px] font-semibold hover:bg-slate-800 transition-colors mt-auto text-center block">
                       View Details
-                    </Link>
+                    </a>
                   </div>
                 );
               })}
@@ -564,7 +564,7 @@ export default function FrymentLanding() {
                     { exam: "GRE General", purpose: "Grad School / MBA", result: "10–15 days", validity: "5 years", price: "₹20,500" },
                     { exam: "PTE UKVI", purpose: "UK Visa & Immigration", result: "48 hours", validity: "As per visa", price: "₹14,200" },
                     { exam: "PTE Core", purpose: "Canada PR & Work Permit", result: "48 hours", validity: "2 years", price: "₹14,200" },
-                  ].map(({ exam, purpose, result, validity, price }) => (
+                  ].map(({ exam, purpose, result, validity, price }: any) => (
                     <tr key={exam} className="hover:bg-slate-50 transition-colors">
                       <td className="p-4 font-bold text-[#0f172a]">{exam}</td>
                       <td className="p-4 text-slate-500">{purpose}</td>
@@ -597,7 +597,7 @@ export default function FrymentLanding() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {visibleTestimonials.map((review, i) => (
+              {visibleTestimonials.map((review: any, i: number) => (
                 <div key={i} className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col">
                   <div className="flex text-amber-400 mb-5 gap-0.5">
                     {Array(review.rating).fill(null).map((_, j) => <Star key={j} className="w-4 h-4 fill-amber-400" />)}
@@ -620,7 +620,7 @@ export default function FrymentLanding() {
             </div>
 
             <div className="flex items-center justify-center gap-3">
-              {Array(totalPages).fill(null).map((_, i) => (
+              {Array(totalPages).fill(null).map((_, i: number) => (
                 <button key={i} onClick={() => setActiveTestimonialPage(i)} className={cn("w-2.5 h-2.5 rounded-full transition-all", i === activeTestimonialPage ? "bg-[#0f766e] w-6" : "bg-slate-300 hover:bg-slate-400")} />
               ))}
             </div>
