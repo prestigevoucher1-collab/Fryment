@@ -22,7 +22,6 @@ const PRICING_DATA = {
   "PTE Academic": { actual: 17000, discounted: 14200 },
   "PTE UKVI": { actual: 17000, discounted: 14200 },
   "PTE Core": { actual: 17000, discounted: 14200 },
-  "PTE Core": { actual: 17000, discounted: 14200 },
   "TOEFL iBT": { actual: 16900, discounted: 15500 },
   "GRE General": { actual: 22500, discounted: 20500 },
 };
@@ -51,7 +50,7 @@ const UNIVERSITIES = [
   "Canadian Experience Class", "Federal Skilled Trades", "Start-up Visa", "Self-employed Persons"
 ];
 
-function cn(...classes) { return classes.filter(Boolean).join(" "); }
+function cn(...classes: any[]) { return classes.filter(Boolean).join(" "); }
 
 export default function CorePage() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -59,10 +58,10 @@ export default function CorePage() {
   const [formStep, setFormStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(null);
-  const [activeFaq, setActiveFaq] = useState(null);
+  const [error, setError] = useState<string | null>(null);
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (formStep === 1) {
       if (!formData.fullName || !formData.phone || !formData.email || !formData.state) {
@@ -75,12 +74,12 @@ export default function CorePage() {
       setFormStep(2); setError(null); return;
     }
     setLoading(true); setError(null);
-    await new Promise(r => setTimeout(r, 1200));
+    await new Promise<void>(r => setTimeout(r, 1200));
     setSubmitted(true);
     setLoading(false);
   };
 
-  const currentPricing = PRICING_DATA[formData.examType] || PRICING_DATA["PTE Core"];
+  const currentPricing = (PRICING_DATA as any)[formData.examType] || PRICING_DATA["PTE Core"];
 
   return (
     <div className="bg-white min-h-screen text-[#0f172a] font-sans selection:bg-amber-200 overflow-x-hidden">
@@ -149,8 +148,8 @@ export default function CorePage() {
                             <div key={key} className="relative">
                               <Icon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                               <input
-                                value={formData[key]}
-                                onChange={e => setFormData({ ...formData, [key]: e.target.value })}
+                                value={(formData as any)[key]}
+                                onChange={(e: any) => setFormData({ ...formData, [key]: e.target.value })}
                                 className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f766e]/30 text-sm bg-slate-50"
                                 placeholder={placeholder} type={type} maxLength={maxLength}
                               />
@@ -158,7 +157,7 @@ export default function CorePage() {
                           ))}
                           <div className="relative">
                             <LocateFixed className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                            <select value={formData.state} onChange={e => setFormData({ ...formData, state: e.target.value })} className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f766e]/30 text-sm bg-slate-50 appearance-none">
+                            <select value={formData.state} onChange={(e: any) => setFormData({ ...formData, state: e.target.value })} className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f766e]/30 text-sm bg-slate-50 appearance-none">
                               <option value="" disabled>Select Your State</option>
                               {INDIAN_STATES.map(s => <option key={s} value={s}>{s}</option>)}
                             </select>
@@ -183,7 +182,7 @@ export default function CorePage() {
                           <div className="space-y-2">
                             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider text-center">Number of Vouchers</p>
                             <div className="flex justify-center gap-3">
-                              {[1, 2, 3].map(n => (
+                              {[1, 2, 3].map((n: number) => (
                                 <button key={n} type="button" onClick={() => setFormData({ ...formData, quantity: n.toString() })} className={cn("w-14 h-14 rounded-xl flex items-center justify-center font-black text-lg transition-all", formData.quantity === n.toString() ? "bg-[#0f766e] text-white shadow-lg scale-105" : "bg-white border border-slate-200 text-slate-400")}>
                                   {n}
                                 </button>
@@ -398,7 +397,7 @@ export default function CorePage() {
                   { icon: MessageCircle, title: "Everyday English", desc: "Focuses on general, vocational, and real-life English scenarios rather than academic English.", color: "text-emerald-600 bg-emerald-50" },
                   { icon: TrendingUp, title: "Score: 10–90", desc: "Check the CLB (Canadian Language Benchmark) equivalent for your specific score.", color: "text-rose-600 bg-rose-50" },
                   { icon: Award, title: "IRCC Validated", desc: "PTE Core is the newest general English test approved by the IRCC for Canadian migration.", color: "text-indigo-600 bg-indigo-50" }
-                ].map(({ icon: Icon, title, desc, color }) => (
+                ].map(({ icon: Icon, title, desc, color }: any) => (
                   <div key={title} className="flex gap-4 items-start">
                     <div className={cn("w-11 h-11 rounded-xl flex items-center justify-center shrink-0 mt-0.5", color.split(" ")[1])}>
                       <Icon className={cn("w-5 h-5", color.split(" ")[0])} />
@@ -419,7 +418,7 @@ export default function CorePage() {
                     { part: "Part 1", title: "Speaking & Writing (50 min)", desc: "Read aloud, respond to situations, and write emails.", badge: "Scored" },
                     { part: "Part 2", title: "Reading (30 min)", desc: "Multiple choice, reorder paragraphs, and fill in the blanks.", badge: "Scored" },
                     { part: "Part 3", title: "Listening (30 min)", desc: "Summarize spoken text, highlight incorrect words, and select missing words.", badge: "Scored" }
-                  ].map(({ part, title, desc, badge }) => (
+                  ].map(({ part, title, desc, badge }: any) => (
                     <div key={part} className="bg-[#f8fafc] rounded-2xl p-6 border border-slate-100">
                       <div className="flex items-center gap-3 mb-3">
                         <span className="text-xs font-black text-slate-400 uppercase tracking-widest">{part}</span>
@@ -466,7 +465,7 @@ export default function CorePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
               <div className="space-y-6">
                 <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-5">
-                  {SCORE_BREAKDOWN.map(({ skill, desc, color, width }) => (
+                  {SCORE_BREAKDOWN.map(({ skill, desc, color, width }: any) => (
                     <div key={skill} className="space-y-2">
                       <div className="flex justify-between items-center">
                         <span className="text-sm font-bold text-[#0f172a]">{skill}</span>
@@ -489,7 +488,7 @@ export default function CorePage() {
                   { tier: "Top 100–200 Universities", range: "71 - 81", color: "text-blue-700 bg-blue-50 border-blue-100" },
                   { tier: "Good Universities (200–500)", range: "60 - 70", color: "text-teal-700 bg-teal-50 border-teal-100" },
                   { tier: "Pathway Programs", range: "43 - 59", color: "text-slate-600 bg-slate-50 border-slate-100" }
-                ].map(({ tier, range, color }) => (
+                ].map(({ tier, range, color }: any) => (
                   <div key={tier} className={cn("flex justify-between items-center p-4 rounded-xl border", color)}>
                     <span className="text-sm font-bold">{tier}</span>
                     <span className="text-sm font-black">{range}</span>
@@ -515,7 +514,7 @@ export default function CorePage() {
               <p className="text-slate-400 mt-2 text-sm">Including some of the world's most prestigious institutions</p>
             </div>
             <div className="flex flex-wrap justify-center gap-4">
-              {UNIVERSITIES.map(u => (
+              {UNIVERSITIES.map((u: string) => (
                 <span key={u} className="text-sm font-bold text-slate-600 bg-slate-50 border border-slate-200 px-4 py-2 rounded-full hover:border-[#0f766e]/50 hover:text-[#0f172a] transition-colors">{u}</span>
               ))}
               <span className="text-sm font-bold text-[#0f766e] bg-[#f0fdfa] border border-[#0f766e]/20 px-4 py-2 rounded-full">+3,988 more →</span>
@@ -611,7 +610,7 @@ export default function CorePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {TESTIMONIALS.map((r, i) => (
+              {TESTIMONIALS.map((r: any, i: number) => (
                 <div key={i} className="bg-white p-7 rounded-3xl border border-slate-200 shadow-sm flex flex-col">
                   <div className="flex text-amber-400 mb-4 gap-0.5">
                     {Array(r.rating).fill(null).map((_, j) => <Star key={j} className="w-4 h-4 fill-amber-400" />)}
@@ -642,7 +641,7 @@ export default function CorePage() {
             </div>
 
             <div className="space-y-3">
-              {FAQS.map((faq, i) => (
+              {FAQS.map((faq: any, i: number) => (
                 <div key={i} className={cn("rounded-2xl border overflow-hidden transition-all", activeFaq === i ? "border-[#0f766e]/30 bg-[#f0fdfa]" : "border-slate-100 bg-[#f8fafc]")}>
                   <button onClick={() => setActiveFaq(activeFaq === i ? null : i)} className="w-full flex items-center justify-between p-6 text-left gap-4">
                     <h4 className="text-base font-bold text-[#0f172a]">{faq.q}</h4>

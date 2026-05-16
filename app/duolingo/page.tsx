@@ -48,7 +48,7 @@ const UNIVERSITIES = [
   "King's College London", "University of British Columbia", "Northeastern University",
 ];
 
-function cn(...classes) { return classes.filter(Boolean).join(" "); }
+function cn(...classes: any[]) { return classes.filter(Boolean).join(" "); }
 
 export default function DuolingoPage() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -56,12 +56,12 @@ export default function DuolingoPage() {
   const [formStep, setFormStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(null);
-  const [activeFaq, setActiveFaq] = useState(null);
+  const [error, setError] = useState<string | null>(null);
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   const openModal = () => { setSubmitted(false); setFormStep(1); setError(null); setIsBookingModalOpen(true); };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (formStep === 1) {
       if (!formData.fullName || !formData.phone || !formData.email || !formData.state) {
@@ -72,11 +72,11 @@ export default function DuolingoPage() {
       setFormStep(2); setError(null); return;
     }
     setLoading(true); setError(null);
-    await new Promise(r => setTimeout(r, 1200));
+    await new Promise<void>(r => setTimeout(r, 1200));
     setSubmitted(true); setLoading(false);
   };
 
-  const currentPricing = PRICING_DATA[formData.examType] || PRICING_DATA["Duolingo English Test"];
+  const currentPricing = (PRICING_DATA as any)[formData.examType] || PRICING_DATA["Duolingo English Test"];
 
   return (
     <div className="bg-white min-h-screen text-[#0f172a] font-sans selection:bg-amber-200 overflow-x-hidden">
@@ -137,7 +137,7 @@ export default function DuolingoPage() {
                           ].map(({ icon: Icon, placeholder, key, type, maxLength }) => (
                             <div key={key} className="relative">
                               <Icon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                              <input value={formData[key]} onChange={e => setFormData({ ...formData, [key]: e.target.value })}
+                              <input value={(formData as any)[key]} onChange={(e: any) => setFormData({ ...formData, [key]: e.target.value })}
                                 className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f766e]/30 text-sm bg-slate-50"
                                 placeholder={placeholder} type={type} maxLength={maxLength} />
                             </div>
@@ -145,14 +145,14 @@ export default function DuolingoPage() {
                           <div className="grid grid-cols-2 gap-3">
                             <div className="relative">
                               <GraduationCap className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                              <select value={formData.examType} onChange={e => setFormData({ ...formData, examType: e.target.value })}
+                              <select value={formData.examType} onChange={(e: any) => setFormData({ ...formData, examType: e.target.value })}
                                 className="w-full pl-9 pr-3 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f766e]/30 text-sm bg-slate-50 appearance-none">
                                 {Object.keys(PRICING_DATA).map(k => <option key={k} value={k}>{k}</option>)}
                               </select>
                             </div>
                             <div className="relative">
                               <LocateFixed className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                              <select value={formData.state} onChange={e => setFormData({ ...formData, state: e.target.value })}
+                              <select value={formData.state} onChange={(e: any) => setFormData({ ...formData, state: e.target.value })}
                                 className="w-full pl-9 pr-3 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0f766e]/30 text-sm bg-slate-50 appearance-none">
                                 <option value="" disabled>State</option>
                                 {INDIAN_STATES.map(s => <option key={s} value={s}>{s}</option>)}
@@ -177,7 +177,7 @@ export default function DuolingoPage() {
                           <div className="space-y-2">
                             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider text-center">Number of Vouchers</p>
                             <div className="flex justify-center gap-3">
-                              {[1, 2, 3].map(n => (
+                              {[1, 2, 3].map((n: number) => (
                                 <button key={n} type="button" onClick={() => setFormData({ ...formData, quantity: n.toString() })}
                                   className={cn("w-14 h-14 rounded-xl flex items-center justify-center font-black text-lg transition-all", formData.quantity === n.toString() ? "bg-[#0f766e] text-white shadow-lg scale-105" : "bg-white border border-slate-200 text-slate-400")}>
                                   {n}
@@ -455,7 +455,7 @@ export default function DuolingoPage() {
           <div className="max-w-6xl mx-auto space-y-8 text-center">
             <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest">Accepted by 4,000+ Global Universities</h3>
             <div className="flex flex-wrap justify-center gap-3">
-              {UNIVERSITIES.map(u => (
+              {UNIVERSITIES.map((u: string) => (
                 <span key={u} className="text-sm font-bold text-slate-600 bg-slate-50 border border-slate-200 px-4 py-2 rounded-full hover:border-[#0f766e]/40 hover:text-[#0f172a] transition-colors">{u}</span>
               ))}
               <span className="text-sm font-bold text-[#0f766e] bg-[#f0fdf9] border border-[#0f766e]/20 px-4 py-2 rounded-full">+3,988 more →</span>
@@ -572,7 +572,7 @@ export default function DuolingoPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {TESTIMONIALS.map((review, i) => (
+              {TESTIMONIALS.map((review: any, i: number) => (
                 <div key={i} className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col">
                   <div className="flex text-amber-400 mb-5 gap-0.5">
                     {Array(review.rating).fill(null).map((_, j) => <Star key={j} className="w-4 h-4 fill-amber-400" />)}
@@ -606,7 +606,7 @@ export default function DuolingoPage() {
             </div>
 
             <div className="space-y-3">
-              {FAQS.map((faq, i) => (
+              {FAQS.map((faq: any, i: number) => (
                 <div key={i} className={cn("rounded-2xl border overflow-hidden transition-all", activeFaq === i ? "border-[#0f766e]/30 bg-[#f0fdf9]" : "border-slate-100 bg-[#f8fafc]")}>
                   <button onClick={() => setActiveFaq(activeFaq === i ? null : i)} className="w-full flex items-center justify-between p-6 text-left gap-4">
                     <h4 className="text-base font-bold text-[#0f172a]">{faq.q}</h4>
