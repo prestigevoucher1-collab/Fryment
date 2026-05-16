@@ -6,7 +6,7 @@ interface Blog {
    title: string;
    excerpt: string;
    slug: string;
-   feature_img_url: string;
+   cover_image: string;
    created_at: string;
 }
 
@@ -33,7 +33,7 @@ export default function BlogSection({ blogs }: BlogSectionProps) {
                   <Link href={`/pte/blog/${blog.slug}`} key={i} className="group bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-slate-100 hover:border-slate-200 hover:shadow-lg transition-all duration-300 block">
                      <div className="aspect-video overflow-hidden bg-slate-50">
                         <img
-                           src={blog.feature_img_url || 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600&auto=format&fit=crop'}
+                           src={blog.cover_image || 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600&auto=format&fit=crop'}
                            className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
                            alt={blog.title}
                         />

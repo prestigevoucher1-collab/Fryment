@@ -48,8 +48,8 @@ export default function PTEPage() {
       async function fetchLiveBlogs() {
          const { data } = await supabase
             .from('blogs')
-            .select('title, excerpt, slug, feature_img_url, created_at')
-            .eq('status', 'Published')
+            .select('title, excerpt, slug, cover_image, created_at')
+            .eq('published', true)
             .order('created_at', { ascending: false })
             .limit(3);
          if (data) setLiveBlogs(data);
