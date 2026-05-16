@@ -34,3 +34,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# scripts
+create_routes.js
+fix_pages.js
+generate_rich_pages.js
+patch_pages.js
+
+# backups
+README copy.md
+AGENTS.md
+CLAUDE.md
+
