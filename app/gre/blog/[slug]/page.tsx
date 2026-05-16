@@ -27,9 +27,9 @@ export async function generateMetadata(
   if (!blog) return { title: 'Blog Not Found | Fryment' };
 
   return {
-    title: `${blog.title} | Fryment Blog`,
+    title: `${blog.title} | GRE Blog`,
     description: blog.excerpt,
-    alternates: { canonical: `https://fryment.com/pte/blog/${slug}` },
+    alternates: { canonical: `https://fryment.com/gre/blog/${slug}` },
   };
 }
 
@@ -49,7 +49,6 @@ export default async function BlogDetailPage({ params }: BlogPageProps) {
     notFound();
   }
 
-  // Fetch 3 related blogs
   const { data: relatedBlogs } = await supabase
     .from('blogs')
     .select('title, slug, cover_image, excerpt, category, read_time, created_at')
@@ -61,7 +60,7 @@ export default async function BlogDetailPage({ params }: BlogPageProps) {
     <BlogDetailClient 
       blog={blog} 
       relatedBlogs={relatedBlogs ?? []} 
-      exam={exams.pte} 
+      exam={exams.gre} 
     />
   );
 }

@@ -17,7 +17,7 @@ type Blog = {
 
 const CATEGORIES = ['All Articles', 'Exam Prep', 'Study Tips', 'Speaking', 'Writing', 'Reading', 'Listening', 'Immigration', 'Guides', 'News'];
 
-export default function BlogListClient({ blogs }: { blogs: Blog[] }) {
+export default function BlogListClient({ blogs, examId = 'pte' }: { blogs: Blog[], examId?: string }) {
   const [activeCategory, setActiveCategory] = useState('All Articles');
   const [search, setSearch] = useState('');
   const [searchInput, setSearchInput] = useState('');
@@ -94,14 +94,14 @@ export default function BlogListClient({ blogs }: { blogs: Blog[] }) {
               <div className="p-5 flex-1 flex flex-col gap-3">
                 <div className="flex items-center gap-2">
                   <span className="bg-[#1565d8]/10 text-[#1565d8] text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full">
-                    {blog.category || 'PTE Tips'}
+                    {blog.category || 'Tips'}
                   </span>
                   {blog.read_time && (
                     <span className="text-xs text-slate-400">{blog.read_time}</span>
                   )}
                 </div>
                 <h2 className="text-lg font-black text-[#091e42] leading-snug line-clamp-2 group-hover:text-[#1565d8] transition-colors flex-1">
-                  <Link href={`/pte/blog/${blog.slug}`}>{blog.title}</Link>
+                  <Link href={`/${examId}/blog/${blog.slug}`}>{blog.title}</Link>
                 </h2>
                 <p className="text-sm text-slate-500 leading-relaxed line-clamp-3">
                   {blog.excerpt || 'Read the full guide on Fryment.'}
@@ -111,7 +111,7 @@ export default function BlogListClient({ blogs }: { blogs: Blog[] }) {
                     <span className="material-icons text-[12px]">calendar_today</span>
                     {new Date(blog.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
                   </div>
-                  <Link href={`/pte/blog/${blog.slug}`} className="inline-flex items-center gap-1 text-[#1565d8] text-xs font-bold hover:gap-2 transition-all">
+                  <Link href={`/${examId}/blog/${blog.slug}`} className="inline-flex items-center gap-1 text-[#1565d8] text-xs font-bold hover:gap-2 transition-all">
                     Read more <span className="material-icons text-sm">arrow_forward</span>
                   </Link>
                 </div>
