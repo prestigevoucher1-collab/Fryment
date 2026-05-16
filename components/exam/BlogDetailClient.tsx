@@ -40,21 +40,8 @@ export default function BlogDetailClient({ blog, relatedBlogs, exam }: BlogDetai
         </nav>
       </div>
 
-      {/* Cover Image */}
-      {blog.cover_image && (
-        <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-4">
-          <div className="rounded-2xl overflow-hidden aspect-[21/9] bg-slate-100">
-            <img
-              src={blog.cover_image}
-              alt={blog.title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      )}
-
       {/* Article header */}
-      <header className="max-w-[1200px] mx-auto px-4 md:px-6 py-6">
+      <header className="max-w-[1200px] mx-auto px-4 md:px-6 py-6 mt-4">
         {blog.category && (
           <span className="inline-block bg-[#1565d8]/10 text-[#1565d8] text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">
             {blog.category}
@@ -136,9 +123,6 @@ export default function BlogDetailClient({ blog, relatedBlogs, exam }: BlogDetai
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {relatedBlogs.map((r) => (
                 <Link key={r.slug} href={`/${exam.id}/blog/${r.slug}`} className="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-lg transition-all">
-                  <div className="aspect-video overflow-hidden bg-slate-50">
-                    <img src={r.cover_image || 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600'} alt={r.title} className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500" />
-                  </div>
                   <div className="p-5">
                     <h3 className="text-sm font-black text-[#091e42] mt-1 leading-snug line-clamp-2 group-hover:text-[#1565d8] transition-colors">{r.title}</h3>
                     <span className="inline-flex items-center gap-1 text-[#1565d8] text-xs font-bold mt-3">Read more <span className="material-icons text-sm">arrow_forward</span></span>

@@ -54,14 +54,7 @@ export default function BlogListLayout({ blogs, exam }: BlogListLayoutProps) {
       {/* Featured Article */}
       {featured && (
         <section className="max-w-[1200px] mx-auto px-4 md:px-6 py-10 md:py-14">
-          <Link href={`/${exam.id}/blog/${featured.slug}`} className="group grid md:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-300 bg-white">
-            <div className="aspect-[16/9] md:aspect-auto overflow-hidden bg-slate-50">
-              <img
-                src={featured.cover_image || 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=800&auto=format&fit=crop'}
-                alt={featured.title}
-                className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
-              />
-            </div>
+          <Link href={`/${exam.id}/blog/${featured.slug}`} className="group rounded-2xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-300 bg-white">
             <div className="p-8 md:p-10 flex flex-col justify-center">
               <div className="flex items-center gap-2 mb-4">
                 <span className="bg-[#1565d8] text-white text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full">

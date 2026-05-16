@@ -84,13 +84,6 @@ export default function BlogListClient({ blogs, examId = 'pte' }: { blogs: Blog[
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {filtered.map((blog) => (
             <article key={blog.id} className="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-slate-200 hover:shadow-xl transition-all duration-300 flex flex-col">
-              <div className="aspect-video overflow-hidden bg-slate-50">
-                <img
-                  src={blog.cover_image || 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600&auto=format&fit=crop'}
-                  alt={blog.title}
-                  className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
-                />
-              </div>
               <div className="p-5 flex-1 flex flex-col gap-3">
                 <div className="flex items-center gap-2">
                   <span className="bg-[#1565d8]/10 text-[#1565d8] text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full">

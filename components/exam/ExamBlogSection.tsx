@@ -33,13 +33,6 @@ export default function ExamBlogSection({ blogs, exam }: BlogSectionProps) {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
                {blogs.map((blog, i) => (
                   <Link href={`/${exam.id}/blog/${blog.slug}`} key={i} className="group bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-slate-100 hover:border-slate-200 hover:shadow-lg transition-all duration-300 block">
-                     <div className="aspect-video overflow-hidden bg-slate-50">
-                        <img
-                           src={blog.cover_image || 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600&auto=format&fit=crop'}
-                           className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
-                           alt={blog.title}
-                        />
-                     </div>
                      <div className="p-5 md:p-6 space-y-3">
                         <span className="inline-block bg-[#1565d8]/10 text-[#1565d8] text-[10px] md:text-xs font-black uppercase tracking-wider px-2.5 py-1 rounded-full">{exam.name} Guide</span>
                         <h4 className="text-base md:text-lg font-black text-[#091e42] leading-snug line-clamp-2 group-hover:text-[#1565d8] transition-colors">{blog.title}</h4>
