@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Razorpay from 'razorpay';
 
-// Price per voucher in paise (₹14,200 = 1420000 paise)
-const PRICE_PER_VOUCHER_PAISE = 1_420_000;
+const IS_TEST_MODE = process.env.RAZORPAY_KEY_ID?.startsWith('rzp_test_');
+
+// In test mode: ₹1 per voucher (100 paise) — avoids Razorpay's test account transaction limit
+// In live mode: ₹14,200 per voucher (1,420,000 paise)
+const PRICE_PER_VOUCHER_PAISE = IS_TEST_MODE ? 100 : 1_420_000;
 
 const getRazorpay = () => {
   const key_id = process.env.RAZORPAY_KEY_ID;

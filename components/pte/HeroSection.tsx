@@ -4,8 +4,9 @@ import { INDIAN_STATES } from "@/data/pte/constants";
 import { useState } from "react";
 import { loadRazorpayScript } from "@/lib/razorpay";
 
-// Price per voucher in ₹ (shown to user)
-const PRICE_PER_VOUCHER = 14200;
+const IS_TEST_MODE = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID?.startsWith('rzp_test_') ?? true;
+// In test mode show ₹1 so the form total matches what Razorpay actually charges
+const PRICE_PER_VOUCHER = IS_TEST_MODE ? 1 : 14200;
 
 export default function HeroSection() {
    const [formData, setFormData] = useState({
