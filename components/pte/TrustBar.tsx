@@ -3,8 +3,7 @@
 export default function TrustBar() {
    return (
       <div className="bg-[#f0f7ff] relative overflow-hidden -mt-1">
-         <div className="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-
+         {/* Background pattern removed for performance */}
          {/* Scrolling Brand Marquee */}
          <div className="py-2.5 relative z-20 overflow-hidden font-body flex items-center shadow-[inset_0_4px_20px_rgba(0,0,0,0.1)] bg-gradient-to-r from-[#091e42] via-[#113a77] to-[#091e42]">
             <div className="max-w-[1920px] mx-auto w-full flex items-center px-4 md:px-0">
@@ -39,11 +38,11 @@ export default function TrustBar() {
 
          {/* Video Guide Section */}
          <section className="py-12 md:py-16 px-4 md:px-6 lg:px-16 bg-[#091e42] relative z-10 overflow-hidden">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[500px] bg-[#1565d8]/20 rounded-full blur-[120px] opacity-60 pointer-events-none"></div>
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[500px] bg-gradient-to-b from-[#1565d8]/10 to-transparent rounded-full opacity-60 pointer-events-none"></div>
 
             <div className="max-w-[1200px] mx-auto flex flex-col items-center relative z-20">
                <div className="text-center space-y-4 max-w-2xl mb-8 md:mb-10">
-                  <div className="inline-flex items-center gap-2 bg-[#1565d8]/20 px-4 py-1.5 rounded-full border border-[#1565d8]/40 backdrop-blur-md shadow-lg">
+                  <div className="inline-flex items-center gap-2 bg-[#1565d8]/30 px-4 py-1.5 rounded-full border border-[#1565d8]/40 shadow-lg">
                      <span className="material-icons text-[12px] md:text-[14px] text-[#ffcc00] animate-pulse">play_circle</span>
                      <span className="text-[10px] md:text-[13px] font-black text-blue-50 tracking-wide">Video Tutorial</span>
                   </div>
@@ -57,8 +56,8 @@ export default function TrustBar() {
 
                {/* Floating Video Player */}
                <div className="w-full relative group max-w-3xl mx-auto cursor-pointer">
-                  <div className="absolute -inset-1 md:-inset-2 bg-gradient-to-r from-[#1565d8] to-[#ffcc00] rounded-[1.5rem] md:rounded-[2.5rem] blur-xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                  <div className="relative aspect-video bg-black/50 backdrop-blur-xl rounded-[1.5rem] md:rounded-[2rem] p-1.5 md:p-2 shadow-2xl border border-white/10 overflow-hidden">
+                  <div className="absolute -inset-1 md:-inset-2 bg-gradient-to-r from-[#1565d8] to-[#ffcc00] rounded-[1.5rem] md:rounded-[2.5rem] opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                  <div className="relative aspect-video bg-black/80 rounded-[1.5rem] md:rounded-[2rem] p-1.5 md:p-2 shadow-2xl border border-white/10 overflow-hidden">
                      <iframe loading="lazy" className="w-full h-full rounded-[1rem] md:rounded-[1.5rem] opacity-90 group-hover:opacity-100 transition-opacity duration-700 relative z-20" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" title="Guide" frameBorder="0" allowFullScreen></iframe>
                   </div>
                </div>
@@ -71,7 +70,7 @@ export default function TrustBar() {
                      { icon: "schedule", title: "Select Slot", desc: "Choose optimal date.", color: "text-green-400" },
                      { icon: "verified", title: "Final Step", desc: "Zero extra payments.", color: "text-purple-400" }
                   ].map((item, i) => (
-                     <div key={i} className="p-3 md:p-4 bg-white/5 backdrop-blur-sm rounded-xl md:rounded-2xl border border-white/10 flex items-start gap-3 hover:bg-white/10 transition-colors group">
+                     <div key={i} className="p-3 md:p-4 bg-white/10 rounded-xl md:rounded-2xl border border-white/10 flex items-start gap-3 hover:bg-white/20 transition-colors group">
                         <span className={`material-icons text-xl md:text-2xl ${item.color} shrink-0 mt-0.5 group-hover:scale-110 transition-transform`}>{item.icon}</span>
                         <div className="text-left space-y-0.5">
                            <h4 className="font-black text-white text-xs md:text-sm leading-tight tracking-tight">{item.title}</h4>

@@ -13,7 +13,7 @@ export default function ComparisonSection() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                {/* Others */}
-               <div className="bg-white border border-slate-200 rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-sm opacity-80 backdrop-blur-sm grayscale-[0.2]">
+               <div className="bg-white border border-slate-200 rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-sm opacity-80 grayscale-[0.2]">
                   <h3 className="text-slate-400 font-bold mb-6 text-base md:text-lg border-b border-slate-100 pb-3 flex items-center gap-2">
                      <span className="material-icons text-slate-300">block</span>
                      Other Platforms
@@ -33,8 +33,8 @@ export default function ComparisonSection() {
 
                {/* Fryment */}
                <div className="bg-[#091e42] rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden ring-4 ring-[#1565d8]/20 group">
-                  <div className="absolute -top-32 -right-32 w-64 h-64 bg-[#1565d8] blur-[80px] opacity-40 group-hover:opacity-60 transition-opacity duration-700 rounded-full"></div>
-                  <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-[#1565d8] blur-[60px] opacity-30 group-hover:opacity-50 transition-opacity duration-700 rounded-full"></div>
+                  <div className="absolute -top-32 -right-32 w-64 h-64 bg-gradient-to-bl from-[#1565d8] to-transparent opacity-10 group-hover:opacity-20 transition-opacity duration-700 rounded-full"></div>
+                  <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-gradient-to-tr from-[#1565d8] to-transparent opacity-10 group-hover:opacity-20 transition-opacity duration-700 rounded-full"></div>
 
                   <h3 className="text-white font-black mb-6 text-xl md:text-2xl border-b border-white/10 pb-3 flex justify-between items-center relative z-10">
                      Fryment Advantage
