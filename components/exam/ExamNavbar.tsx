@@ -23,27 +23,35 @@ export default function ExamNavbar({ isMenuOpen, setIsMenuOpen }: NavbarProps) {
             </Link>
 
             <div className="hidden lg:flex items-center gap-8">
-               {/* Exam Switcher */}
-               <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl">
-                  {Object.values(EXAMS).map((exam) => (
-                    <Link 
-                      key={exam.id} 
-                      href={`/${exam.id}`}
-                      className={`px-4 py-1.5 rounded-lg text-xs font-black transition-all ${
-                        examId === exam.id 
-                        ? 'bg-white text-[#1565d8] shadow-sm' 
-                        : 'text-slate-500 hover:text-[#091e42]'
-                      }`}
-                    >
-                      {exam.name}
-                    </Link>
-                  ))}
+               {/* Exam Dropdown */}
+               <div className="relative group">
+                  <button className="flex items-center gap-1 bg-slate-100 px-4 py-2 rounded-xl text-sm font-black text-[#091e42] hover:bg-slate-200 transition-colors">
+                     {currentExam.name}
+                     <span className="material-icons text-base">expand_more</span>
+                  </button>
+                  {/* Invisible hover bridge */}
+                  <div className="absolute top-full left-0 w-full h-2"></div>
+                  <div className="absolute top-[calc(100%+0.5rem)] left-0 w-48 bg-white border border-slate-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all flex flex-col p-2 z-50">
+                     {Object.values(EXAMS).map((exam) => (
+                        <Link 
+                           key={exam.id} 
+                           href={`/${exam.id}`}
+                           className={`px-4 py-2.5 rounded-lg text-sm font-bold transition-all ${
+                              examId === exam.id 
+                              ? 'bg-[#1565d8]/10 text-[#1565d8]' 
+                              : 'text-slate-500 hover:bg-slate-50 hover:text-[#091e42]'
+                           }`}
+                        >
+                           {exam.name}
+                        </Link>
+                     ))}
+                  </div>
                </div>
 
                <Link className="text-sm font-bold text-[#091e42] hover:text-[#1565d8] transition-colors" href={`/${examId}/blog`}>Blog</Link>
                <a className="bg-gradient-to-r from-[#1565d8] to-[#091e42] text-white px-5 py-2.5 rounded-xl font-black text-sm tracking-wide shadow-md flex items-center gap-2 hover:opacity-90 transition-opacity" href="tel:+919325216364">
                   <span className="material-icons text-sm">phone</span>
-                  Call Support
+                  +91 932521 6364
                </a>
             </div>
 
@@ -94,7 +102,7 @@ export default function ExamNavbar({ isMenuOpen, setIsMenuOpen }: NavbarProps) {
                     </Link>
                     <a href="tel:+919325216364" className="text-lg font-bold text-[#1565d8] flex items-center gap-4 py-3" onClick={() => setIsMenuOpen(false)}>
                        <span className="material-icons text-xl">phone</span>
-                       Call Support
+                       +91 932521 6364
                     </a>
                   </div>
                </div>

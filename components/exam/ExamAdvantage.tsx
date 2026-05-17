@@ -1,5 +1,6 @@
 "use client";
 import { ExamConfig } from "@/data/pte/exams";
+import Image from "next/image";
 
 interface ExamAdvantageProps {
   exam: ExamConfig;
@@ -74,7 +75,7 @@ export default function ExamAdvantage({ exam }: ExamAdvantageProps) {
                      <p className="text-slate-500 font-medium text-xs md:text-[13px] leading-relaxed">Questions about your slot? Form filling errors? We have experts ready to guide you step-by-step through WhatsApp or Direct Call.</p>
                   </div>
                   <div className="w-full md:w-[45%] h-32 md:h-full rounded-[1rem] md:rounded-[1.5rem] overflow-hidden relative shadow-inner">
-                     <img src="https://images.unsplash.com/photo-1549923746-c502d488b3ea?w=400&h=300&fit=crop" alt="Support" className="absolute inset-0 w-full h-full object-cover" />
+                     <Image src="https://images.unsplash.com/photo-1549923746-c502d488b3ea?w=400&h=300&fit=crop" width={400} height={300} alt="Support" className="absolute inset-0 w-full h-full object-cover" />
                   </div>
                </div>
             </div>

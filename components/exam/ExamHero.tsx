@@ -2,6 +2,7 @@
 
 import { INDIAN_STATES } from "@/data/pte/constants";
 import { useState } from "react";
+import Image from "next/image";
 import { loadRazorpayScript } from "@/lib/razorpay";
 import { ExamConfig } from "@/data/pte/exams";
 
@@ -146,9 +147,9 @@ export default function ExamHero({ exam }: ExamHeroProps) {
             <div className="space-y-4 md:space-y-5 animate-in fade-in slide-in-from-left duration-700">
                <div className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-50/80 to-indigo-50/80 px-2 py-2 pr-5 rounded-full border border-[#1565d8]/10 shadow-[0_4px_20px_rgba(21,101,216,0.08)] backdrop-blur-md transition-all hover:shadow-[0_4px_25px_rgba(21,101,216,0.15)] hover:-translate-y-0.5">
                   <div className="flex -space-x-2">
-                     <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&fit=crop" alt="Student" className="w-7 h-7 rounded-full border-2 border-white object-cover" />
-                     <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=64&h=64&fit=crop" alt="Student" className="w-7 h-7 rounded-full border-2 border-white object-cover" />
-                     <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=64&h=64&fit=crop" alt="Student" className="w-7 h-7 rounded-full border-2 border-white object-cover" />
+                     <Image src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&fit=crop" width={28} height={28} alt="Student" className="w-7 h-7 rounded-full border-2 border-white object-cover" />
+                     <Image src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=64&h=64&fit=crop" width={28} height={28} alt="Student" className="w-7 h-7 rounded-full border-2 border-white object-cover" />
+                     <Image src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=64&h=64&fit=crop" width={28} height={28} alt="Student" className="w-7 h-7 rounded-full border-2 border-white object-cover" />
                   </div>
                   <div className="flex items-center gap-1.5">
                      <span className="material-icons text-[14px] text-[#1565d8]">verified</span>
@@ -159,7 +160,7 @@ export default function ExamHero({ exam }: ExamHeroProps) {
                </div>
 
                <h1 className="text-3xl md:text-5xl font-black leading-tight tracking-tight text-[#091e42]">
-                  The Smartest Way to <span className="text-[#1565d8]">Save {exam.saveAmount}</span> &amp; Book {exam.name} Fast
+                  The Smartest Way to Book {exam.name} at <span className="text-[#1565d8]">₹{exam.price.toLocaleString('en-IN')}</span> Fast
                </h1>
                <p className="text-base md:text-lg text-slate-500 font-medium leading-relaxed max-w-xl">
                   {exam.description}
