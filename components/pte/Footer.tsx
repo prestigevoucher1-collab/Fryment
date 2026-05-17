@@ -23,7 +23,7 @@ export default function Footer() {
                <ul className="space-y-3">
                   <li><Link href="/" className="text-white/80 hover:text-[#ffcc00] text-sm font-semibold transition-colors">Home</Link></li>
                   <li><Link href="#purchase" className="text-white/80 hover:text-[#ffcc00] text-sm font-semibold transition-colors">Buy Voucher</Link></li>
-                  <li><Link href="/pte/blog" className="text-white/80 hover:text-[#ffcc00] text-sm font-semibold transition-colors">PTE Resources</Link></li>
+                  <li><Link href="/blog" className="text-white/80 hover:text-[#ffcc00] text-sm font-semibold transition-colors">PTE Resources</Link></li>
                   <li><Link href="/about" className="text-white/80 hover:text-[#ffcc00] text-sm font-semibold transition-colors">About Us</Link></li>
                </ul>
             </div>

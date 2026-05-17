@@ -94,7 +94,7 @@ export default function BlogListClient({ blogs, examId = 'pte' }: { blogs: Blog[
                   )}
                 </div>
                 <h2 className="text-lg font-black text-[#091e42] leading-snug line-clamp-2 group-hover:text-[#1565d8] transition-colors flex-1">
-                  <Link href={`/${examId}/blog/${blog.slug}`}>{blog.title}</Link>
+                  <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
                 </h2>
                 <p className="text-sm text-slate-500 leading-relaxed line-clamp-3">
                   {blog.excerpt || 'Read the full guide on Fryment.'}
@@ -104,7 +104,7 @@ export default function BlogListClient({ blogs, examId = 'pte' }: { blogs: Blog[
                     <span className="material-icons text-[12px]">calendar_today</span>
                     {new Date(blog.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
                   </div>
-                  <Link href={`/${examId}/blog/${blog.slug}`} className="inline-flex items-center gap-1 text-[#1565d8] text-xs font-bold hover:gap-2 transition-all">
+                  <Link href={`/blog/${blog.slug}`} className="inline-flex items-center gap-1 text-[#1565d8] text-xs font-bold hover:gap-2 transition-all">
                     Read more <span className="material-icons text-sm">arrow_forward</span>
                   </Link>
                 </div>

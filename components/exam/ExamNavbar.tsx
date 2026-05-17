@@ -48,7 +48,7 @@ export default function ExamNavbar({ isMenuOpen, setIsMenuOpen }: NavbarProps) {
                   </div>
                </div>
 
-               <Link className="text-sm font-bold text-[#091e42] hover:text-[#1565d8] transition-colors" href={`/${examId}/blog`}>Blog</Link>
+               <Link className="text-sm font-bold text-[#091e42] hover:text-[#1565d8] transition-colors" href="/blog">Blog</Link>
                <a className="bg-gradient-to-r from-[#1565d8] to-[#091e42] text-white px-5 py-2.5 rounded-xl font-black text-sm tracking-wide shadow-md flex items-center gap-2 hover:opacity-90 transition-opacity" href="tel:+919325216364">
                   <span className="material-icons text-sm">phone</span>
                   +91 932521 6364
@@ -96,7 +96,7 @@ export default function ExamNavbar({ isMenuOpen, setIsMenuOpen }: NavbarProps) {
                   </div>
 
                   <div className="pt-6 space-y-4 border-t border-slate-50 mt-4">
-                    <Link href={`/${examId}/blog`} className="text-lg font-bold text-[#1565d8] flex items-center gap-4 py-3 border-b border-slate-50" onClick={() => setIsMenuOpen(false)}>
+                    <Link href="/blog" className="text-lg font-bold text-[#1565d8] flex items-center gap-4 py-3 border-b border-slate-50" onClick={() => setIsMenuOpen(false)}>
                        <span className="material-icons text-xl">rss_feed</span>
                        Our Blog
                     </Link>

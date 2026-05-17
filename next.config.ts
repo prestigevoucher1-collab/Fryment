@@ -13,6 +13,50 @@ const nextConfig: NextConfig = {
       }
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/pte/blog',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/det/blog',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/gre/blog',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/toefl/blog',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/pte/blog/:slug',
+        destination: '/blog/:slug',
+        permanent: true,
+      },
+      {
+        source: '/det/blog/:slug',
+        destination: '/blog/:slug',
+        permanent: true,
+      },
+      {
+        source: '/gre/blog/:slug',
+        destination: '/blog/:slug',
+        permanent: true,
+      },
+      {
+        source: '/toefl/blog/:slug',
+        destination: '/blog/:slug',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

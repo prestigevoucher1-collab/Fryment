@@ -24,14 +24,14 @@ export default function BlogSection({ blogs }: BlogSectionProps) {
                   <span className="text-[#1565d8] font-black text-xs md:text-sm tracking-wide block mb-2">Free Guides</span>
                   <h2 className="text-2xl md:text-4xl font-black text-[#091e42] tracking-tight">PTE Resources</h2>
                </div>
-               <Link href="/pte/blog" className="text-xs md:text-sm font-bold text-[#1565d8] hover:text-[#091e42] transition-colors flex items-center gap-1 shrink-0">
+               <Link href="/blog" className="text-xs md:text-sm font-bold text-[#1565d8] hover:text-[#091e42] transition-colors flex items-center gap-1 shrink-0">
                   View All <span className="material-icons text-[16px]">arrow_forward</span>
                </Link>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
                {blogs.map((blog, i) => (
-                  <Link href={`/pte/blog/${blog.slug}`} key={i} className="group bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-slate-100 hover:border-slate-200 hover:shadow-lg transition-all duration-300 block">
+                  <Link href={`/blog/${blog.slug}`} key={i} className="group bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-slate-100 hover:border-slate-200 hover:shadow-lg transition-all duration-300 block">
                      <div className="aspect-video overflow-hidden bg-slate-50">
                         <Image
                            src={blog.cover_image || 'https://images.unsplash.com/photo-1546410531-bea47b593671?w=800&q=80'}

@@ -18,7 +18,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }: NavbarProps) {
 
             <div className="hidden lg:flex items-center gap-8">
                <a className="text-sm font-bold text-[#091e42] hover:text-[#1565d8] transition-colors" href="/how-to-book">How to Book</a>
-               <Link className="text-sm font-bold text-[#091e42] hover:text-[#1565d8] transition-colors" href="/pte/blog">Blog</Link>
+               <Link className="text-sm font-bold text-[#091e42] hover:text-[#1565d8] transition-colors" href="/blog">Blog</Link>
                <a className="bg-gradient-to-r from-[#1565d8] to-[#091e42] text-white px-5 py-2.5 rounded-xl font-black text-sm tracking-wide shadow-md flex items-center gap-2 hover:opacity-90 transition-opacity" href="tel:+919325216364">
                   <span className="material-icons text-sm">phone</span>
                   +91 932521 6364
@@ -51,7 +51,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }: NavbarProps) {
                      <span className="material-icons text-xl">menu_book</span>
                      How to Book
                   </a>
-                  <Link href="/pte/blog" className="text-lg font-bold text-[#1565d8] flex items-center gap-4 py-3 border-b border-slate-50" onClick={() => setIsMenuOpen(false)}>
+                  <Link href="/blog" className="text-lg font-bold text-[#1565d8] flex items-center gap-4 py-3 border-b border-slate-50" onClick={() => setIsMenuOpen(false)}>
                      <span className="material-icons text-xl">rss_feed</span>
                      Our Blog
                   </Link>

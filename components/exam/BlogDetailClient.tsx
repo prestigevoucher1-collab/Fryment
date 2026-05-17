@@ -28,7 +28,7 @@ export default function BlogDetailClient({ blog, relatedBlogs, exam }: BlogDetai
         <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-slate-400">
           <Link href={`/${exam.id}`} className="hover:text-[#1565d8] transition-colors font-medium">Home</Link>
           <span className="material-icons text-[12px]">chevron_right</span>
-          <Link href={`/${exam.id}/blog`} className="hover:text-[#1565d8] transition-colors font-medium">Blog</Link>
+          <Link href="/blog" className="hover:text-[#1565d8] transition-colors font-medium">Blog</Link>
           <span className="material-icons text-[12px]">chevron_right</span>
           {blog.category && (
             <>
@@ -122,7 +122,7 @@ export default function BlogDetailClient({ blog, relatedBlogs, exam }: BlogDetai
             <h2 className="text-xl font-black text-[#091e42] mb-6">More Articles You'll Find Interesting</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {relatedBlogs.map((r) => (
-                <Link key={r.slug} href={`/${exam.id}/blog/${r.slug}`} className="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-lg transition-all">
+                <Link key={r.slug} href={`/blog/${r.slug}`} className="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-lg transition-all">
                   <div className="p-5">
                     <h3 className="text-sm font-black text-[#091e42] mt-1 leading-snug line-clamp-2 group-hover:text-[#1565d8] transition-colors">{r.title}</h3>
                     <span className="inline-flex items-center gap-1 text-[#1565d8] text-xs font-bold mt-3">Read more <span className="material-icons text-sm">arrow_forward</span></span>
