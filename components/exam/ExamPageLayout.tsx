@@ -9,14 +9,14 @@ import dynamic from "next/dynamic";
 import ExamNavbar from "@/components/exam/ExamNavbar";
 import ExamHero from "@/components/exam/ExamHero";
 
-const TrustBar = dynamic(() => import("@/components/pte/TrustBar"), { ssr: false });
-const ExamAdvantage = dynamic(() => import("@/components/exam/ExamAdvantage"), { ssr: false });
-const TestimonialsSection = dynamic(() => import("@/components/pte/TestimonialsSection"), { ssr: false });
-const ProofGallery = dynamic(() => import("@/components/pte/ProofGallery"), { ssr: false });
-const ComparisonSection = dynamic(() => import("@/components/pte/ComparisonSection"), { ssr: false });
-const ExamBlogSection = dynamic(() => import("@/components/exam/ExamBlogSection"), { ssr: false });
-const FaqSection = dynamic(() => import("@/components/pte/FaqSection"), { ssr: false });
-const Footer = dynamic(() => import("@/components/pte/Footer"), { ssr: false });
+const TrustBar = dynamic(() => import("@/components/pte/TrustBar"), { ssr: true });
+const ExamAdvantage = dynamic(() => import("@/components/exam/ExamAdvantage"), { ssr: true });
+const TestimonialsSection = dynamic(() => import("@/components/pte/TestimonialsSection"), { ssr: true });
+const ProofGallery = dynamic(() => import("@/components/pte/ProofGallery"), { ssr: true });
+const ComparisonSection = dynamic(() => import("@/components/pte/ComparisonSection"), { ssr: true });
+const ExamBlogSection = dynamic(() => import("@/components/exam/ExamBlogSection"), { ssr: true });
+const FaqSection = dynamic(() => import("@/components/pte/FaqSection"), { ssr: true });
+const Footer = dynamic(() => import("@/components/pte/Footer"), { ssr: true });
 const StickyBar = dynamic(() => import("@/components/pte/StickyBar"), { ssr: false });
 const PopupModal = dynamic(() => import("@/components/pte/PopupModal"), { ssr: false });
 
