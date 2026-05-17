@@ -1,6 +1,7 @@
 "use client";
 
 import { testimonials } from "@/data/pte/constants";
+import Image from "next/image";
 
 function TestimonialCard({ t, prefix, i }: { t: typeof testimonials[0]; prefix: string; i: number }) {
    return (
@@ -18,7 +19,7 @@ function TestimonialCard({ t, prefix, i }: { t: typeof testimonials[0]; prefix: 
          </div>
          <p className="text-slate-600 font-medium text-xs md:text-sm leading-relaxed">"{t.content}"</p>
          <div className="flex items-center gap-2.5 pt-3 border-t border-slate-50 mt-1">
-            <img src={t.img} alt={t.name} className="w-8 h-8 md:w-9 md:h-9 rounded-full object-cover bg-slate-100" />
+            <Image src={t.img} width={36} height={36} alt={t.name} className="w-8 h-8 md:w-9 md:h-9 rounded-full object-cover bg-slate-100" />
             <div>
                <p className="font-bold text-[#091e42] text-xs md:text-sm">{t.name}</p>
                <p className="text-slate-400 text-[9px] md:text-[10px] font-medium">{t.role}</p>

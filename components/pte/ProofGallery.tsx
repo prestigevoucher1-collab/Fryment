@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { portraitProofs, landscapeProofs } from "@/data/pte/constants";
 
 export default function ProofGallery() {
@@ -24,7 +25,7 @@ export default function ProofGallery() {
                   return (
                      <div key={`mix1-${i}`} className={`${isPortrait ? 'w-[140px] md:w-[200px] aspect-[9/19]' : 'w-[220px] md:w-[320px] aspect-[16/10]'} shrink-0 rounded-lg md:rounded-xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.08)] transform transition-all ${isPortrait ? '-translate-y-3 md:-translate-y-6' : 'translate-y-3 md:translate-y-6'} relative group cursor-pointer`}>
                         {isPortrait && <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/40 pointer-events-none z-10"></div>}
-                        <img src={url} alt="Delivery Proof" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                        <Image src={url} width={800} height={1000} alt="Delivery Proof" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                      </div>
                   );
                })}
@@ -37,7 +38,7 @@ export default function ProofGallery() {
                   return (
                      <div key={`mix2-${i}`} className={`${isPortrait ? 'w-[140px] md:w-[200px] aspect-[9/19]' : 'w-[220px] md:w-[320px] aspect-[16/10]'} shrink-0 rounded-lg md:rounded-xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.08)] transform transition-all ${isPortrait ? 'translate-y-3 md:translate-y-6' : '-translate-y-3 md:-translate-y-6'} relative group cursor-pointer`}>
                         {isPortrait && <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/40 pointer-events-none z-10"></div>}
-                        <img src={url} alt="Delivery Proof" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                        <Image src={url} width={800} height={1000} alt="Delivery Proof" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                      </div>
                   );
                })}

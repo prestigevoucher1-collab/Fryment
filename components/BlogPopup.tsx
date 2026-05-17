@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function BlogPopup() {
   const [showPopup, setShowPopup] = useState(false);
@@ -54,10 +55,11 @@ export default function BlogPopup() {
           className="block relative cursor-pointer"
         >
           <div className="relative aspect-[1.6/1] w-full overflow-hidden">
-            <img 
-              src="/pte-offer-popup.png" 
-              alt="PTE Discount Offer - Save ₹3000" 
-              className="w-full h-full object-cover"
+            <Image 
+               src="/pte-offer-popup.png" 
+               width={400} height={300}
+               alt="PTE Voucher Offer" 
+               className="w-full h-auto"
             />
             
             {/* Real Button Overlay - Positioned more clearly over the graphic */}

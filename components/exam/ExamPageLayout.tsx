@@ -4,18 +4,21 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 import { ExamConfig } from "@/data/pte/exams";
 
-import PopupModal from "@/components/pte/PopupModal";
+import dynamic from "next/dynamic";
+
 import ExamNavbar from "@/components/exam/ExamNavbar";
 import ExamHero from "@/components/exam/ExamHero";
-import TrustBar from "@/components/pte/TrustBar";
-import ExamAdvantage from "@/components/exam/ExamAdvantage";
-import TestimonialsSection from "@/components/pte/TestimonialsSection";
-import ProofGallery from "@/components/pte/ProofGallery";
-import ComparisonSection from "@/components/pte/ComparisonSection";
-import ExamBlogSection from "@/components/exam/ExamBlogSection";
-import FaqSection from "@/components/pte/FaqSection";
-import Footer from "@/components/pte/Footer";
-import StickyBar from "@/components/pte/StickyBar";
+
+const TrustBar = dynamic(() => import("@/components/pte/TrustBar"), { ssr: true });
+const ExamAdvantage = dynamic(() => import("@/components/exam/ExamAdvantage"), { ssr: true });
+const TestimonialsSection = dynamic(() => import("@/components/pte/TestimonialsSection"), { ssr: true });
+const ProofGallery = dynamic(() => import("@/components/pte/ProofGallery"), { ssr: true });
+const ComparisonSection = dynamic(() => import("@/components/pte/ComparisonSection"), { ssr: true });
+const ExamBlogSection = dynamic(() => import("@/components/exam/ExamBlogSection"), { ssr: true });
+const FaqSection = dynamic(() => import("@/components/pte/FaqSection"), { ssr: true });
+const Footer = dynamic(() => import("@/components/pte/Footer"), { ssr: true });
+const StickyBar = dynamic(() => import("@/components/pte/StickyBar"), { ssr: false });
+const PopupModal = dynamic(() => import("@/components/pte/PopupModal"), { ssr: false });
 
 interface ExamPageLayoutProps {
   exam: ExamConfig;

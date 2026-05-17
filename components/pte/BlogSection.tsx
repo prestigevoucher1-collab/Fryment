@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 interface Blog {
    title: string;
@@ -32,9 +33,11 @@ export default function BlogSection({ blogs }: BlogSectionProps) {
                {blogs.map((blog, i) => (
                   <Link href={`/pte/blog/${blog.slug}`} key={i} className="group bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-slate-100 hover:border-slate-200 hover:shadow-lg transition-all duration-300 block">
                      <div className="aspect-video overflow-hidden bg-slate-50">
-                        <img
-                           src={blog.cover_image || 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600&auto=format&fit=crop'}
-                           className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                        <Image
+                           src={blog.cover_image || 'https://images.unsplash.com/photo-1546410531-bea47b593671?w=800&q=80'}
+                           width={800}
+                           height={400}
+                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                            alt={blog.title}
                         />
                      </div>

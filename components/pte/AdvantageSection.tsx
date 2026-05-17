@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 export default function AdvantageSection() {
    return (
@@ -70,7 +71,7 @@ export default function AdvantageSection() {
                      <p className="text-slate-500 font-medium text-xs md:text-[13px] leading-relaxed">Questions about your slot? Form filling errors? We have experts ready to guide you step-by-step through WhatsApp or Direct Call.</p>
                   </div>
                   <div className="w-full md:w-[45%] h-32 md:h-full rounded-[1rem] md:rounded-[1.5rem] overflow-hidden relative shadow-inner">
-                     <img src="/images/support_agent.png" alt="Support" className="absolute inset-0 w-full h-full object-cover" />
+                     <Image src="/images/support_agent.png" width={400} height={300} alt="Support" className="absolute inset-0 w-full h-full object-cover" />
                   </div>
                </div>
             </div>

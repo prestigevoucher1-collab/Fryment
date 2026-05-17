@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 interface PopupModalProps {
    onClose: () => void;
@@ -16,10 +17,12 @@ export default function PopupModal({ onClose }: PopupModalProps) {
 
             <Link href="#purchase" onClick={onClose} className="block relative cursor-pointer">
                <div className="relative aspect-[1.6/1] w-full overflow-hidden">
-                  <img
+                  <Image
                      src="/pte-offer-popup.png"
+                     width={400} 
+                     height={300}
                      alt="PTE Discount Offer - Save ₹3000"
-                     className="w-full h-full object-cover"
+                     className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                   />
 
                   <div className="absolute bottom-[10%] right-[6%] z-20">

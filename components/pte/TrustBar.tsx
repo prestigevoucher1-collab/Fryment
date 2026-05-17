@@ -59,7 +59,7 @@ export default function TrustBar() {
                <div className="w-full relative group max-w-3xl mx-auto cursor-pointer">
                   <div className="absolute -inset-1 md:-inset-2 bg-gradient-to-r from-[#1565d8] to-[#ffcc00] rounded-[1.5rem] md:rounded-[2.5rem] blur-xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
                   <div className="relative aspect-video bg-black/50 backdrop-blur-xl rounded-[1.5rem] md:rounded-[2rem] p-1.5 md:p-2 shadow-2xl border border-white/10 overflow-hidden">
-                     <iframe className="w-full h-full rounded-[1rem] md:rounded-[1.5rem] opacity-90 group-hover:opacity-100 transition-opacity duration-700 relative z-20" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" title="Guide" frameBorder="0" allowFullScreen></iframe>
+                     <iframe loading="lazy" className="w-full h-full rounded-[1rem] md:rounded-[1.5rem] opacity-90 group-hover:opacity-100 transition-opacity duration-700 relative z-20" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" title="Guide" frameBorder="0" allowFullScreen></iframe>
                   </div>
                </div>
 
