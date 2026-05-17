@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: "Fryment | Official PTE Vouchers & Free Mock Tests 2026",
@@ -39,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="h-full antialiased scroll-smooth"
+      className={`h-full antialiased scroll-smooth ${inter.variable}`}
     >
       <head>
         <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
@@ -47,16 +50,13 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
         <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" as="style" />
-        <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" media="print" onLoad="this.media='all'" />
-        <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" /></noscript>
+        <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" />
 
         <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" as="style" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" media="print" onLoad="this.media='all'" />
-        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" /></noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" />
 
         <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" as="style" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" media="print" onLoad="this.media='all'" />
-        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" /></noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

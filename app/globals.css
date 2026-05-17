@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 @import "tailwindcss";
 
 @plugin "@tailwindcss/typography";
@@ -10,9 +10,9 @@
 }
 
 @theme {
-  --font-headline: Inter, sans-serif;
-  --font-body: Inter, sans-serif;
-  --font-label: Inter, sans-serif;
+  --font-headline: var(--font-inter), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+  --font-label: var(--font-inter), sans-serif;
 
   --color-primary: #002147;
   /* Oxford Blue */
@@ -75,6 +75,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Inter, sans-serif;
-
+  font-family: var(--font-inter), sans-serif;
 }
