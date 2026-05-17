@@ -19,17 +19,48 @@ export async function generateMetadata(
 
   const { data: blog } = await supabase
     .from('blogs')
-    .select('title, excerpt, cover_image, author, slug')
+    .select('title, excerpt, cover_image, author, slug, tags, category, created_at')
     .eq('slug', slug)
     .eq('published', true)
     .single();
 
   if (!blog) return { title: 'Blog Not Found | Fryment' };
 
+  const keywords = blog.tags && Array.isArray(blog.tags) ? blog.tags.join(', ') : 'Duolingo, DET, Study Tips, Fryment';
+  const canonicalUrl = `https://www.fryment.info/blog/${slug}`;
+  const ogImage = blog.cover_image || 'https://www.fryment.info/og-image.png';
+
   return {
     title: `${blog.title} | Duolingo DET Blog`,
-    description: blog.excerpt,
-    alternates: { canonical: `https://fryment.com/det/blog/${slug}` },
+    description: blog.excerpt || 'Expert preparation guides, exam tips, and study strategies from Fryment.',
+    keywords: keywords,
+    authors: [{ name: blog.author || 'Fryment Team' }],
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: `${blog.title} | Duolingo DET Blog`,
+      description: blog.excerpt || 'Expert preparation guides, exam tips, and study strategies from Fryment.',
+      url: canonicalUrl,
+      siteName: 'Fryment',
+      type: 'article',
+      publishedTime: blog.created_at,
+      authors: [blog.author || 'Fryment Team'],
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: blog.title,
+        }
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${blog.title} | Duolingo DET Blog`,
+      description: blog.excerpt || 'Expert preparation guides, exam tips, and study strategies from Fryment.',
+      images: [ogImage],
+    }
   };
 }
 
