@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ExamConfig } from '@/data/pte/exams';
-import TableOfContents from '@/app/pte/blog/[slug]/TableOfContents';
+import TableOfContents from './TableOfContents';
 import ExamNavbar from './ExamNavbar';
 
 interface BlogDetailClientProps {

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { ExamConfig } from '@/data/pte/exams';
-import BlogListClient from '@/app/pte/blog/BlogListClient';
+import BlogListClient from './BlogListClient';
 import ExamNavbar from './ExamNavbar';
 import { useState } from 'react';
 
