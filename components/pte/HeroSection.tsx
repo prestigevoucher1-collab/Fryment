@@ -65,6 +65,7 @@ export default function HeroSection() {
                fullName: formData.fullName,
                email: formData.email,
                phone: formData.phone,
+               examId: "pte",
             }),
          });
 
@@ -143,29 +144,29 @@ export default function HeroSection() {
 
    return (
       <header className="pt-[56px] md:pt-[64px] pb-8 md:pb-12 px-4 md:px-6 lg:px-16 bg-gradient-to-br from-[#f0f7ff] to-white relative overflow-hidden">
-         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#1565d8]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
          <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-6 md:gap-10 lg:gap-12 items-start relative z-10 pt-4 md:pt-6">
 
             {/* Hero Left Content */}
             <div className="space-y-4 md:space-y-5 animate-in fade-in slide-in-from-left duration-700">
-               <div className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-50/80 to-indigo-50/80 px-2 py-2 pr-5 rounded-full border border-[#1565d8]/10 shadow-[0_4px_20px_rgba(21,101,216,0.08)] backdrop-blur-md transition-all hover:shadow-[0_4px_25px_rgba(21,101,216,0.15)] hover:-translate-y-0.5">
+               <div className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-50/80 to-indigo-50/80 px-2 py-2 pr-5 rounded-full border border-secondary/10 shadow-[0_4px_20px_rgba(21,101,216,0.08)] backdrop-blur-md transition-all hover:shadow-[0_4px_25px_rgba(21,101,216,0.15)] hover:-translate-y-0.5">
                   <div className="flex -space-x-2">
                      <Image src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&fit=crop" width={28} height={28} alt="Student" className="w-7 h-7 rounded-full border-2 border-white object-cover" />
                      <Image src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=64&h=64&fit=crop" width={28} height={28} alt="Student" className="w-7 h-7 rounded-full border-2 border-white object-cover" />
                      <Image src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=64&h=64&fit=crop" width={28} height={28} alt="Student" className="w-7 h-7 rounded-full border-2 border-white object-cover" />
                   </div>
                   <div className="flex items-center gap-1.5">
-                     <span className="material-icons text-[14px] text-[#1565d8]">verified</span>
-                     <span className="text-[14px] font-extrabold text-[#091e42] tracking-tight">
-                        Trusted by <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1565d8] to-indigo-600">10,000+</span> Students
+                     <span className="material-icons text-[14px] text-secondary">verified</span>
+                     <span className="text-[14px] font-extrabold text-primary tracking-tight">
+                        Trusted by <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-indigo-600">10,000+</span> Students
                      </span>
                   </div>
                </div>
 
-               <h1 className="text-3xl md:text-5xl font-black leading-tight tracking-tight text-[#091e42]">
-                  The Smartest Way to Book PTE at <span className="text-[#1565d8]">₹14,200</span> Fast
+               <h1 className="text-3xl md:text-5xl font-black leading-tight tracking-tight text-primary">
+                  The Smartest Way to Book PTE at <span className="text-secondary">₹14,200</span> Fast
                </h1>
-               <p className="text-base md:text-lg text-slate-500 font-medium leading-relaxed max-w-xl">
+               <p className="text-base md:text-lg text-primary/70 font-medium leading-relaxed max-w-xl">
                   Authorized all-in-one platform for PTE vouchers. Instant delivery, 24/7 WhatsApp support, and 100% secure bookings.
                </p>
 
@@ -173,7 +174,7 @@ export default function HeroSection() {
                   {["Instant delivery in 60 seconds", "No hidden charges", "Valid for 12 months"].map(f => (
                      <div key={f} className="flex items-center gap-3">
                         <span className="material-icons text-green-500 bg-green-50 rounded-full p-1 text-[10px] md:text-sm">check</span>
-                        <span className="text-sm font-bold text-[#091e42]/80">{f}</span>
+                        <span className="text-sm font-bold text-primary/80">{f}</span>
                      </div>
                   ))}
                </div>
@@ -182,17 +183,17 @@ export default function HeroSection() {
                   <div className="flex text-amber-400">
                      {[1, 2, 3, 4, 5].map(i => <span key={i} className="material-icons text-base md:text-lg">star</span>)}
                   </div>
-                  <p className="text-sm font-bold text-[#091e42]">4.9/5 from 8,000+ reviews</p>
+                  <p className="text-sm font-bold text-primary">4.9/5 from 8,000+ reviews</p>
                </div>
             </div>
 
             {/* Hero Right: Booking Form */}
             <div className="relative w-[95%] md:w-[90%] mx-auto lg:w-full" id="purchase">
-               <div className="bg-white rounded-[1.5rem] md:rounded-[2.5rem] shadow-3xl p-6 md:p-8 lg:p-10 border border-slate-300 relative overflow-hidden">
+               <div className="bg-surface rounded-[1.5rem] md:rounded-[2.5rem] shadow-3xl p-6 md:p-8 lg:p-10 border border-slate-300 relative overflow-hidden">
 
                   <div className="text-center mb-6">
-                     <h2 className="text-xl md:text-2xl font-black text-[#091e42] mb-1">Book Your Voucher</h2>
-                     <p className="text-xs md:text-sm text-slate-400 font-bold tracking-tight">Fill details to get your discount code</p>
+                     <h2 className="text-xl md:text-2xl font-black text-primary mb-1">Book Your Voucher</h2>
+                     <p className="text-xs md:text-sm text-primary/50 font-bold tracking-tight">Fill details to get your discount code</p>
                   </div>
 
                   {submitted ? (
@@ -200,15 +201,15 @@ export default function HeroSection() {
                         <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto">
                            <span className="material-icons text-5xl">check_circle</span>
                         </div>
-                        <h3 className="text-2xl font-black text-[#091e42]">Payment Successful!</h3>
-                        <p className="text-slate-500 font-bold text-sm">Your PTE voucher is being processed and will be sent to your email &amp; WhatsApp shortly.</p>
+                        <h3 className="text-2xl font-black text-primary">Payment Successful!</h3>
+                        <p className="text-primary/70 font-bold text-sm">Your PTE voucher is being processed and will be sent to your email &amp; WhatsApp shortly.</p>
                         {paymentId && (
-                           <p className="text-[10px] text-slate-400 font-mono bg-slate-50 px-3 py-2 rounded-lg border">
+                           <p className="text-[10px] text-primary/50 font-mono bg-accent/10 px-3 py-2 rounded-lg border">
                               Payment ID: {paymentId}
                            </p>
                         )}
                         <div className="pt-2">
-                           <a href="https://wa.me/919325216364" target="_blank" rel="noopener noreferrer"
+                           <a href="https://wa.me/918369074846" target="_blank" rel="noopener noreferrer"
                               className="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-xl font-black text-sm shadow-lg hover:opacity-90 transition-opacity">
                               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.393 0 12.031c0 2.122.541 4.192 1.572 6.014L0 24l6.105-1.601a11.871 11.871 0 005.939 1.6h.005c6.635 0 12.032-5.394 12.035-12.034a11.84 11.84 0 00-3.517-8.503z" /></svg>
                               Track on WhatsApp
@@ -219,36 +220,36 @@ export default function HeroSection() {
                      <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
                         <input
                            name="fullName" value={formData.fullName} onChange={handleInputChange}
-                           className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3 outline-none focus:border-[#1565d8] focus:ring-1 focus:ring-[#1565d8]/20 font-bold text-sm transition-all placeholder:text-slate-300"
+                           className="w-full bg-accent/10 border border-accent/40 rounded-xl px-5 py-3 outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/20 font-bold text-sm transition-all placeholder:text-slate-300"
                            placeholder="Full Name *" required
                         />
                         <input
                            name="phone" value={formData.phone} onChange={handleInputChange}
-                           className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3 outline-none focus:border-[#1565d8] focus:ring-1 focus:ring-[#1565d8]/20 font-bold text-sm transition-all placeholder:text-slate-300"
+                           className="w-full bg-accent/10 border border-accent/40 rounded-xl px-5 py-3 outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/20 font-bold text-sm transition-all placeholder:text-slate-300"
                            placeholder="Mobile Number *" maxLength={10} required
                         />
                         <input
                            name="email" value={formData.email} onChange={handleInputChange}
-                           className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3 outline-none focus:border-[#1565d8] focus:ring-1 focus:ring-[#1565d8]/20 font-bold text-sm transition-all placeholder:text-slate-300"
+                           className="w-full bg-accent/10 border border-accent/40 rounded-xl px-5 py-3 outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/20 font-bold text-sm transition-all placeholder:text-slate-300"
                            placeholder="Email Address *" type="email" required
                         />
 
                         <div className="relative">
                            <select
                               name="state" value={formData.state} onChange={handleInputChange}
-                              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3 outline-none focus:border-[#1565d8] focus:ring-1 focus:ring-[#1565d8]/20 font-bold text-sm appearance-none cursor-pointer transition-all"
+                              className="w-full bg-accent/10 border border-accent/40 rounded-xl px-5 py-3 outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/20 font-bold text-sm appearance-none cursor-pointer transition-all"
                               required
                            >
                               <option value="" disabled>Choose State *</option>
                               {INDIAN_STATES.map(s => <option key={s} value={s}>{s}</option>)}
                            </select>
-                           <span className="material-icons absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
+                           <span className="material-icons absolute right-5 top-1/2 -translate-y-1/2 text-primary/50 pointer-events-none">expand_more</span>
                         </div>
 
                         <div className="relative">
                            <select
                               name="quantity" value={formData.quantity} onChange={handleInputChange}
-                              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3 outline-none focus:border-[#1565d8] focus:ring-1 focus:ring-[#1565d8]/20 font-bold text-sm appearance-none cursor-pointer transition-all"
+                              className="w-full bg-accent/10 border border-accent/40 rounded-xl px-5 py-3 outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/20 font-bold text-sm appearance-none cursor-pointer transition-all"
                               required
                            >
                               <option value="" disabled>Quantity *</option>
@@ -258,16 +259,16 @@ export default function HeroSection() {
                                  </option>
                               ))}
                            </select>
-                           <span className="material-icons absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">unfold_more</span>
+                           <span className="material-icons absolute right-5 top-1/2 -translate-y-1/2 text-primary/50 pointer-events-none">unfold_more</span>
                         </div>
 
                         {/* Price Summary */}
                         {totalAmount && (
-                           <div className="flex items-center justify-between bg-[#f0f7ff] border border-[#1565d8]/20 rounded-xl px-5 py-3 animate-in fade-in">
-                              <span className="text-xs font-bold text-slate-500">Total Amount</span>
+                           <div className="flex items-center justify-between bg-accent/20 border border-secondary/20 rounded-xl px-5 py-3 animate-in fade-in">
+                              <span className="text-xs font-bold text-primary/70">Total Amount</span>
                               <div className="text-right">
-                                 <span className="text-lg font-black text-[#1565d8]">₹{totalAmount.toLocaleString('en-IN')}</span>
-                                 <span className="block text-[9px] text-slate-400 font-medium">incl. all taxes</span>
+                                 <span className="text-lg font-black text-secondary">₹{totalAmount.toLocaleString('en-IN')}</span>
+                                 <span className="block text-[9px] text-primary/50 font-medium">incl. all taxes</span>
                               </div>
                            </div>
                         )}
@@ -275,7 +276,7 @@ export default function HeroSection() {
                         <button
                            type="submit"
                            disabled={loading}
-                           className="w-full bg-gradient-to-r from-[#1565d8] to-[#091e42] text-white py-3 md:py-4 rounded-xl font-black text-base md:text-lg tracking-wide shadow-xl mt-3 flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-60"
+                           className="w-full bg-gradient-to-r from-secondary to-primary text-white py-3 md:py-4 rounded-xl font-black text-base md:text-lg tracking-wide shadow-xl mt-3 flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-60"
                         >
                            {loading ? (
                               <>
@@ -303,9 +304,9 @@ export default function HeroSection() {
                         {/* Trust badges */}
                         <div className="flex items-center justify-center gap-3 pt-1">
                            <Image src="https://cdn.razorpay.com/static/assets/razorpay-glyph.svg" width={60} height={16} alt="Razorpay" className="h-4 w-auto opacity-50" />
-                           <span className="text-[10px] text-slate-400 font-medium">Secured by Razorpay</span>
+                           <span className="text-[10px] text-primary/50 font-medium">Secured by Razorpay</span>
                            <span className="text-slate-200">|</span>
-                           <span className="text-[10px] text-slate-400 font-medium uppercase tracking-widest">256-bit SSL</span>
+                           <span className="text-[10px] text-primary/50 font-medium uppercase tracking-widest">256-bit SSL</span>
                         </div>
                      </form>
                   )}

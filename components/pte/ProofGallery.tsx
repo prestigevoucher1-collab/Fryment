@@ -8,11 +8,11 @@ export default function ProofGallery() {
    const row2 = [...landscapeProofs, ...portraitProofs, ...landscapeProofs, ...portraitProofs];
 
    return (
-      <section className="py-16 md:py-24 px-4 md:px-6 lg:px-16 bg-white overflow-hidden">
+      <section className="py-16 md:py-24 px-4 md:px-6 lg:px-16 bg-surface overflow-hidden">
          <div className="max-w-[1200px] mx-auto text-center mb-10 md:mb-14">
-            <span className="text-[#1565d8] font-black text-[11px] md:text-xs tracking-wide block mb-2">Verified Purchases</span>
-            <h2 className="text-2xl md:text-4xl font-black text-[#091e42] tracking-tight mb-3 md:mb-4">Live Delivery Proof</h2>
-            <p className="text-slate-500 font-medium text-xs md:text-sm max-w-md mx-auto leading-relaxed">
+            <span className="text-secondary font-black text-[11px] md:text-xs tracking-wide block mb-2">Verified Purchases</span>
+            <h2 className="text-2xl md:text-4xl font-black text-primary tracking-tight mb-3 md:mb-4">Live Delivery Proof</h2>
+            <p className="text-primary/70 font-medium text-xs md:text-sm max-w-md mx-auto leading-relaxed">
                Real unedited screenshots from students who successfully booked their official slots using our platform.
             </p>
          </div>

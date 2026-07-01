@@ -5,6 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { loadRazorpayScript } from "@/lib/razorpay";
 import { ExamConfig } from "@/data/pte/exams";
+import { BadgeCheck, Check, Star, CheckCircle, ChevronDown, ChevronsUpDown, Lock, Loader2 } from "lucide-react";
 
 const IS_TEST_MODE = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID?.startsWith('rzp_test_') ?? true;
 
@@ -138,152 +139,182 @@ export default function ExamHero({ exam }: ExamHeroProps) {
          setLoading(false);
       }
    };
-
    return (
-      <header className="pt-[56px] md:pt-[64px] pb-8 md:pb-12 px-4 md:px-6 lg:px-16 bg-gradient-to-br from-[#f0f7ff] to-white relative overflow-hidden">
-         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#1565d8]/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-         <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-6 md:gap-10 lg:gap-12 items-start relative z-10 pt-4 md:pt-6">
+      <header className="relative min-h-[90vh] bg-surface-dim overflow-hidden pt-24 md:pt-32 pb-16">
+         {/* Background Orbs */}
+         <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary rounded-full mix-blend-multiply filter blur-[100px] opacity-[0.07] animate-pulse"></div>
+            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary rounded-full mix-blend-multiply filter blur-[100px] opacity-[0.05] animate-pulse" style={{ animationDelay: "2s" }}></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white rounded-full filter blur-[120px] opacity-60 pointer-events-none"></div>
+         </div>
+         {/* Grid Pattern */}
+         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 pointer-events-none"></div>
 
-            <div className="space-y-4 md:space-y-5 animate-in fade-in slide-in-from-left duration-700">
-               <div className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-50/95 to-indigo-50/95 px-2 py-2 pr-5 rounded-full border border-[#1565d8]/10 shadow-[0_4px_20px_rgba(21,101,216,0.08)] transition-all hover:shadow-[0_4px_25px_rgba(21,101,216,0.15)] hover:-translate-y-0.5">
-                  <div className="flex -space-x-2">
-                     <Image src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&fit=crop" width={28} height={28} alt="Student" className="w-7 h-7 rounded-full border-2 border-white object-cover" priority={true} />
-                     <Image src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=64&h=64&fit=crop" width={28} height={28} alt="Student" className="w-7 h-7 rounded-full border-2 border-white object-cover" priority={true} />
-                     <Image src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=64&h=64&fit=crop" width={28} height={28} alt="Student" className="w-7 h-7 rounded-full border-2 border-white object-cover" priority={true} />
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                     <span className="material-icons text-[14px] text-[#1565d8]">verified</span>
-                     <span className="text-[14px] font-extrabold text-[#091e42] tracking-tight">
-                        Trusted by <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1565d8] to-indigo-600">{exam.reviewsCount}</span> Students
-                     </span>
-                  </div>
-               </div>
+         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-12rem)]">
 
-               <h1 className="text-3xl md:text-5xl font-black leading-tight tracking-tight text-[#091e42]">
-                  The Smartest Way to Book {exam.name} at <span className="text-[#1565d8]">₹{exam.price.toLocaleString('en-IN')}</span> Fast
-               </h1>
-               <p className="text-base md:text-lg text-slate-500 font-medium leading-relaxed max-w-xl">
-                  {exam.description}
-               </p>
-
-               <div className="space-y-2 lg:mt-4">
-                  {exam.features.map(f => (
-                     <div key={f} className="flex items-center gap-3">
-                        <span className="material-icons text-green-500 bg-green-50 rounded-full p-1 text-[10px] md:text-sm">check</span>
-                        <span className="text-sm font-bold text-[#091e42]/80">{f}</span>
-                     </div>
-                  ))}
-               </div>
-
-               <div className="flex items-center gap-4 pt-2">
-                  <div className="flex text-amber-400">
-                     {[1, 2, 3, 4, 5].map(i => <span key={i} className="material-icons text-base md:text-lg">star</span>)}
-                  </div>
-                  <p className="text-sm font-bold text-[#091e42]">{exam.rating} from {exam.reviewsCount} reviews</p>
-               </div>
-            </div>
-
-            <div className="relative w-[95%] md:w-[90%] mx-auto lg:w-full" id="purchase">
-               <div className="bg-white rounded-[1.5rem] md:rounded-[2.5rem] shadow-3xl p-6 md:p-8 lg:p-10 border border-slate-300 relative overflow-hidden">
-
-                  <div className="text-center mb-6">
-                     <h2 className="text-xl md:text-2xl font-black text-[#091e42] mb-1">Book Your {exam.name} Voucher</h2>
-                     <p className="text-xs md:text-sm text-slate-400 font-bold tracking-tight">Fill details to get your discount code</p>
+               {/* Left Column - Content */}
+               <div className="space-y-8 lg:pr-8 animate-in fade-in slide-in-from-left duration-700">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm border border-outline-variant rounded-full shadow-sm">
+                     <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                     <BadgeCheck className="w-4 h-4 text-primary" />
+                     <span className="text-sm font-medium text-on-surface">Official {exam.name} Partner</span>
                   </div>
 
-                  {submitted ? (
-                     <div className="text-center py-12 space-y-4 animate-in zoom-in-95">
-                        <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto">
-                           <span className="material-icons text-5xl">check_circle</span>
+                  <div className="space-y-4">
+                     <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-on-surface leading-tight tracking-tight">
+                        Book {exam.name} at <span className="block text-primary">₹{exam.price.toLocaleString('en-IN')}</span>
+                     </h1>
+                     <p className="text-xl text-on-surface-variant leading-relaxed max-w-xl">
+                        {exam.description}
+                     </p>
+                  </div>
+
+                  <div className="flex flex-wrap gap-8 py-4">
+                     <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-white border border-outline-variant shadow-sm rounded-full flex items-center justify-center">
+                           <CheckCircle className="w-6 h-6 text-primary" />
                         </div>
-                        <h3 className="text-2xl font-black text-[#091e42]">Payment Successful!</h3>
-                        <p className="text-slate-500 font-bold text-sm">Your {exam.name} voucher is being processed and will be sent to your email &amp; WhatsApp shortly.</p>
-                        <div className="pt-2">
-                           <a href="https://wa.me/919325216364" target="_blank" rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-xl font-black text-sm shadow-lg hover:opacity-90 transition-opacity">
-                              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.393 0 12.031c0 2.122.541 4.192 1.572 6.014L0 24l6.105-1.601a11.871 11.871 0 005.939 1.6h.005c6.635 0 12.032-5.394 12.035-12.034a11.84 11.84 0 00-3.517-8.503z" /></svg>
-                              Track on WhatsApp
-                           </a>
+                        <div>
+                           <div className="text-2xl font-bold text-on-surface">{exam.reviewsCount}+</div>
+                           <div className="text-sm text-on-surface-variant">Vouchers Sold</div>
                         </div>
                      </div>
-                  ) : (
-                     <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
-                        <input
-                           name="fullName" value={formData.fullName} onChange={handleInputChange}
-                           className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3 outline-none focus:border-[#1565d8] focus:ring-1 focus:ring-[#1565d8]/20 font-bold text-sm transition-all placeholder:text-slate-300"
-                           placeholder="Full Name *" required
-                        />
-                        <input
-                           name="phone" value={formData.phone} onChange={handleInputChange}
-                           className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3 outline-none focus:border-[#1565d8] focus:ring-1 focus:ring-[#1565d8]/20 font-bold text-sm transition-all placeholder:text-slate-300"
-                           placeholder="Mobile Number *" maxLength={10} required
-                        />
-                        <input
-                           name="email" value={formData.email} onChange={handleInputChange}
-                           className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3 outline-none focus:border-[#1565d8] focus:ring-1 focus:ring-[#1565d8]/20 font-bold text-sm transition-all placeholder:text-slate-300"
-                           placeholder="Email Address *" type="email" required
-                        />
+                     <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-white border border-outline-variant shadow-sm rounded-full flex items-center justify-center">
+                           <Star className="w-6 h-6 text-secondary" />
+                        </div>
+                        <div>
+                           <div className="text-2xl font-bold text-on-surface">{exam.rating}/5</div>
+                           <div className="text-sm text-on-surface-variant">Average Rating</div>
+                        </div>
+                     </div>
+                  </div>
 
-                        <div className="relative">
-                           <select
-                              name="state" value={formData.state} onChange={handleInputChange}
-                              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3 outline-none focus:border-[#1565d8] focus:ring-1 focus:ring-[#1565d8]/20 font-bold text-sm appearance-none cursor-pointer transition-all"
-                              required
-                           >
-                              <option value="" disabled>Choose State *</option>
-                              {INDIAN_STATES.map(s => <option key={s} value={s}>{s}</option>)}
-                           </select>
-                           <span className="material-icons absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
+                  <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                     {exam.features.slice(0, 2).map(f => (
+                        <div key={f} className="flex items-center gap-2">
+                           <Check className="w-5 h-5 text-primary" />
+                           <span className="text-sm font-semibold text-on-surface">{f}</span>
+                        </div>
+                     ))}
+                  </div>
+               </div>
+
+               {/* Right Column - Booking Form (Floating Card Style) */}
+               <div className="relative flex items-center justify-center animate-in fade-in slide-in-from-right duration-700 delay-150 mt-12 lg:mt-0" id="purchase">
+                  <div className="relative w-full max-w-lg lg:max-w-[520px] group perspective-1000">
+                     {/* Decorative background cards (Shuffle Cards Effect) */}
+                     <div
+                        className="absolute inset-0 bg-surface-muted rounded-[2rem] border border-outline-variant/60 shadow-lg transform translate-x-3 translate-y-3 rotate-6 origin-bottom-right transition-all duration-500 ease-out group-hover:rotate-12 group-hover:translate-x-6 group-hover:translate-y-6"
+                        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23005b4a' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E")` }}
+                     ></div>
+                     <div
+                        className="absolute inset-0 bg-surface-dim rounded-[2rem] border border-outline-variant shadow-xl transform translate-x-1.5 translate-y-1.5 rotate-3 origin-bottom-right transition-all duration-500 ease-out group-hover:rotate-6 group-hover:translate-x-3 group-hover:translate-y-3"
+                        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23005b4a' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E")` }}
+                     ></div>
+
+                     <div className="relative bg-white rounded-[2rem] shadow-2xl shadow-primary/20 overflow-hidden p-8 md:p-10 border border-outline-variant transform transition-transform duration-500 group-hover:-translate-y-2 group-hover:-translate-x-1 z-10">
+                        <div className="absolute top-8 right-8 z-10 bg-primary text-white px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-lg shadow-primary/20">
+                           <CheckCircle className="w-4 h-4" /> FAST BOOKING
                         </div>
 
-                        <div className="relative">
-                           <select
-                              name="quantity" value={formData.quantity} onChange={handleInputChange}
-                              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3 outline-none focus:border-[#1565d8] focus:ring-1 focus:ring-[#1565d8]/20 font-bold text-sm appearance-none cursor-pointer transition-all"
-                              required
-                           >
-                              <option value="" disabled>Quantity *</option>
-                              {[1, 2, 3, 4, 5].map(n => (
-                                 <option key={n} value={n.toString()}>
-                                    {n} Voucher{n > 1 ? 's' : ''} — ₹{(pricePerVoucher * n).toLocaleString('en-IN')}
-                                 </option>
-                              ))}
-                           </select>
-                           <span className="material-icons absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">unfold_more</span>
+                        <div className="mb-8 pr-24">
+                           <h2 className="text-3xl font-black text-on-surface mb-2">Get Voucher</h2>
+                           <p className="text-base text-on-surface-variant font-medium">Fill details for instant delivery</p>
                         </div>
 
-                        {totalAmount && (
-                           <div className="flex items-center justify-between bg-[#f0f7ff] border border-[#1565d8]/20 rounded-xl px-5 py-3 animate-in fade-in">
-                              <span className="text-xs font-bold text-slate-500">Total Amount</span>
-                              <div className="text-right">
-                                 <span className="text-lg font-black text-[#1565d8]">₹{totalAmount.toLocaleString('en-IN')}</span>
-                                 <span className="block text-[9px] text-slate-400 font-medium">incl. all taxes</span>
+                        {submitted ? (
+                           <div className="text-center py-10 space-y-5">
+                              <div className="w-20 h-20 bg-surface-dim text-primary rounded-full flex items-center justify-center mx-auto ring-8 ring-surface-dim/50">
+                                 <CheckCircle className="w-10 h-10" />
+                              </div>
+                              <h3 className="text-2xl font-black text-on-surface">Payment Successful!</h3>
+                              <p className="text-on-surface-variant text-base font-medium">Your {exam.name} voucher is being processed and will be sent to your email &amp; WhatsApp shortly.</p>
+                              <div className="pt-6">
+                                 <a href="https://wa.me/918369074846" target="_blank" rel="noopener noreferrer"
+                                    className="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] text-white px-8 py-4 rounded-xl font-bold text-base shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.393 0 12.031c0 2.122.541 4.192 1.572 6.014L0 24l6.105-1.601a11.871 11.871 0 005.939 1.6h.005c6.635 0 12.032-5.394 12.035-12.034a11.84 11.84 0 00-3.517-8.503z" /></svg>
+                                    Track on WhatsApp
+                                 </a>
                               </div>
                            </div>
-                        )}
+                        ) : (
+                           <form onSubmit={handleSubmit} className="space-y-4">
+                              <input
+                                 name="fullName" value={formData.fullName} onChange={handleInputChange}
+                                 className="w-full bg-surface-dim border border-outline-variant rounded-xl px-5 py-4 text-base focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white transition-all text-on-surface placeholder:text-on-surface-variant/70 font-medium"
+                                 placeholder="Full Name *" required
+                              />
+                              <input
+                                 name="phone" value={formData.phone} onChange={handleInputChange}
+                                 className="w-full bg-surface-dim border border-outline-variant rounded-xl px-5 py-4 text-base focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white transition-all text-on-surface placeholder:text-on-surface-variant/70 font-medium"
+                                 placeholder="Mobile Number *" maxLength={10} required
+                              />
+                              <input
+                                 name="email" value={formData.email} onChange={handleInputChange}
+                                 className="w-full bg-surface-dim border border-outline-variant rounded-xl px-5 py-4 text-base focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white transition-all text-on-surface placeholder:text-on-surface-variant/70 font-medium"
+                                 placeholder="Email Address *" type="email" required
+                              />
 
-                        <button
-                           type="submit"
-                           disabled={loading}
-                           className="w-full bg-gradient-to-r from-[#1565d8] to-[#091e42] text-white py-3 md:py-4 rounded-xl font-black text-base md:text-lg tracking-wide shadow-xl mt-3 flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-60"
-                        >
-                           {loading ? (
-                              <>
-                                 <svg className="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none">
-                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="white" strokeWidth="4" />
-                                    <path className="opacity-75" fill="white" d="M4 12a8 8 0 018-8v8z" />
-                                 </svg>
-                                 Processing...
-                              </>
-                           ) : (
-                              <>
-                                 Pay Securely Now
-                                 <span className="material-icons text-base">lock</span>
-                              </>
-                           )}
-                        </button>
-                     </form>
-                  )}
+                              <div className="relative group">
+                                 <select
+                                    name="state" value={formData.state} onChange={handleInputChange}
+                                    className="w-full bg-surface-dim border border-outline-variant rounded-xl px-5 py-4 text-base focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white transition-all text-on-surface appearance-none cursor-pointer font-medium"
+                                    required
+                                 >
+                                    <option value="" disabled>Choose State *</option>
+                                    {INDIAN_STATES.map(s => <option key={s} value={s}>{s}</option>)}
+                                 </select>
+                                 <ChevronDown className="w-5 h-5 absolute right-5 top-1/2 -translate-y-1/2 text-on-surface-variant/70 pointer-events-none group-focus-within:text-primary" />
+                              </div>
+
+                              <div className="relative group">
+                                 <select
+                                    name="quantity" value={formData.quantity} onChange={handleInputChange}
+                                    className="w-full bg-surface-dim border border-outline-variant rounded-xl px-5 py-4 text-base focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white transition-all text-on-surface appearance-none cursor-pointer font-medium"
+                                    required
+                                 >
+                                    <option value="" disabled>Quantity *</option>
+                                    {[1, 2, 3, 4, 5].map(n => (
+                                       <option key={n} value={n.toString()}>
+                                          {n} Voucher{n > 1 ? 's' : ''} — ₹{(pricePerVoucher * n).toLocaleString('en-IN')}
+                                       </option>
+                                    ))}
+                                 </select>
+                                 <ChevronsUpDown className="w-5 h-5 absolute right-5 top-1/2 -translate-y-1/2 text-on-surface-variant/70 pointer-events-none group-focus-within:text-primary" />
+                              </div>
+
+                              {totalAmount && (
+                                 <div className="flex items-center justify-between bg-surface-dim border border-outline-variant rounded-xl px-5 py-4 mt-2">
+                                    <span className="text-base font-semibold text-on-surface-variant">Total Amount</span>
+                                    <div className="text-right">
+                                       <span className="text-xl font-black text-primary">₹{totalAmount.toLocaleString('en-IN')}</span>
+                                    </div>
+                                 </div>
+                              )}
+
+                              <button
+                                 type="submit"
+                                 disabled={loading}
+                                 className="w-full mt-6 bg-primary text-white py-4 rounded-xl font-black text-base shadow-lg shadow-primary/20 flex items-center justify-center gap-2 hover:bg-primary-light hover:shadow-xl hover:-translate-y-1 transition-all disabled:opacity-60 disabled:hover:translate-y-0"
+                              >
+                                 {loading ? (
+                                    <>
+                                       <Loader2 className="w-5 h-5 animate-spin" />
+                                       Processing...
+                                    </>
+                                 ) : (
+                                    <>
+                                       Pay Securely Now
+                                       <Lock className="w-4 h-4" />
+                                    </>
+                                 )}
+                              </button>
+                           </form>
+                        )}
+                     </div>
+                  </div>
                </div>
             </div>
          </div>

@@ -1,247 +1,518 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
+import Head from "next/head";
+import ExamNavbar from "@/components/exam/ExamNavbar";
+import Footer from "@/components/pte/Footer";
+import { CheckCircle2, ShieldCheck, HelpCircle, ChevronDown, BookOpen, AlertTriangle } from "lucide-react";
+import Link from "next/link";
 
-export default function HowToBook() {
-  const [activeFaq, setActiveFaq] = useState<number | null>(null);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function HowToBookPage() {
+   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const stepsToFollow = [
-    {
-      id: "01",
-      title: "Purchase a Verified Voucher",
-      desc: "Get your unique 12-digit code instantly.",
-      points: [
-        "Buy a valid PTE voucher code from Fryment.",
-        "Complete the payment safely to receive the voucher.",
-        "Check your inbox for the unique 12-digit voucher code."
-      ],
-      icon: "shopping_bag"
-    },
-    {
-      id: "02",
-      title: "Create Pearson PTE Account",
-      desc: "Setup your official exam profile.",
-      points: [
-        "Visit the Pearson PTE website to begin registration.",
-        "Enter all personal details exactly as in your passport.",
-        "Verify your email address to activate your PTE profile."
-      ],
-      icon: "person_add"
-    },
-    {
-      id: "03",
-      title: "Select Test Date & Center",
-      desc: "Pick a slot that suits your schedule.",
-      points: [
-        "Choose your preferred test city and authorised centre.",
-        "Pick a suitable exam date that fits your schedule.",
-        "Confirm a convenient time slot from the options shown."
-      ],
-      icon: "event"
-    },
-    {
-      id: "04",
-      title: "Apply Code & Confirm",
-      desc: "Redeem your discount and book.",
-      points: [
-        "Proceed to the checkout section after slot selection.",
-        "Enter your 12-digit voucher code accurately at payment.",
-        "Submit your booking and check your email for confirmation."
-      ],
-      icon: "task_alt"
-    }
-  ];
+   const faqs = [
+      {
+         question: "What is a PTE voucher?",
+         answer: "A prepaid code used during the official PTE booking process to pay for an eligible exam booking."
+      },
+      {
+         question: "Can I use a voucher for any PTE exam?",
+         answer: "Voucher eligibility depends on its terms and conditions. Always review the details provided with the voucher."
+      },
+      {
+         question: "Does a voucher guarantee a discount?",
+         answer: "Not necessarily. Some vouchers may include promotional pricing, while others function primarily as a prepaid payment method."
+      },
+      {
+         question: "What happens if my voucher expires?",
+         answer: "Expired vouchers generally cannot be redeemed. Check the voucher's validity period before attempting to use it."
+      },
+      {
+         question: "Can I transfer my voucher to another person?",
+         answer: "Transferability depends on the specific terms and conditions of the voucher."
+      },
+      {
+         question: "What if my voucher code doesn't work?",
+         answer: "Verify the code, ensure it hasn't expired, and review any applicable restrictions. If the issue persists, contact the voucher provider or the appropriate support channel."
+      }
+   ];
 
-  const fullGuide = [
-    {
-      title: "Visit the Official PTE Website",
-      desc: "Start the PTE test booking process by visiting the official Pearson PTE website and clicking on the \"Book Now\" option. This is the only official platform for scheduling your PTE exam."
-    },
-    {
-      title: "Create or Log in to Your myPTE Account:",
-      desc: "To continue with How to Book PTE Exam, you need to create a myPTE account. Enter your personal details exactly as they appear on your passport, including your full name and date of birth."
-    },
-    {
-      title: "Choose Test Center, Date, and Time:",
-      desc: "After logging in, select your preferred test center, exam date, and available time slot. You can usually schedule the exam up to several months in advance, depending on seat availability."
-    },
-    {
-      title: "Review Your Details Carefully:",
-      desc: "Before confirming the PTE exam booking, double-check all your details such as passport information, exam location, and selected date. Any mismatch with your passport details may lead to issues on test day."
-    },
-    {
-      title: "Make Payment and Confirm Booking:",
-      desc: "Complete the PTE test booking by paying the exam fee using a valid payment method. Once the payment is successful, you will receive a confirmation email with your test date, time, and test center details."
-    }
-  ];
+   return (
+      <div className="bg-surface min-h-screen text-on-surface font-body selection:bg-primary/20 selection:text-primary">
+         <Head>
+            <title>How to Book a PTE Voucher (Complete Step-by-Step Guide 2026)</title>
+            <meta name="description" content="Learn how to book a PTE voucher step by step. Discover how PTE vouchers work, where to use them, common mistakes to avoid, FAQs, and expert tips for a smooth exam booking experience." />
+            <script
+               type="application/ld+json"
+               dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                     "@context": "https://schema.org",
+                     "@graph": [
+                        {
+                           "@type": "Organization",
+                           "@id": "https://fryment.info/#organization",
+                           "name": "Fryment",
+                           "url": "https://fryment.info/",
+                           "logo": {
+                              "@type": "ImageObject",
+                              "url": "https://fryment.info/logo.png"
+                           },
+                           "description": "Fryment helps students purchase PTE vouchers and provides educational resources for PTE exam booking."
+                        },
+                        {
+                           "@type": "WebSite",
+                           "@id": "https://fryment.info/#website",
+                           "url": "https://fryment.info/",
+                           "name": "Fryment",
+                           "publisher": {
+                              "@id": "https://fryment.info/#organization"
+                           }
+                        },
+                        {
+                           "@type": "WebPage",
+                           "@id": "https://fryment.info/pte/how-to-book-pte-voucher#webpage",
+                           "url": "https://fryment.info/pte/how-to-book-pte-voucher",
+                           "name": "How to Book a PTE Voucher",
+                           "description": "Learn how to book a PTE voucher step by step. This complete guide explains how to redeem a voucher, complete your PTE exam booking, avoid common mistakes, and answer frequently asked questions.",
+                           "isPartOf": {
+                              "@id": "https://fryment.info/#website"
+                           },
+                           "about": {
+                              "@id": "https://fryment.info/#organization"
+                           },
+                           "breadcrumb": {
+                              "@id": "https://fryment.info/pte/how-to-book-pte-voucher#breadcrumb"
+                           },
+                           "primaryImageOfPage": {
+                              "@type": "ImageObject",
+                              "url": "https://fryment.info/images/how-to-book-pte-voucher.webp"
+                           },
+                           "inLanguage": "en"
+                        },
+                        {
+                           "@type": "Article",
+                           "@id": "https://fryment.info/pte/how-to-book-pte-voucher#article",
+                           "headline": "How to Book a PTE Voucher (Complete Step-by-Step Guide)",
+                           "description": "Complete guide to booking a PTE voucher and redeeming it during the official PTE exam booking process.",
+                           "mainEntityOfPage": {
+                              "@id": "https://fryment.info/pte/how-to-book-pte-voucher#webpage"
+                           },
+                           "author": {
+                              "@id": "https://fryment.info/#organization"
+                           },
+                           "publisher": {
+                              "@id": "https://fryment.info/#organization"
+                           },
+                           "datePublished": "2026-07-02",
+                           "dateModified": "2026-07-02",
+                           "image": [
+                              "https://fryment.info/images/how-to-book-pte-voucher.webp"
+                           ],
+                           "keywords": [
+                              "PTE Voucher",
+                              "How to Book PTE Voucher",
+                              "PTE Booking",
+                              "Buy PTE Voucher",
+                              "Redeem PTE Voucher",
+                              "PTE Academic"
+                           ]
+                        },
+                        {
+                           "@type": "HowTo",
+                           "@id": "https://fryment.info/pte/how-to-book-pte-voucher#howto",
+                           "name": "How to Book a PTE Voucher",
+                           "description": "Step-by-step instructions for booking a PTE exam using a voucher.",
+                           "totalTime": "PT10M",
+                           "step": [
+                              {
+                                 "@type": "HowToStep",
+                                 "position": 1,
+                                 "name": "Log in to your PTE account",
+                                 "text": "Sign in to your official PTE account."
+                              },
+                              {
+                                 "@type": "HowToStep",
+                                 "position": 2,
+                                 "name": "Choose your PTE exam",
+                                 "text": "Select the PTE exam that matches your requirements."
+                              },
+                              {
+                                 "@type": "HowToStep",
+                                 "position": 3,
+                                 "name": "Select a test centre",
+                                 "text": "Choose your preferred city and available test centre."
+                              },
+                              {
+                                 "@type": "HowToStep",
+                                 "position": 4,
+                                 "name": "Choose your exam date",
+                                 "text": "Select an available exam date and time."
+                              },
+                              {
+                                 "@type": "HowToStep",
+                                 "position": 5,
+                                 "name": "Enter your personal information",
+                                 "text": "Ensure all details match your passport."
+                              },
+                              {
+                                 "@type": "HowToStep",
+                                 "position": 6,
+                                 "name": "Redeem your voucher",
+                                 "text": "Enter the voucher code during the payment stage."
+                              },
+                              {
+                                 "@type": "HowToStep",
+                                 "position": 7,
+                                 "name": "Confirm your booking",
+                                 "text": "Review your booking details and complete the reservation."
+                              }
+                           ]
+                        },
+                        {
+                           "@type": "FAQPage",
+                           "@id": "https://fryment.info/pte/how-to-book-pte-voucher#faq",
+                           "mainEntity": [
+                              {
+                                 "@type": "Question",
+                                 "name": "What is a PTE voucher?",
+                                 "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "A PTE voucher is a prepaid code that can be redeemed during the official PTE exam booking process."
+                                 }
+                              },
+                              {
+                                 "@type": "Question",
+                                 "name": "How do I redeem a PTE voucher?",
+                                 "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Enter the voucher code during the payment stage of the official PTE booking process."
+                                 }
+                              },
+                              {
+                                 "@type": "Question",
+                                 "name": "Can I use an expired PTE voucher?",
+                                 "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "No. Expired vouchers generally cannot be redeemed."
+                                 }
+                              },
+                              {
+                                 "@type": "Question",
+                                 "name": "Can I reschedule my exam after using a voucher?",
+                                 "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Rescheduling depends on the official PTE policies and the terms associated with your booking."
+                                 }
+                              }
+                           ]
+                        },
+                        {
+                           "@type": "BreadcrumbList",
+                           "@id": "https://fryment.info/pte/how-to-book-pte-voucher#breadcrumb",
+                           "itemListElement": [
+                              {
+                                 "@type": "ListItem",
+                                 "position": 1,
+                                 "name": "Home",
+                                 "item": "https://fryment.info/"
+                              },
+                              {
+                                 "@type": "ListItem",
+                                 "position": 2,
+                                 "name": "PTE",
+                                 "item": "https://fryment.info/pte"
+                              },
+                              {
+                                 "@type": "ListItem",
+                                 "position": 3,
+                                 "name": "How to Book a PTE Voucher",
+                                 "item": "https://fryment.info/pte/how-to-book-pte-voucher"
+                              }
+                           ]
+                        }
+                     ]
+                  })
+               }}
+            />
+         </Head>
 
-  const faqs = [
-    { q: "What is a PTE Promo Code / Voucher?", a: "A PTE Voucher is a unique 12-digit code that acts as a form of payment for your PTE Academic exam. Instead of paying the full price directly on the Pearson site, you can buy a voucher from us at a discounted rate." },
-    { q: "Is the voucher valid for all of India?", a: "Yes, it's valid for every official Pearson test center across India." },
-    { q: "What is the validity of the code?", a: "Every voucher is valid for 12 months from the date of purchase." },
-    { q: "Do I need to pay anything extra?", a: "No, the voucher covers the entire standard examination fee on the Pearson website." },
-    { q: "Can I use this for PTE Academic UKVI?", a: "Yes, our vouchers are valid for both PTE Academic and PTE Academic UKVI exams." },
-    { q: "What if the code doesn't work?", a: "Codes are pre-verified. In the rare case of an issue, our 24/7 WhatsApp support is available to assist you immediately." }
-  ];
+         <ExamNavbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
-  return (
-    <div className="bg-white min-h-screen font-body text-[#1e293b] selection:bg-[#1565d8] selection:text-white">
-      
-      {/* TopNavBar */}
-      <nav className="fixed top-0 left-0 w-full z-[100] bg-white h-16 md:h-20 flex items-center border-b border-slate-100 shadow-sm">
-        <div className="max-w-[1920px] w-full mx-auto px-4 md:px-6 lg:px-16 flex items-center justify-between">
-          <a href="/pte" className="flex items-center gap-2 md:gap-3 group cursor-pointer">
-            <div className="w-8 h-8 md:w-10 md:h-10 bg-[#1565d8] rounded-lg flex items-center justify-center shadow-lg"><span className="material-icons text-lg md:text-xl text-white font-bold">school</span></div>
-            <span className="text-lg md:text-2xl font-black tracking-tight text-[#091e42]">Fryment</span>
-          </a>
+         <main className={`relative z-10 transition-opacity duration-300 ${isMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+            
+            {/* Same aesthetic structure as root page / ExamSeoContent */}
+            <section className="pt-32 pb-24 relative bg-white overflow-hidden">
+               {/* Subtle Background Elements */}
+               <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02] pointer-events-none"></div>
+               <div className="absolute top-0 right-0 w-[1000px] h-[1000px] bg-primary/5 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+               <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-surface-dim rounded-full blur-[120px] translate-y-1/4 -translate-x-1/4 pointer-events-none"></div>
 
-          <div className="hidden lg:flex items-center gap-10">
-            <a className="text-xs font-black uppercase text-[#091e42] hover:text-[#1565d8] tracking-widest" href="/pte">Home</a>
-            <a className="bg-[#1565d8] text-white px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-[#091e42] transition-all shadow-lg flex items-center gap-2" href="tel:+919325216364">
-              <span className="material-icons text-sm">phone</span>
-              Call Support
-            </a>
-          </div>
+               <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+                  
+                  {/* Header Section */}
+                  <div className="max-w-3xl mx-auto text-center mb-20 space-y-8">
+                     <div className="inline-flex items-center gap-2 bg-surface-dim px-4 py-2 rounded-full border border-outline-variant shadow-sm">
+                        <BookOpen className="w-4 h-4 text-primary" />
+                        <span className="text-[12px] font-bold text-primary tracking-wide uppercase">Complete Guide 2026</span>
+                     </div>
+                     <h1 className="text-4xl md:text-5xl font-black text-on-surface tracking-tight leading-tight">
+                        How to Book a PTE Voucher – Complete Step-by-Step Guide
+                     </h1>
+                     <p className="text-lg md:text-xl text-on-surface-variant font-medium leading-relaxed">
+                        Booking your Pearson Test of English (PTE) exam is one of the most important steps in your study abroad, migration, or professional registration journey.
+                     </p>
+                  </div>
 
-          <div className="flex lg:hidden items-center gap-4">
-             <a className="bg-[#1565d8] text-white px-4 py-2 rounded-lg font-black text-[10px] uppercase tracking-widest flex items-center gap-1" href="tel:+919325216364">
-                <span className="material-icons text-xs">phone</span> Call
-             </a>
-             <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-[#091e42] p-1 focus:outline-none">
-                <span className="material-icons text-3xl">{isMenuOpen ? 'close' : 'menu'}</span>
-             </button>
-          </div>
-        </div>
-      </nav>
-
-      <main className="relative z-10 overflow-hidden">
-        
-        {/* Simple Header */}
-        <header className="pt-24 md:pt-40 pb-12 md:pb-16 px-4 md:px-6 lg:px-16 bg-[#f8fafc] text-center relative border-b border-slate-100">
-          <div className="max-w-[1200px] mx-auto space-y-4">
-             <h1 className="text-3xl md:text-5xl font-black text-[#091e42] leading-tight tracking-tight uppercase tracking-tighter">How to Book PTE Exam <br className="hidden md:block" /> with a Voucher Code</h1>
-          </div>
-        </header>
-
-        {/* Video Walkthrough Section - Integrated into Layout */}
-        <section className="py-16 md:py-24 px-4 md:px-6 lg:px-16 bg-[#1565d8] relative overflow-hidden">
-           <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-           <div className="max-w-[1000px] mx-auto space-y-10 relative z-10">
-              <div className="text-center space-y-4">
-                 <h2 className="text-2xl md:text-4xl font-black text-white uppercase tracking-tighter">Video Walkthrough</h2>
-                 <p className="text-base text-white/80 font-medium">Watch exactly how to redeem your Fryment voucher on Pearson portal.</p>
-              </div>
-              <div className="aspect-video rounded-[2rem] overflow-hidden border-[8px] md:border-[12px] border-white/20 shadow-3xl bg-black">
-                 <iframe className="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Guide" frameBorder="0" allowFullScreen></iframe>
-              </div>
-           </div>
-        </section>
-
-        {/* New "How to Book" Grid Layout - Replaces Sticky Animation */}
-        <section className="py-20 md:py-32 px-4 md:px-6 lg:px-16 bg-white">
-           <div className="max-w-[1400px] mx-auto">
-              <div className="text-center mb-16 md:mb-24">
-                 <h2 className="text-3xl md:text-5xl font-black text-[#091e42] mb-4 uppercase tracking-tighter">Easy Steps to Follow</h2>
-                 <p className="text-base md:text-xl text-slate-500 font-medium max-w-2xl mx-auto">Get your discount and book your exam slot in minutes with our authorized vouchers.</p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                 {stepsToFollow.map((step, idx) => (
-                   <div key={idx} className="bg-[#f8fafc] p-8 md:p-10 rounded-[2.5rem] border border-slate-100 flex flex-col items-start gap-6 transition-all hover:bg-white hover:shadow-2xl hover:border-[#1565d8] group">
-                      <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-[#1565d8] shadow-sm group-hover:bg-[#1565d8] group-hover:text-white transition-all">
-                         <span className="material-icons text-3xl">{step.icon}</span>
-                      </div>
-                      <div className="space-y-4 flex-grow">
-                         <div className="flex items-center gap-3">
-                            <span className="text-xs font-black text-[#1565d8] uppercase tracking-widest">Step {step.id}</span>
-                         </div>
-                         <h3 className="text-xl md:text-2xl font-black text-[#091e42] leading-tight">{step.title}</h3>
-                         <ul className="space-y-3">
-                            {step.points.map((p, i) => (
-                              <li key={i} className="flex items-start gap-2 text-slate-500 text-sm font-medium">
-                                 <span className="material-icons text-[#1565d8] text-base">check</span>
-                                 <span>{p}</span>
+                  <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                     
+                     {/* Left Sidebar (Sticky) - Matching Root Structure */}
+                     <div className="hidden lg:block lg:col-span-4 sticky top-24 space-y-8">
+                        
+                        {/* Quick Facts Card */}
+                        <div className="bg-primary text-white rounded-3xl p-8 shadow-2xl shadow-primary/20 relative overflow-hidden">
+                           <div className="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 rounded-full bg-white/10 blur-2xl"></div>
+                           <div className="absolute bottom-0 left-0 -ml-8 -mb-8 w-24 h-24 rounded-full bg-black/10 blur-xl"></div>
+                           
+                           <h3 className="text-xl font-bold mb-6 flex items-center gap-3 relative z-10">
+                              <ShieldCheck className="w-6 h-6 text-primary-light" />
+                              Before You Book
+                           </h3>
+                           <ul className="space-y-4 relative z-10">
+                              <li className="flex gap-3">
+                                 <CheckCircle2 className="w-5 h-5 text-primary-light shrink-0 mt-0.5" />
+                                 <div>
+                                    <span className="block text-xs text-primary-light font-bold uppercase tracking-wider mb-0.5">ID Required</span>
+                                    <span className="font-semibold text-sm leading-tight">A Valid Passport</span>
+                                 </div>
                               </li>
-                            ))}
-                         </ul>
-                      </div>
-                      {idx === 0 && (
-                        <a href="/pte#purchase" className="w-full bg-[#1565d8] text-white py-4 rounded-xl text-center font-black text-xs uppercase tracking-widest hover:bg-[#091e42] transition-all">Buy Coupon Now</a>
-                      )}
-                   </div>
-                 ))}
-              </div>
-           </div>
-        </section>
+                              <li className="flex gap-3">
+                                 <CheckCircle2 className="w-5 h-5 text-primary-light shrink-0 mt-0.5" />
+                                 <div>
+                                    <span className="block text-xs text-primary-light font-bold uppercase tracking-wider mb-0.5">Account</span>
+                                    <span className="font-semibold text-sm leading-tight">Official PTE Account</span>
+                                 </div>
+                              </li>
+                              <li className="flex gap-3">
+                                 <CheckCircle2 className="w-5 h-5 text-primary-light shrink-0 mt-0.5" />
+                                 <div>
+                                    <span className="block text-xs text-primary-light font-bold uppercase tracking-wider mb-0.5">Voucher Code</span>
+                                    <span className="font-semibold text-sm leading-tight">Active & Unexpired</span>
+                                 </div>
+                              </li>
+                              <li className="flex gap-3">
+                                 <CheckCircle2 className="w-5 h-5 text-primary-light shrink-0 mt-0.5" />
+                                 <div>
+                                    <span className="block text-xs text-primary-light font-bold uppercase tracking-wider mb-0.5">Details</span>
+                                    <span className="font-semibold text-sm leading-tight">Test Date & Centre</span>
+                                 </div>
+                              </li>
+                           </ul>
+                        </div>
 
-        {/* Structured Text Guide */}
-        <section className="py-20 md:py-32 px-4 md:px-6 lg:px-16 bg-[#f0f7ff] border-y border-slate-100">
-           <div className="max-w-[1000px] mx-auto space-y-16">
-              <div className="text-center space-y-4">
-                 <h2 className="text-3xl md:text-5xl font-black text-[#091e42] uppercase tracking-tighter">Full Booking Details</h2>
-                 <p className="text-base md:text-lg text-slate-500 font-medium">Follow this comprehensive guide for a successful Pearson PTE registration.</p>
-              </div>
+                        {/* Common Mistakes Warning Card */}
+                        <div className="bg-surface-dim rounded-3xl p-6 border border-outline-variant shadow-sm">
+                           <div className="flex items-center gap-2 mb-4">
+                              <AlertTriangle className="w-5 h-5 text-amber-500" />
+                              <h4 className="font-bold text-on-surface">Common Mistakes</h4>
+                           </div>
+                           <div className="space-y-3">
+                              <div className="flex items-start gap-3">
+                                 <div className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0 mt-1.5"></div>
+                                 <span className="text-sm font-medium text-on-surface-variant leading-snug">Entering passport details incorrectly</span>
+                              </div>
+                              <div className="flex items-start gap-3">
+                                 <div className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0 mt-1.5"></div>
+                                 <span className="text-sm font-medium text-on-surface-variant leading-snug">Using an expired voucher</span>
+                              </div>
+                              <div className="flex items-start gap-3">
+                                 <div className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0 mt-1.5"></div>
+                                 <span className="text-sm font-medium text-on-surface-variant leading-snug">Selecting the wrong test center or exam type</span>
+                              </div>
+                              <div className="flex items-start gap-3">
+                                 <div className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0 mt-1.5"></div>
+                                 <span className="text-sm font-medium text-on-surface-variant leading-snug">Forgetting to review booking before confirmation</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
 
-              <div className="grid grid-cols-1 gap-6">
-                 {fullGuide.map((g, i) => (
-                   <div key={i} className="bg-white p-8 md:p-12 rounded-[2rem] border border-slate-100 shadow-sm flex gap-6 md:gap-10 items-start hover:shadow-md transition-shadow">
-                      <div className="w-10 h-10 md:w-12 md:h-12 bg-[#1565d8]/10 text-[#1565d8] rounded-xl flex items-center justify-center shrink-0 font-black text-lg">{i + 1}</div>
-                      <div className="space-y-2">
-                         <h4 className="text-xl md:text-2xl font-black text-[#091e42] leading-tight">{g.title}</h4>
-                         <p className="text-base text-slate-500 font-medium leading-relaxed">{g.desc}</p>
-                      </div>
-                   </div>
-                 ))}
-              </div>
-           </div>
-        </section>
+                     {/* Main Content Area */}
+                     <div className="lg:col-span-8">
+                        <div className="prose prose-lg prose-slate max-w-none prose-headings:font-black prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-p:text-on-surface-variant prose-p:leading-relaxed prose-li:text-on-surface-variant">
+                           
+                           <h2 className="text-3xl mt-0 mb-6">Introduction</h2>
+                           <p>
+                              While the booking process itself is straightforward, many candidates have questions about using a PTE voucher, how it works, and how to redeem it correctly.
+                           </p>
+                           <p>
+                              A PTE voucher is a prepaid code that can be applied during the official exam booking process. Depending on the type of voucher and any applicable offers, it may help candidates manage payments more conveniently or access eligible discounts.
+                           </p>
+                           <p>
+                              This guide explains everything you need to know—from understanding what a PTE voucher is to redeeming it successfully and avoiding common mistakes. Whether you're booking your first PTE exam or have taken the test before, this guide is designed to help you complete the process with confidence.
+                           </p>
 
-        {/* FAQs */}
-        <section className="py-20 md:py-32 px-4 md:px-6 lg:px-16 bg-white" id="faq">
-           <div className="max-w-[850px] mx-auto">
-              <div className="text-center mb-12 md:mb-20">
-                <h2 className="text-3xl md:text-5xl font-black text-[#091e42] mb-4 uppercase tracking-tighter">Frequently Asked Questions</h2>
-                <div className="w-20 h-1.5 bg-[#1565d8] mx-auto rounded-full"></div>
-              </div>
-              <div className="space-y-4">
-                 {faqs.map((faq, idx) => (
-                   <div key={idx} className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm transition-all hover:border-[#1565d8]">
-                      <button onClick={() => setActiveFaq(activeFaq === idx ? null : idx)} className={`w-full text-left px-6 md:px-10 py-5 md:py-7 flex justify-between items-center transition-all ${activeFaq === idx ? 'bg-[#1565d8] text-white' : 'hover:bg-[#1565d8]/5'}`}><span className="text-sm md:text-lg font-black tracking-tight pr-6">{faq.q}</span><span className="material-icons text-xl md:text-2xl">{activeFaq === idx ? 'expand_less' : 'expand_more'}</span></button>
-                      <div className={`transition-all duration-300 overflow-hidden ${activeFaq === idx ? 'max-h-[800px]' : 'max-h-0'}`}><div className="px-6 md:px-10 py-5 md:py-7 text-sm md:text-base text-slate-500 font-medium leading-relaxed bg-white border-t border-slate-50">{faq.a}</div></div>
-                   </div>
-                 ))}
-              </div>
-           </div>
-        </section>
+                           <h2 className="text-3xl mt-16 mb-6">What Is a PTE Voucher?</h2>
+                           <p>
+                              A PTE voucher is a prepaid code that can be entered during the official PTE exam booking process. Instead of paying the full exam fee directly at checkout, eligible candidates use the voucher code to cover all or part of the booking cost, depending on the voucher's value and terms.
+                           </p>
+                           <p>Vouchers are commonly used by:</p>
+                           <ul>
+                              <li>Students applying to universities</li>
+                              <li>Skilled migration applicants</li>
+                              <li>Working professionals</li>
+                              <li>Educational institutions</li>
+                              <li>Coaching centers</li>
+                              <li>Corporate organizations</li>
+                           </ul>
+                           <div className="bg-primary/5 border border-primary/20 rounded-xl p-4 my-6 text-sm text-primary-dark font-medium">
+                              <strong>Note:</strong> A voucher is not an exam registration by itself—it simply serves as a payment method that must be redeemed during the official booking process.
+                           </div>
 
-      </main>
+                           <h2 className="text-3xl mt-16 mb-6">Why Do Candidates Use a PTE Voucher?</h2>
+                           <p>
+                              Many candidates choose vouchers because they offer convenience and, in some cases, promotional value. They also make it easier for organizations or families to manage exam payments. Some advantages include:
+                           </p>
+                           <ul>
+                              <li>Prepaid payment option</li>
+                              <li>Convenient redemption during booking</li>
+                              <li>Potential promotional pricing (where applicable)</li>
+                              <li>Easier budgeting</li>
+                              <li>Useful for institutions purchasing on behalf of students</li>
+                           </ul>
+                           <p>
+                              Always review the voucher's terms and conditions before purchase, including validity dates and any regional restrictions.
+                           </p>
 
-      {/* Footer */}
-      <footer className="bg-[#091e42] pt-24 md:pt-32 pb-12 md:pb-16 px-4 md:px-6 lg:px-16 text-white text-center md:text-left">
-         <div className="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-20">
-            <div className="md:col-span-2 space-y-6 md:space-y-10">
-               <span className="text-3xl md:text-5xl font-black">Fryment</span>
-               <p className="text-white/40 text-lg md:text-xl font-medium max-w-xl leading-relaxed">Authorized PTE Voucher provider. Trusted by thousands of students for secure and fast exam bookings.</p>
-            </div>
-            <div className="space-y-4 md:space-y-6">
-               <h5 className="text-xs font-black text-amber-400 tracking-widest uppercase">Support</h5>
-               <p className="font-bold text-base md:text-lg">hello@fryment.com</p>
-               <p className="font-bold text-base md:text-lg">+91 93252 16364</p>
-            </div>
-         </div>
-         <div className="max-w-[1920px] mx-auto mt-20 pt-10 border-t border-white/5 text-center">
-            <p className="text-white/20 text-[10px] md:text-xs font-black uppercase tracking-[0.4em]">© 2026 Fryment. Authorized Pearson Partner.</p>
-         </div>
-      </footer>
+                           <h2 className="text-3xl mt-16 mb-6">Step-by-Step Guide to Booking a PTE Voucher</h2>
+                           
+                           <div className="not-prose space-y-6 my-10">
+                              <div className="flex gap-4 items-start p-6 bg-white border border-outline rounded-2xl shadow-sm">
+                                 <div className="w-10 h-10 rounded-full bg-primary text-white font-black flex items-center justify-center shrink-0">1</div>
+                                 <div>
+                                    <h4 className="font-bold text-lg mb-1 text-on-surface">Sign In</h4>
+                                    <p className="text-on-surface-variant m-0 text-sm">Log in to your official PTE account using your registered email address.</p>
+                                 </div>
+                              </div>
+                              <div className="flex gap-4 items-start p-6 bg-white border border-outline rounded-2xl shadow-sm">
+                                 <div className="w-10 h-10 rounded-full bg-primary text-white font-black flex items-center justify-center shrink-0">2</div>
+                                 <div>
+                                    <h4 className="font-bold text-lg mb-1 text-on-surface">Choose Your Test</h4>
+                                    <p className="text-on-surface-variant m-0 text-sm">Select the appropriate PTE exam, such as PTE Academic, depending on your needs.</p>
+                                 </div>
+                              </div>
+                              <div className="flex gap-4 items-start p-6 bg-white border border-outline rounded-2xl shadow-sm">
+                                 <div className="w-10 h-10 rounded-full bg-primary text-white font-black flex items-center justify-center shrink-0">3</div>
+                                 <div>
+                                    <h4 className="font-bold text-lg mb-1 text-on-surface">Select Your Location</h4>
+                                    <p className="text-on-surface-variant m-0 text-sm">Search for your preferred city or test center.</p>
+                                 </div>
+                              </div>
+                              <div className="flex gap-4 items-start p-6 bg-white border border-outline rounded-2xl shadow-sm">
+                                 <div className="w-10 h-10 rounded-full bg-primary text-white font-black flex items-center justify-center shrink-0">4</div>
+                                 <div>
+                                    <h4 className="font-bold text-lg mb-1 text-on-surface">Pick a Date and Time</h4>
+                                    <p className="text-on-surface-variant m-0 text-sm">Review available dates and choose the one that best suits your preparation timeline.</p>
+                                 </div>
+                              </div>
+                              <div className="flex gap-4 items-start p-6 bg-white border border-outline rounded-2xl shadow-sm">
+                                 <div className="w-10 h-10 rounded-full bg-primary text-white font-black flex items-center justify-center shrink-0">5</div>
+                                 <div>
+                                    <h4 className="font-bold text-lg mb-1 text-on-surface">Enter Your Personal Details</h4>
+                                    <p className="text-on-surface-variant m-0 text-sm">Ensure all information matches your passport exactly to avoid issues on exam day.</p>
+                                 </div>
+                              </div>
+                              <div className="flex gap-4 items-start p-6 bg-white border border-outline rounded-2xl shadow-sm">
+                                 <div className="w-10 h-10 rounded-full bg-primary text-white font-black flex items-center justify-center shrink-0">6</div>
+                                 <div>
+                                    <h4 className="font-bold text-lg mb-1 text-on-surface">Review Your Booking</h4>
+                                    <p className="text-on-surface-variant m-0 text-sm">Double-check your selected test center, exam type, and date before proceeding.</p>
+                                 </div>
+                              </div>
+                              <div className="flex gap-4 items-start p-6 bg-primary border border-primary-dark rounded-2xl shadow-md">
+                                 <div className="w-10 h-10 rounded-full bg-white text-primary font-black flex items-center justify-center shrink-0">7</div>
+                                 <div>
+                                    <h4 className="font-bold text-lg mb-1 text-white">Redeem Your Voucher</h4>
+                                    <p className="text-primary-light m-0 text-sm">During the payment stage, enter your voucher code into the designated field and apply it.</p>
+                                 </div>
+                              </div>
+                              <div className="flex gap-4 items-start p-6 bg-white border border-outline rounded-2xl shadow-sm">
+                                 <div className="w-10 h-10 rounded-full bg-primary text-white font-black flex items-center justify-center shrink-0">8</div>
+                                 <div>
+                                    <h4 className="font-bold text-lg mb-1 text-on-surface">Complete the Booking</h4>
+                                    <p className="text-on-surface-variant m-0 text-sm">If the voucher covers the applicable amount, follow the remaining instructions to finalize your booking. Save the confirmation email for your records.</p>
+                                 </div>
+                              </div>
+                           </div>
 
-      {/* Floating WhatsApp */}
-      <div className="fixed bottom-32 right-6 z-[999] md:bottom-28 md:right-10">
-        <a className="w-16 h-16 md:w-20 md:h-20 bg-[#25D366] rounded-full flex items-center justify-center border-4 border-white shadow-2xl hover:scale-110 transition-transform flex" href="https://wa.me/919325216364" target="_blank" rel="noopener noreferrer">
-          <svg className="w-10 h-10 md:w-12 md:h-12" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.393 0 12.031c0 2.122.541 4.192 1.572 6.014L0 24l6.105-1.601a11.871 11.871 0 005.939 1.6h.005c6.635 0 12.032-5.394 12.035-12.034a11.84 11.84 0 00-3.517-8.503z"/></svg>
-        </a>
+                           <h2 className="text-3xl mt-16 mb-6">How to Redeem a PTE Voucher</h2>
+                           <p>Redeeming a voucher is simple:</p>
+                           <ol>
+                              <li>Reach the payment page.</li>
+                              <li>Locate the voucher or promotional code field.</li>
+                              <li>Enter your voucher exactly as provided.</li>
+                              <li>Verify that the voucher is accepted.</li>
+                              <li>Complete the booking process.</li>
+                           </ol>
+                           <p>
+                              If the voucher is not accepted, check for typing errors, expiration dates, or applicable terms before contacting support.
+                           </p>
+
+                           <h2 className="text-3xl mt-16 mb-6">Can You Reschedule a PTE Exam Booked with a Voucher?</h2>
+                           <p>
+                              Rescheduling policies are determined by the official PTE booking rules. If your booking was made using a voucher, the ability to reschedule depends on the applicable terms and conditions of your booking and the official policies in effect at that time.
+                           </p>
+                           <p>
+                              Before making any changes, review the current PTE rescheduling policy and the conditions associated with your voucher.
+                           </p>
+
+                           <h2 className="text-3xl mt-16 mb-6">Tips for a Smooth Booking Experience</h2>
+                           <ul>
+                              <li>Book your exam early to secure your preferred date.</li>
+                              <li>Verify all personal information before confirming.</li>
+                              <li>Read the voucher terms carefully.</li>
+                              <li>Keep a copy of your booking confirmation.</li>
+                              <li>Plan your preparation schedule around your chosen exam date.</li>
+                              <li>Contact support promptly if you encounter issues.</li>
+                           </ul>
+
+                           <h2 className="text-3xl mt-16 mb-6">Frequently Asked Questions</h2>
+                           <div className="not-prose space-y-4 mb-16">
+                              {faqs.map((faq, index) => (
+                                 <details key={index} className="group bg-white border border-outline rounded-2xl overflow-hidden [&_summary::-webkit-details-marker]:hidden shadow-sm">
+                                    <summary className="flex items-center justify-between p-5 lg:p-6 cursor-pointer text-on-surface font-bold text-[15px]">
+                                       <span className="pr-6">{faq.question}</span>
+                                       <span className="shrink-0 transition duration-300 group-open:-rotate-180">
+                                          <ChevronDown className="w-5 h-5 text-primary" />
+                                       </span>
+                                    </summary>
+                                    <div className="px-5 lg:px-6 pb-6 text-sm text-on-surface-variant leading-relaxed border-t border-outline/50 mt-2 pt-4">
+                                       {faq.answer}
+                                    </div>
+                                 </details>
+                              ))}
+                           </div>
+
+                           <div className="not-prose bg-surface-dim rounded-3xl p-10 text-center border border-outline-variant mt-20">
+                              <h3 className="text-2xl md:text-3xl font-black text-on-surface mb-4">Final Thoughts</h3>
+                              <p className="text-on-surface-variant text-base md:text-lg mb-8 max-w-xl mx-auto leading-relaxed">
+                                 Using a PTE voucher can simplify the payment process for your exam booking when used correctly. The key to a smooth experience is understanding how vouchers work, checking the applicable terms, and ensuring your booking details are accurate.
+                              </p>
+                              <Link 
+                                 href="/#purchase" 
+                                 className="inline-flex items-center justify-center bg-primary text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"
+                              >
+                                 Buy a Voucher Today
+                              </Link>
+                           </div>
+
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+         </main>
+         
+         {!isMenuOpen && <Footer />}
       </div>
-
-    </div>
-  );
+   );
 }

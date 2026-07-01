@@ -1,14 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Razorpay from 'razorpay';
+import { EXAMS } from '@/data/pte/exams';
 
-const IS_TEST_MODE = process.env.RAZORPAY_KEY_ID?.startsWith('rzp_test_');
-
-// In test mode: ₹1 per voucher (100 paise) — avoids Razorpay's test account transaction limit
-// In live mode: ₹14,200 per voucher (1,420,000 paise)
-const PRICE_PER_VOUCHER_PAISE = IS_TEST_MODE ? 100 : 1_420_000;
+const IS_TEST_MODE = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID?.startsWith('rzp_test_');
 
 const getRazorpay = () => {
-  const key_id = process.env.RAZORPAY_KEY_ID;
+  const key_id = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
   const key_secret = process.env.RAZORPAY_KEY_SECRET;
   if (!key_id || !key_secret) {
     throw new Error('Razorpay credentials are not configured.');
@@ -19,14 +16,25 @@ const getRazorpay = () => {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { quantity, fullName, email, phone } = body;
+    const { quantity, fullName, email, phone, examId, price } = body;
 
     const qty = parseInt(quantity, 10);
     if (!qty || qty < 1 || qty > 5) {
       return NextResponse.json({ error: 'Invalid quantity.' }, { status: 400 });
     }
 
-    const amount = PRICE_PER_VOUCHER_PAISE * qty;
+    let pricePerVoucherPaise = 100; // default test price
+    
+    if (!IS_TEST_MODE) {
+      if (!examId || !EXAMS[examId]) {
+        return NextResponse.json({ error: 'Invalid or missing exam type.' }, { status: 400 });
+      }
+      // TEMPORARY FOR TESTING: Force ₹1 on Live Mode
+      pricePerVoucherPaise = 100;
+      // TO REVERT: pricePerVoucherPaise = EXAMS[examId].price * 100;
+    }
+
+    const amount = pricePerVoucherPaise * qty;
     const razorpay = getRazorpay();
 
     const order = await razorpay.orders.create({
@@ -38,6 +46,7 @@ export async function POST(req: NextRequest) {
         customer_email: email,
         customer_phone: phone,
         quantity: qty.toString(),
+        exam_id: examId || 'unknown',
       },
     });
 
@@ -45,7 +54,7 @@ export async function POST(req: NextRequest) {
       orderId: order.id,
       amount: order.amount,
       currency: order.currency,
-      keyId: process.env.RAZORPAY_KEY_ID,
+      keyId: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
     });
   } catch (err: any) {
     console.error('[create-order]', err);

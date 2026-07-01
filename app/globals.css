@@ -6,7 +6,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
 }
 
 @theme {
@@ -15,34 +15,38 @@
   --font-body: var(--font-inter), sans-serif;
   --font-label: var(--font-inter), sans-serif;
 
-  --color-primary: #002147;
-  /* Oxford Blue */
-  --color-primary-light: #003366;
-  --color-primary-dark: #001a33;
+  /* Deep Emerald - Main Brand Color */
+  --color-primary: #005b4a;
+  --color-primary-light: #4b8078;
+  --color-primary-dark: #003d32;
 
-  --color-accent: #f59e0b;
-  /* Amber/Gold for "Promo" and "Vouchers" */
-  --color-accent-light: #fbbf24;
-  --color-accent-dark: #d97706;
+  /* Soft Khaki Gold - For badges, stars, highlights */
+  --color-secondary: #c2c25e;
+  --color-secondary-light: #e3e381;
+  --color-secondary-dark: #9e9e4a;
 
-  --color-secondary: #0d9488;
-  /* Teal for success/trust */
+  /* Rich Teal - For secondary interactions */
+  --color-accent: #008060;
+  --color-accent-light: #009e9e;
+  --color-accent-dark: #006d60;
 
+  /* Surface colors */
   --color-surface: #ffffff;
-  --color-surface-dim: #f8fafc;
-  --color-surface-muted: #f1f5f9;
+  --color-surface-dim: #fbfaf0; /* Warm off-white from Discreet Palette */
+  --color-surface-muted: #f6f2cb;
 
+  /* Text colors */
   --color-on-primary: #ffffff;
-  --color-on-accent: #000000;
-  --color-on-surface: #0f172a;
-  --color-on-surface-variant: #475569;
+  --color-on-accent: #ffffff;
+  --color-on-surface: #2f4858; /* Deep slate blue/grey */
+  --color-on-surface-variant: #484738; /* Charcoal olive */
 
-  --color-outline: #cbd5e1;
-  --color-outline-variant: #e2e8f0;
+  --color-outline: #aeac9a;
+  --color-outline-variant: #e5e5e5;
 
-  --radius-default: 0.375rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 1rem;
+  --radius-default: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1.5rem;
   --radius-full: 9999px;
 }
 
