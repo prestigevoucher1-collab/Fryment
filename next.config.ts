@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'cdn.razorpay.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.dicebear.com',
       }
     ],
   },

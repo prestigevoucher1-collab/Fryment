@@ -14,7 +14,7 @@ export default function TrustBar() {
                </div>
 
                <div className="flex-1 overflow-hidden relative flex items-center pl-4 md:pl-8 mask-image-[linear-gradient(to_right,transparent,black_50px,black_calc(100%-50px),transparent)]">
-                  <div className="flex animate-marquee-fast whitespace-nowrap gap-10 md:gap-14 items-center">
+                  <div className="flex animate-marquee-fast whitespace-nowrap gap-10 md:gap-14 items-center w-max hover:[animation-play-state:paused]">
                      {[...Array(4)].map((_, i) => (
                         <div key={i} className="flex gap-10 md:gap-14 items-center shrink-0">
                            {[

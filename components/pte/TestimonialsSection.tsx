@@ -1,7 +1,6 @@
 "use client";
 
 import { testimonials } from "@/data/pte/constants";
-import Image from "next/image";
 import { Star } from "lucide-react";
 
 function TestimonialCard({ t, prefix, i }: { t: typeof testimonials[0]; prefix: string; i: number }) {
@@ -24,8 +23,8 @@ function TestimonialCard({ t, prefix, i }: { t: typeof testimonials[0]; prefix: 
          </div>
          <p className="text-on-surface-variant font-medium text-sm md:text-base leading-relaxed">"{t.content}"</p>
          <div className="flex items-center gap-3 pt-4 border-t border-slate-50 mt-auto">
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-emerald-50">
-               <Image src={t.img} width={48} height={48} alt={t.name} className="w-full h-full object-cover" />
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-emerald-50 bg-white">
+               <img src={t.img} width={48} height={48} alt={t.name} className="w-full h-full object-cover" />
             </div>
             <div>
                <p className="font-bold text-on-surface text-sm">{t.name}</p>

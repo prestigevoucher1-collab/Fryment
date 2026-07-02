@@ -163,7 +163,7 @@ export default function ExamHero({ exam }: ExamHeroProps) {
 
                   <div className="space-y-4">
                      <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-on-surface leading-tight tracking-tight">
-                        Book {exam.name} at <span className="block text-primary">₹{exam.price.toLocaleString('en-IN')}</span>
+                        Book {exam.name} at <span className="text-primary whitespace-nowrap">₹{exam.price.toLocaleString('en-IN')}</span>
                      </h1>
                      <p className="text-lg md:text-xl text-on-surface-variant leading-relaxed max-w-xl">
                         {exam.description}
@@ -215,13 +215,14 @@ export default function ExamHero({ exam }: ExamHeroProps) {
                      ></div>
 
                      <div className="relative bg-white rounded-[2rem] shadow-2xl shadow-primary/20 overflow-hidden p-6 sm:p-8 md:p-10 border border-outline-variant transform transition-transform duration-500 group-hover:-translate-y-2 group-hover:-translate-x-1 z-10">
-                        <div className="absolute top-8 right-8 z-10 bg-primary text-white px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-lg shadow-primary/20">
-                           <CheckCircle className="w-4 h-4" /> FAST BOOKING
-                        </div>
-
-                        <div className="mb-8 pr-24">
-                           <h2 className="text-3xl font-black text-on-surface mb-2">Get Voucher</h2>
-                           <p className="text-base text-on-surface-variant font-medium">Fill details for instant delivery</p>
+                        <div className="mb-6 md:mb-8 relative flex flex-col md:block">
+                           <div className="order-1 md:absolute md:top-0 md:right-0 w-fit mb-4 md:mb-0 bg-primary text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-[10px] md:text-xs font-bold flex items-center gap-1.5 shadow-lg shadow-primary/20">
+                              <CheckCircle className="w-3.5 h-3.5 md:w-4 md:h-4" /> FAST BOOKING
+                           </div>
+                           <div className="order-2 md:pr-32">
+                              <h2 className="text-2xl sm:text-3xl font-black text-on-surface mb-1 md:mb-2">Get Voucher</h2>
+                              <p className="text-sm sm:text-base text-on-surface-variant font-medium">Fill details for instant delivery</p>
+                           </div>
                         </div>
 
                         {submitted ? (

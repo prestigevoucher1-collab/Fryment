@@ -8,12 +8,12 @@ export const INDIAN_STATES = [
 ];
 
 export const testimonials = [
-   { name: "Gareth Hayter", role: "Founder & CEO · Slyce Software", content: "Success on rails. Fryment really helps to guide and it creates a sense of trust in the booking process.", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=150&h=150&auto=format&fit=crop" },
-   { name: "Cong Nguyen", role: "Student · Synodus", content: "One of the simplest voucher automation platforms with good pricing. Customer support is highly helpful.", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&h=150&auto=format&fit=crop" },
-   { name: "Joshua Lim", role: "Managing Director", content: "A must have in your study abroad arsenal. It has everything that you're looking for to book your exam.", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&h=150&auto=format&fit=crop" },
-   { name: "Julia M.", role: "Director of English Prep", content: "Fryment is pretty easy. Minimum learning curve compared to other voucher apps, I highly recommend it.", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&h=150&auto=format&fit=crop" },
-   { name: "Arjun M.", role: "MBA Aspirant", content: "Saved me ₹2,800 instantly. The code was delivered within minutes and worked perfectly on the portal.", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&h=150&auto=format&fit=crop" },
-   { name: "Priya S.", role: "Nursing Student", content: "I was worried about legitimacy, but their WhatsApp team was incredibly helpful. 5 solid stars!", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&h=150&auto=format&fit=crop" }
+   { name: "Gareth Hayter", role: "Founder & CEO · Slyce Software", content: "Success on rails. Fryment really helps to guide and it creates a sense of trust in the booking process.", img: "https://api.dicebear.com/9.x/avataaars/svg?seed=Gareth&backgroundColor=b6e3f4" },
+   { name: "Cong Nguyen", role: "Student · Synodus", content: "One of the simplest voucher automation platforms with good pricing. Customer support is highly helpful.", img: "https://api.dicebear.com/9.x/avataaars/svg?seed=Cong&backgroundColor=ffdfbf" },
+   { name: "Joshua Lim", role: "Managing Director", content: "A must have in your study abroad arsenal. It has everything that you're looking for to book your exam.", img: "https://api.dicebear.com/9.x/avataaars/svg?seed=Joshua&backgroundColor=c0aede" },
+   { name: "Julia M.", role: "Director of English Prep", content: "Fryment is pretty easy. Minimum learning curve compared to other voucher apps, I highly recommend it.", img: "https://api.dicebear.com/9.x/avataaars/svg?seed=Julia&backgroundColor=ffd5dc" },
+   { name: "Arjun M.", role: "MBA Aspirant", content: "Saved me ₹2,800 instantly. The code was delivered within minutes and worked perfectly on the portal.", img: "https://api.dicebear.com/9.x/avataaars/svg?seed=Arjun&backgroundColor=d1d4f9" },
+   { name: "Priya S.", role: "Nursing Student", content: "I was worried about legitimacy, but their WhatsApp team was incredibly helpful. 5 solid stars!", img: "https://api.dicebear.com/9.x/avataaars/svg?seed=Priya&backgroundColor=b6e3f4" }
 ];
 
 export const portraitProofs = [

@@ -68,9 +68,9 @@ export default function AdvantageSection() {
                         <span className="text-[10px] md:text-[11px] font-black text-green-700 tracking-wide">Active Now</span>
                      </div>
                      <h3 className="text-xl md:text-2xl font-black text-primary leading-tight tracking-tight">Dedicated 24/7 Expert Guidance</h3>
-                     <p className="text-primary/70 font-medium text-xs md:text-[13px] leading-relaxed">Questions about your slot? Form filling errors? We have experts ready to guide you step-by-step through WhatsApp or Direct Call.</p>
+                     <p className="text-primary/70 font-medium text-xs md:text-[13px] leading-relaxed"></p>
                   </div>
-                  <div className="w-full md:w-[45%] h-32 md:h-full rounded-[1rem] md:rounded-[1.5rem] overflow-hidden relative shadow-inner">
+                  <div className="hidden md:block w-full md:w-[45%] h-32 md:h-full rounded-[1rem] md:rounded-[1.5rem] overflow-hidden relative shadow-inner">
                      <Image src="/images/support_agent.png" width={400} height={300} alt="Support" className="absolute inset-0 w-full h-full object-cover" />
                   </div>
                </div>
