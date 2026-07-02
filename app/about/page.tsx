@@ -369,15 +369,17 @@ export default function AboutPage() {
                               ))}
                            </div>
 
-                           <div className="not-prose bg-primary rounded-3xl p-10 text-center relative overflow-hidden mt-20">
-                              <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.15] mix-blend-overlay"></div>
-                              <h3 className="text-2xl md:text-3xl font-black text-white mb-4 relative z-10">Our Promise</h3>
-                              <p className="text-primary-light text-base md:text-lg mb-8 max-w-xl mx-auto relative z-10 leading-relaxed">
+                           <div className="not-prose bg-surface-dim border border-outline-variant rounded-3xl p-10 md:p-14 text-center relative overflow-hidden mt-20 shadow-xl shadow-primary/5">
+                              {/* Decorative Blur */}
+                              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-40 bg-primary/5 blur-3xl rounded-full pointer-events-none"></div>
+                              
+                              <h3 className="text-2xl md:text-3xl font-headline font-black text-on-surface mb-4 relative z-10">Our Promise</h3>
+                              <p className="text-on-surface-variant text-base md:text-lg mb-8 max-w-xl mx-auto relative z-10 leading-relaxed font-medium">
                                  We know that preparing for an English proficiency exam can be stressful. Our promise is to make at least one part of that journey simpler.
                               </p>
                               <Link 
                                  href="/#purchase" 
-                                 className="inline-flex items-center justify-center bg-white text-primary font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all relative z-10"
+                                 className="inline-flex items-center justify-center bg-primary text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:-translate-y-1 hover:bg-primary-dark transition-all relative z-10"
                               >
                                  Buy PTE Voucher Now
                               </Link>
