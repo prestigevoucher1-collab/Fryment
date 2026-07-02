@@ -16,10 +16,10 @@ export default function AdvantageSection() {
             </div>
 
             {/* Bento Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-5 auto-rows-[220px] md:auto-rows-[280px]">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-5 md:auto-rows-[280px]">
 
                {/* Box 1 - Big Highlight */}
-               <div className="md:col-span-8 bg-gradient-to-br from-[#f0f7ff] to-white rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-10 relative overflow-hidden border border-secondary/10 shadow-sm">
+               <div className="md:col-span-8 min-h-[220px] md:min-h-0 bg-gradient-to-br from-[#f0f7ff] to-white rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-10 relative overflow-hidden border border-secondary/10 shadow-sm">
                   <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none">
                      <span className="material-icons text-[120px] md:text-[180px] text-secondary -rotate-12 translate-x-8 -translate-y-8">savings</span>
                   </div>
@@ -37,7 +37,7 @@ export default function AdvantageSection() {
                </div>
 
                {/* Box 2 - Dark Highlight */}
-               <div className="md:col-span-4 bg-primary rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-8 relative overflow-hidden flex flex-col justify-end text-white shadow-xl">
+               <div className="md:col-span-4 min-h-[220px] md:min-h-0 bg-primary rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-8 relative overflow-hidden flex flex-col justify-end text-white shadow-xl">
                   <div className="absolute top-6 right-6">
                      <div className="w-10 h-10 bg-accent rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(255,204,0,0.3)]">
                         <span className="material-icons text-primary text-[20px]">bolt</span>
@@ -50,7 +50,7 @@ export default function AdvantageSection() {
                </div>
 
                {/* Box 3 - Small Text Focused */}
-               <div className="md:col-span-4 bg-amber-50 rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-8 relative overflow-hidden flex flex-col justify-end">
+               <div className="md:col-span-4 min-h-[220px] md:min-h-0 bg-amber-50 rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-8 relative overflow-hidden flex flex-col justify-end">
                   <div className="absolute top-6 right-6">
                      <span className="material-icons text-amber-500 text-[40px] opacity-40">verified_user</span>
                   </div>
@@ -61,7 +61,7 @@ export default function AdvantageSection() {
                </div>
 
                {/* Box 4 - Mixed Image Highlight */}
-               <div className="md:col-span-8 bg-surface rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-8 relative overflow-hidden border border-accent/20 shadow-sm flex flex-col md:flex-row gap-6 md:gap-8 items-center">
+               <div className="md:col-span-8 min-h-[250px] md:min-h-0 bg-surface rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-8 relative overflow-hidden border border-accent/20 shadow-sm flex flex-col md:flex-row gap-6 md:gap-8 items-center">
                   <div className="flex-1 space-y-3 z-10 relative">
                      <div className="inline-flex items-center gap-1.5 bg-green-50 px-2.5 py-1 rounded-full">
                         <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>

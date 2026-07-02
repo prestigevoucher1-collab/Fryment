@@ -162,10 +162,10 @@ export default function ExamHero({ exam }: ExamHeroProps) {
                   </div>
 
                   <div className="space-y-4">
-                     <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-on-surface leading-tight tracking-tight">
+                     <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-on-surface leading-tight tracking-tight">
                         Book {exam.name} at <span className="block text-primary">₹{exam.price.toLocaleString('en-IN')}</span>
                      </h1>
-                     <p className="text-xl text-on-surface-variant leading-relaxed max-w-xl">
+                     <p className="text-lg md:text-xl text-on-surface-variant leading-relaxed max-w-xl">
                         {exam.description}
                      </p>
                   </div>
@@ -214,7 +214,7 @@ export default function ExamHero({ exam }: ExamHeroProps) {
                         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23005b4a' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E")` }}
                      ></div>
 
-                     <div className="relative bg-white rounded-[2rem] shadow-2xl shadow-primary/20 overflow-hidden p-8 md:p-10 border border-outline-variant transform transition-transform duration-500 group-hover:-translate-y-2 group-hover:-translate-x-1 z-10">
+                     <div className="relative bg-white rounded-[2rem] shadow-2xl shadow-primary/20 overflow-hidden p-6 sm:p-8 md:p-10 border border-outline-variant transform transition-transform duration-500 group-hover:-translate-y-2 group-hover:-translate-x-1 z-10">
                         <div className="absolute top-8 right-8 z-10 bg-primary text-white px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-lg shadow-primary/20">
                            <CheckCircle className="w-4 h-4" /> FAST BOOKING
                         </div>

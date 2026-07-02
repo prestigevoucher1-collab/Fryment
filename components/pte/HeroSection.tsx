@@ -148,7 +148,7 @@ export default function HeroSection() {
          <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-6 md:gap-10 lg:gap-12 items-start relative z-10 pt-4 md:pt-6">
 
             {/* Hero Left Content */}
-            <div className="space-y-4 md:space-y-5 animate-in fade-in slide-in-from-left duration-700">
+            <div className="space-y-5 md:space-y-6 animate-in fade-in slide-in-from-left duration-700">
                <div className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-50/80 to-indigo-50/80 px-2 py-2 pr-5 rounded-full border border-secondary/10 shadow-[0_4px_20px_rgba(21,101,216,0.08)] backdrop-blur-md transition-all hover:shadow-[0_4px_25px_rgba(21,101,216,0.15)] hover:-translate-y-0.5">
                   <div className="flex -space-x-2">
                      <Image src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&fit=crop" width={28} height={28} alt="Student" className="w-7 h-7 rounded-full border-2 border-white object-cover" />
@@ -163,18 +163,18 @@ export default function HeroSection() {
                   </div>
                </div>
 
-               <h1 className="text-3xl md:text-5xl font-black leading-tight tracking-tight text-primary">
-                  The Smartest Way to Book PTE at <span className="text-secondary">₹14,200</span> Fast
+               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight text-primary">
+                  The Smartest Way to Book PTE at <span className="text-secondary whitespace-nowrap">₹14,200</span> Fast
                </h1>
                <p className="text-base md:text-lg text-primary/70 font-medium leading-relaxed max-w-xl">
                   Authorized all-in-one platform for PTE vouchers. Instant delivery, 24/7 WhatsApp support, and 100% secure bookings.
                </p>
 
-               <div className="space-y-2 lg:mt-4">
+               <div className="space-y-3 lg:mt-4">
                   {["Instant delivery in 60 seconds", "No hidden charges", "Valid for 12 months"].map(f => (
                      <div key={f} className="flex items-center gap-3">
-                        <span className="material-icons text-green-500 bg-green-50 rounded-full p-1 text-[10px] md:text-sm">check</span>
-                        <span className="text-sm font-bold text-primary/80">{f}</span>
+                        <span className="material-icons text-green-500 bg-green-50 rounded-full p-1 text-[12px] md:text-sm">check</span>
+                        <span className="text-[15px] md:text-base font-bold text-primary/80">{f}</span>
                      </div>
                   ))}
                </div>
@@ -188,8 +188,8 @@ export default function HeroSection() {
             </div>
 
             {/* Hero Right: Booking Form */}
-            <div className="relative w-[95%] md:w-[90%] mx-auto lg:w-full" id="purchase">
-               <div className="bg-surface rounded-[1.5rem] md:rounded-[2.5rem] shadow-3xl p-6 md:p-8 lg:p-10 border border-slate-300 relative overflow-hidden">
+            <section className="relative w-full mx-auto" id="purchase">
+               <div className="bg-white rounded-3xl md:rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] md:shadow-[0_30px_80px_rgba(0,0,0,0.2)] p-6 md:p-10 border border-slate-100 relative overflow-hidden">
 
                   <div className="text-center mb-6">
                      <h2 className="text-xl md:text-2xl font-black text-primary mb-1">Book Your Voucher</h2>
@@ -217,27 +217,27 @@ export default function HeroSection() {
                         </div>
                      </div>
                   ) : (
-                     <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
+                     <form onSubmit={handleSubmit} className="space-y-4">
                         <input
                            name="fullName" value={formData.fullName} onChange={handleInputChange}
-                           className="w-full bg-accent/10 border border-accent/40 rounded-xl px-5 py-3 outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/20 font-bold text-sm transition-all placeholder:text-slate-300"
+                           className="w-full min-h-[50px] bg-accent/10 border border-accent/40 rounded-2xl px-5 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 font-bold text-base transition-all placeholder:text-slate-400"
                            placeholder="Full Name *" required
                         />
                         <input
                            name="phone" value={formData.phone} onChange={handleInputChange}
-                           className="w-full bg-accent/10 border border-accent/40 rounded-xl px-5 py-3 outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/20 font-bold text-sm transition-all placeholder:text-slate-300"
+                           className="w-full min-h-[50px] bg-accent/10 border border-accent/40 rounded-2xl px-5 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 font-bold text-base transition-all placeholder:text-slate-400"
                            placeholder="Mobile Number *" maxLength={10} required
                         />
                         <input
                            name="email" value={formData.email} onChange={handleInputChange}
-                           className="w-full bg-accent/10 border border-accent/40 rounded-xl px-5 py-3 outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/20 font-bold text-sm transition-all placeholder:text-slate-300"
+                           className="w-full min-h-[50px] bg-accent/10 border border-accent/40 rounded-2xl px-5 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 font-bold text-base transition-all placeholder:text-slate-400"
                            placeholder="Email Address *" type="email" required
                         />
 
                         <div className="relative">
                            <select
                               name="state" value={formData.state} onChange={handleInputChange}
-                              className="w-full bg-accent/10 border border-accent/40 rounded-xl px-5 py-3 outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/20 font-bold text-sm appearance-none cursor-pointer transition-all"
+                              className="w-full min-h-[50px] bg-accent/10 border border-accent/40 rounded-2xl px-5 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 font-bold text-base appearance-none cursor-pointer transition-all"
                               required
                            >
                               <option value="" disabled>Choose State *</option>
@@ -249,7 +249,7 @@ export default function HeroSection() {
                         <div className="relative">
                            <select
                               name="quantity" value={formData.quantity} onChange={handleInputChange}
-                              className="w-full bg-accent/10 border border-accent/40 rounded-xl px-5 py-3 outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/20 font-bold text-sm appearance-none cursor-pointer transition-all"
+                              className="w-full min-h-[50px] bg-accent/10 border border-accent/40 rounded-2xl px-5 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 font-bold text-base appearance-none cursor-pointer transition-all"
                               required
                            >
                               <option value="" disabled>Quantity *</option>
@@ -259,7 +259,7 @@ export default function HeroSection() {
                                  </option>
                               ))}
                            </select>
-                           <span className="material-icons absolute right-5 top-1/2 -translate-y-1/2 text-primary/50 pointer-events-none">unfold_more</span>
+                           <span className="material-icons absolute right-5 top-1/2 -translate-y-1/2 text-primary/50 pointer-events-none">expand_more</span>
                         </div>
 
                         {/* Price Summary */}
@@ -276,7 +276,7 @@ export default function HeroSection() {
                         <button
                            type="submit"
                            disabled={loading}
-                           className="w-full bg-gradient-to-r from-secondary to-primary text-white py-3 md:py-4 rounded-xl font-black text-base md:text-lg tracking-wide shadow-xl mt-3 flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-60"
+                           className={`w-full min-h-[56px] bg-gradient-to-r from-secondary to-primary text-white py-3 md:py-4 rounded-2xl font-black text-base md:text-lg tracking-wide shadow-xl mt-3 flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-60`}
                         >
                            {loading ? (
                               <>
@@ -311,7 +311,7 @@ export default function HeroSection() {
                      </form>
                   )}
                </div>
-            </div>
+            </section>
          </div>
       </header>
    );

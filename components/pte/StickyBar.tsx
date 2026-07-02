@@ -15,7 +15,7 @@ export default function StickyBar({ visible, onDismiss }: StickyBarProps) {
          {/* Optional: Add a subtle gradient shadow above the bar */}
          <div className="absolute -top-6 left-0 w-full h-6 bg-gradient-to-t from-black/5 to-transparent pointer-events-none"></div>
          
-         <div className="bg-white border-t border-outline-variant shadow-[0_-20px_40px_-15px_rgba(0,0,0,0.1)] px-4 md:px-8 py-4">
+         <div className="bg-white/80 backdrop-blur-xl border-t border-outline-variant shadow-[0_-20px_40px_-15px_rgba(0,0,0,0.1)] px-4 md:px-8 py-4">
             <div className="flex items-center justify-between max-w-7xl mx-auto w-full gap-4">
                
                <div className="flex items-center gap-4 flex-1">
@@ -35,7 +35,7 @@ export default function StickyBar({ visible, onDismiss }: StickyBarProps) {
                <div className="flex items-center gap-3 shrink-0">
                   <button 
                      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
-                     className="group bg-primary hover:bg-primary-dark text-white font-bold px-5 py-2.5 rounded-full text-xs md:text-sm tracking-wide transition-all shadow-md hover:shadow-lg flex items-center gap-1"
+                     className="group flex-1 justify-center sm:flex-none bg-primary hover:bg-primary-dark text-white font-bold px-5 py-3 md:py-2.5 rounded-full text-[13px] md:text-sm tracking-wide transition-all shadow-md hover:shadow-lg flex items-center gap-1"
                   >
                      Book Now
                      <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

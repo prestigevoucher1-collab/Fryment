@@ -14,7 +14,7 @@ export default function ExamNavbar({ isMenuOpen, setIsMenuOpen }: NavbarProps) {
 
    return (
       <>
-         <nav className="fixed top-0 left-0 right-0 z-[100] transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-outline-variant">
+         <nav className="fixed top-0 left-0 right-0 z-[100] transition-all duration-300 bg-white/80 backdrop-blur-lg shadow-sm border-b border-outline-variant/50">
             <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-16">
             <div className="flex items-center justify-between h-16 lg:h-20 relative">
                {/* Logo */}
@@ -66,7 +66,7 @@ export default function ExamNavbar({ isMenuOpen, setIsMenuOpen }: NavbarProps) {
                   <a href="tel:+919930635149" className="text-primary hover:bg-surface-dim p-2 rounded-xl transition-colors">
                      <Phone className="w-5 h-5" />
                   </a>
-                  <button onClick={() => setIsMenuOpen(true)} className="p-2 text-on-surface hover:bg-surface-dim rounded-xl transition-colors shrink-0">
+                  <button onClick={() => setIsMenuOpen(true)} className="p-2.5 text-on-surface hover:bg-surface-dim rounded-2xl transition-colors shrink-0">
                      <Menu className="w-6 h-6" />
                   </button>
                </div>
@@ -77,8 +77,8 @@ export default function ExamNavbar({ isMenuOpen, setIsMenuOpen }: NavbarProps) {
          {/* Mobile Menu Drawer */}
          {isMenuOpen && (
             <>
-               <div className="fixed inset-0 z-[110] bg-black/40 backdrop-blur-sm lg:hidden transition-opacity duration-300" onClick={() => setIsMenuOpen(false)}></div>
-               <div className="fixed top-0 right-0 h-full w-full z-[120] lg:hidden flex flex-col bg-surface shadow-2xl animate-in slide-in-from-right duration-300">
+               <div className="fixed inset-0 z-[110] bg-black/60 backdrop-blur-sm lg:hidden transition-opacity duration-300" onClick={() => setIsMenuOpen(false)}></div>
+               <div className="fixed top-0 right-0 h-full w-[85%] max-w-[320px] sm:w-[350px] z-[120] lg:hidden flex flex-col bg-surface shadow-2xl animate-in slide-in-from-right-8 duration-300 ease-out border-l border-outline-variant">
                   <div className="flex items-center justify-between px-5 h-16 border-b border-outline-variant bg-surface">
                      <Link href="/" className="flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
                         <div className="w-8 h-8 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
@@ -86,7 +86,7 @@ export default function ExamNavbar({ isMenuOpen, setIsMenuOpen }: NavbarProps) {
                         </div>
                         <span className="text-xl font-bold tracking-tight text-on-surface">Fryment</span>
                      </Link>
-                     <button onClick={() => setIsMenuOpen(false)} className="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-dim rounded-xl transition-colors">
+                     <button onClick={() => setIsMenuOpen(false)} className="p-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-dim rounded-2xl transition-colors">
                         <X className="w-5 h-5" />
                      </button>
                   </div>
@@ -107,16 +107,16 @@ export default function ExamNavbar({ isMenuOpen, setIsMenuOpen }: NavbarProps) {
                            </Link>
                         </div>
                      </div>
-                     <Link href="/how-to-book" className="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-sm font-semibold text-on-surface hover:text-primary hover:bg-surface-dim transition-all border border-outline-variant" onClick={() => setIsMenuOpen(false)}>
-                        <BookOpen className="w-4 h-4 text-on-surface-variant" />
+                      <Link href="/how-to-book" className="w-full flex items-center gap-4 px-5 py-4 rounded-2xl text-[15px] font-bold text-on-surface hover:text-primary hover:bg-surface-dim transition-all border border-outline-variant shadow-sm" onClick={() => setIsMenuOpen(false)}>
+                        <BookOpen className="w-5 h-5 text-on-surface-variant" />
                         How to Book
                      </Link>
-                     <Link href="/faqs" className="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-sm font-semibold text-on-surface hover:text-primary hover:bg-surface-dim transition-all border border-outline-variant" onClick={() => setIsMenuOpen(false)}>
-                        <HelpCircle className="w-4 h-4 text-on-surface-variant" />
+                      <Link href="/faqs" className="w-full flex items-center gap-4 px-5 py-4 rounded-2xl text-[15px] font-bold text-on-surface hover:text-primary hover:bg-surface-dim transition-all border border-outline-variant shadow-sm" onClick={() => setIsMenuOpen(false)}>
+                        <HelpCircle className="w-5 h-5 text-on-surface-variant" />
                         FAQs
                      </Link>
-                     <Link href="/about" className="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-sm font-semibold text-on-surface hover:text-primary hover:bg-surface-dim transition-all border border-outline-variant" onClick={() => setIsMenuOpen(false)}>
-                        <Info className="w-4 h-4 text-on-surface-variant" />
+                      <Link href="/about" className="w-full flex items-center gap-4 px-5 py-4 rounded-2xl text-[15px] font-bold text-on-surface hover:text-primary hover:bg-surface-dim transition-all border border-outline-variant shadow-sm" onClick={() => setIsMenuOpen(false)}>
+                        <Info className="w-5 h-5 text-on-surface-variant" />
                         About Us
                      </Link>
                   </div>

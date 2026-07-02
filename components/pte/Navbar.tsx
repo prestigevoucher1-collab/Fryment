@@ -9,7 +9,7 @@ interface NavbarProps {
 
 export default function Navbar({ isMenuOpen, setIsMenuOpen }: NavbarProps) {
    return (
-      <nav className="fixed top-0 left-0 w-full z-[100] bg-surface/90 backdrop-blur-md h-14 md:h-16 flex items-center border-b border-accent/20 shadow-sm">
+      <nav className="fixed top-0 left-0 w-full z-[100] bg-surface/80 backdrop-blur-lg h-14 md:h-16 flex items-center border-b border-accent/10 shadow-sm">
          <div className="max-w-[1920px] w-full mx-auto px-4 md:px-6 lg:px-16 flex items-center justify-between">
             <div className="flex items-center gap-2 md:gap-3 group cursor-pointer">
                <div className="w-8 h-8 md:w-9 md:h-9 bg-secondary rounded-lg flex items-center justify-center shadow-lg"><span className="material-icons text-lg text-white font-bold">school</span></div>
@@ -27,7 +27,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }: NavbarProps) {
 
             {/* Mobile Right Controls */}
             <div className="flex lg:hidden items-center gap-4">
-               <button onClick={() => setIsMenuOpen(true)} className="text-primary p-1 focus:outline-none">
+               <button onClick={() => setIsMenuOpen(true)} className="text-primary p-2 hover:bg-surface-dim rounded-xl transition-colors focus:outline-none">
                   <span className="material-icons text-3xl">menu</span>
                </button>
             </div>
@@ -35,32 +35,35 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }: NavbarProps) {
 
          {/* Mobile Menu Drawer */}
          {isMenuOpen && (
-            <div className="fixed inset-0 bg-surface z-[99999] flex flex-col lg:hidden">
-               <div className="h-16 flex items-center justify-between px-6 border-b border-accent/20 shrink-0 bg-surface">
-                  <div className="flex items-center gap-3">
-                     <div className="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center shadow-md"><span className="material-icons text-white text-sm">school</span></div>
-                     <span className="text-xl font-black tracking-tight text-primary">Fryment</span>
+            <>
+               <div className="fixed inset-0 z-[110] bg-black/60 backdrop-blur-sm lg:hidden transition-opacity duration-300" onClick={() => setIsMenuOpen(false)}></div>
+               <div className="fixed top-0 right-0 h-full w-[85%] max-w-[320px] sm:w-[350px] z-[120] lg:hidden flex flex-col bg-surface shadow-2xl animate-in slide-in-from-right-8 duration-300 ease-out border-l border-outline-variant">
+                  <div className="h-16 flex items-center justify-between px-5 border-b border-outline-variant shrink-0 bg-surface">
+                     <Link href="/" className="flex items-center gap-3" onClick={() => setIsMenuOpen(false)}>
+                        <div className="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center shadow-md"><span className="material-icons text-white text-sm">school</span></div>
+                        <span className="text-xl font-black tracking-tight text-primary">Fryment</span>
+                     </Link>
+                     <button onClick={() => setIsMenuOpen(false)} className="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-dim rounded-xl transition-colors">
+                        <span className="material-icons text-2xl">close</span>
+                     </button>
                   </div>
-                  <button onClick={() => setIsMenuOpen(false)} className="text-secondary hover:opacity-70 transition-opacity">
-                     <span className="material-icons text-3xl">close</span>
-                  </button>
-               </div>
 
-               <div className="flex-1 p-8 flex flex-col space-y-6 bg-surface">
-                  <a href="/how-to-book" className="text-lg font-bold text-secondary flex items-center gap-4 py-3 border-b border-accent/10" onClick={() => setIsMenuOpen(false)}>
-                     <span className="material-icons text-xl">menu_book</span>
-                     How to Book
-                  </a>
-                  <Link href="/blog" className="text-lg font-bold text-secondary flex items-center gap-4 py-3 border-b border-accent/10" onClick={() => setIsMenuOpen(false)}>
-                     <span className="material-icons text-xl">rss_feed</span>
-                     Our Blog
-                  </Link>
-                  <a href="tel:+919930635149" className="text-lg font-bold text-secondary flex items-center gap-4 py-3" onClick={() => setIsMenuOpen(false)}>
-                     <span className="material-icons text-xl">phone</span>
-                     +91 993063 5149
-                  </a>
+                  <div className="flex-1 p-5 flex flex-col space-y-4 bg-surface">
+                     <a href="/how-to-book" className="w-full flex items-center gap-4 px-5 py-4 rounded-2xl text-[15px] font-bold text-on-surface hover:text-primary hover:bg-surface-dim transition-all border border-outline-variant shadow-sm" onClick={() => setIsMenuOpen(false)}>
+                        <span className="material-icons text-xl text-on-surface-variant">menu_book</span>
+                        How to Book
+                     </a>
+                     <Link href="/blog" className="w-full flex items-center gap-4 px-5 py-4 rounded-2xl text-[15px] font-bold text-on-surface hover:text-primary hover:bg-surface-dim transition-all border border-outline-variant shadow-sm" onClick={() => setIsMenuOpen(false)}>
+                        <span className="material-icons text-xl text-on-surface-variant">rss_feed</span>
+                        Our Blog
+                     </Link>
+                     <a href="tel:+919930635149" className="w-full flex items-center gap-4 px-5 py-4 rounded-2xl text-[15px] font-bold text-on-surface hover:text-primary hover:bg-surface-dim transition-all border border-outline-variant shadow-sm" onClick={() => setIsMenuOpen(false)}>
+                        <span className="material-icons text-xl text-on-surface-variant">phone</span>
+                        +91 993063 5149
+                     </a>
+                  </div>
                </div>
-            </div>
+            </>
          )}
       </nav>
    );
