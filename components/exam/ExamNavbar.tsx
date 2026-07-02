@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { GraduationCap, Phone, Menu, X, MapPin, Info, BookOpen, HelpCircle } from "lucide-react";
+import { GraduationCap, Phone, Menu, X, MapPin, Info, BookOpen, HelpCircle, QrCode } from "lucide-react";
 
 interface NavbarProps {
    isMenuOpen: boolean;
@@ -36,6 +36,10 @@ export default function ExamNavbar({ isMenuOpen, setIsMenuOpen }: NavbarProps) {
 
                      <Link className="transition-colors duration-200 relative group text-on-surface hover:text-primary font-bold text-sm py-1" href="/about">
                         About Us
+                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                     </Link>
+                     <Link className="transition-colors duration-200 relative group text-on-surface hover:text-primary font-bold text-sm py-1" href="/qr-payment">
+                        QR Payment
                         <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                      </Link>
                      <Link className="transition-colors duration-200 relative group text-on-surface hover:text-primary font-bold text-sm py-1" href="/faqs">
@@ -111,8 +115,12 @@ export default function ExamNavbar({ isMenuOpen, setIsMenuOpen }: NavbarProps) {
                         <BookOpen className="w-5 h-5 text-on-surface-variant" />
                         How to Book
                      </Link>
+                     <Link href="/qr-payment" className="w-full flex items-center gap-4 px-5 py-4 rounded-2xl text-[15px] font-bold text-on-surface hover:text-primary hover:bg-surface-dim transition-all border border-outline-variant shadow-sm" onClick={() => setIsMenuOpen(false)}>
+                        <QrCode className="w-5 h-5 text-primary" />
+                        QR Payment
+                     </Link>
                      <Link href="/faqs" className="w-full flex items-center gap-4 px-5 py-4 rounded-2xl text-[15px] font-bold text-on-surface hover:text-primary hover:bg-surface-dim transition-all border border-outline-variant shadow-sm" onClick={() => setIsMenuOpen(false)}>
-                        <HelpCircle className="w-5 h-5 text-on-surface-variant" />
+                        <HelpCircle className="w-5 h-5 text-primary" />
                         FAQs
                      </Link>
                      <Link href="/about" className="w-full flex items-center gap-4 px-5 py-4 rounded-2xl text-[15px] font-bold text-on-surface hover:text-primary hover:bg-surface-dim transition-all border border-outline-variant shadow-sm" onClick={() => setIsMenuOpen(false)}>

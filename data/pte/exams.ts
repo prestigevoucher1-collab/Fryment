@@ -22,7 +22,7 @@ export const EXAMS: Record<string, ExamConfig> = {
     price: 14200,
     originalPrice: 17200,
     description: "Authorized all-in-one platform for PTE vouchers. Instant delivery, 24/7 WhatsApp support, and 100% secure bookings.",
-    features: ["Instant delivery in 60 seconds", "No hidden charges", "Valid for 12 months"],
+    features: ["Instant delivery in 60 minutes", "No hidden charges", "Valid for 12 months"],
     reviewsCount: "8,000+",
     rating: "4.9/5",
   },

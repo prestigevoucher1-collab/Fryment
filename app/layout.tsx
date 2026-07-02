@@ -8,12 +8,12 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
   title: "PTE Voucher India 2026 | Save on PTE Exam Fee – Fryment",
-  description: "Buy verified PTE vouchers online with instant delivery in 60 seconds. Save on your PTE Academic exam fee — trusted by 8,000+ students. Book now.",
+  description: "Buy verified PTE vouchers online with instant delivery in 60 minutes. Save on your PTE Academic exam fee — trusted by 8,000+ students. Book now.",
   keywords: "PTE voucher India, buy PTE voucher online, PTE Academic exam fee, discounted PTE voucher, PTE voucher instant delivery, DET voucher India, PTE exam discount code",
   authors: [{ name: "Fryment" }],
   openGraph: {
     title: "PTE Voucher India 2026 | Save on PTE Exam Fee – Fryment",
-    description: "Buy verified PTE vouchers online with instant delivery in 60 seconds. Save on your PTE Academic exam fee — trusted by 8,000+ students. Book now.",
+    description: "Buy verified PTE vouchers online with instant delivery in 60 minutes. Save on your PTE Academic exam fee — trusted by 8,000+ students. Book now.",
     url: "https://www.fryment.info",
     siteName: "Fryment",
     type: "website",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "PTE Voucher India 2026 | Save on PTE Exam Fee – Fryment",
-    description: "Buy verified PTE vouchers online with instant delivery in 60 seconds. Save on your PTE Academic exam fee.",
+    description: "Buy verified PTE vouchers online with instant delivery in 60 minutes. Save on your PTE Academic exam fee.",
     images: ["https://www.fryment.info/og-image.png"],
   },
   alternates: {
@@ -139,7 +139,7 @@ export default function RootLayout({
               "step": [
                 { "@type": "HowToStep", "name": "Select state and quantity", "text": "Choose your state and the number of vouchers on the Fryment booking form." },
                 { "@type": "HowToStep", "name": "Complete payment", "text": "Pay securely via UPI, card, or net banking on Fryment's checkout." },
-                { "@type": "HowToStep", "name": "Receive voucher code", "text": "Get your code by email and WhatsApp within 60 seconds of payment." },
+                { "@type": "HowToStep", "name": "Receive voucher code", "text": "Get your code by email and WhatsApp within 60 minutes of payment." },
                 { "@type": "HowToStep", "name": "Log in to Pearson", "text": "Create or log into your official account at pearsonpte.com." },
                 { "@type": "HowToStep", "name": "Choose test slot", "text": "Select your test type, city, and preferred date and time." },
                 { "@type": "HowToStep", "name": "Apply voucher code", "text": "Enter the code in the 'Add Voucher or Promo Code' field at checkout." },
@@ -158,7 +158,7 @@ export default function RootLayout({
                 { "@type": "Question", "name": "What is a PTE voucher and why do I need one?", "acceptedAnswer": { "@type": "Answer", "text": "A PTE voucher is a prepaid code that covers your PTE Academic exam registration fee. Instead of paying Pearson's full listed fee directly, you buy the voucher at a discounted rate and enter the code at checkout on the official Pearson booking page to reduce or waive the fee." } },
                 { "@type": "Question", "name": "Is Fryment a legit site to buy PTE vouchers?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Fryment sells authorized Pearson-partnered voucher codes that work at every certified PTE test centre. The platform has served 8,000+ students with a 4.9/5 rating, and every voucher is verified before delivery, with 24/7 WhatsApp support if you run into issues." } },
                 { "@type": "Question", "name": "How much can I save with a Fryment PTE voucher?", "acceptedAnswer": { "@type": "Answer", "text": "The official PTE Academic fee in India is ₹18,900 including GST. Fryment vouchers start around ₹17,500, so you save on the exam fee without international transaction charges, since the discount is applied in INR directly." } },
-                { "@type": "Question", "name": "How fast will I get my PTE voucher after payment?", "acceptedAnswer": { "@type": "Answer", "text": "Fryment delivers voucher codes within 60 seconds of successful payment, sent by both email and WhatsApp. You don't need to wait hours or raise a support ticket to start your Pearson booking." } },
+                { "@type": "Question", "name": "How fast will I get my PTE voucher after payment?", "acceptedAnswer": { "@type": "Answer", "text": "Fryment delivers voucher codes within 60 minutes of successful payment, sent by both email and WhatsApp. You don't need to wait hours or raise a support ticket to start your Pearson booking." } },
                 { "@type": "Question", "name": "How long is a PTE voucher valid for?", "acceptedAnswer": { "@type": "Answer", "text": "A Fryment PTE voucher is valid for 12 months from the date of purchase. You can book your exam slot any time within that window, so buying early to lock in the discount is a safe move even if your test date isn't finalized yet." } },
                 { "@type": "Question", "name": "Does Fryment also sell Duolingo (DET) vouchers?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Alongside PTE, Fryment offers Duolingo English Test vouchers, plus TOEFL and GRE vouchers, all through the same instant-delivery process, so students preparing for multiple exams can manage everything from one platform." } },
                 { "@type": "Question", "name": "Should I choose PTE or Duolingo English Test?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on your target university's requirements. PTE is more widely accepted for visa and immigration purposes, while DET is often faster, cheaper, and taken from home. Check your university's official admissions page before deciding, since acceptance varies by institution." } },

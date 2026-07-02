@@ -50,7 +50,7 @@ export default function ExamAdvantage({ exam }: ExamAdvantageProps) {
                      <Zap className="text-white w-7 h-7" />
                   </div>
                   <div className="relative z-10 space-y-3">
-                     <h3 className="text-2xl md:text-3xl font-black leading-tight">60 Seconds<br />Delivery</h3>
+                     <h3 className="text-2xl md:text-3xl font-black leading-tight">60 Minutes<br />Delivery</h3>
                      <p className="text-slate-300 font-medium text-sm leading-relaxed">
                         No stressful waiting periods. Your unique voucher string arrives by securely encrypted email and WhatsApp instantly upon payment.
                      </p>

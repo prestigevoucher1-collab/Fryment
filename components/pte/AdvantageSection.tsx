@@ -43,7 +43,7 @@ export default function AdvantageSection() {
                         <span className="material-icons text-primary text-[20px]">bolt</span>
                      </div>
                   </div>
-                  <h3 className="text-xl md:text-2xl font-black mb-2 leading-tight">60 Seconds<br />Delivery</h3>
+                  <h3 className="text-xl md:text-2xl font-black mb-2 leading-tight">60 Minutes<br />Delivery</h3>
                   <p className="text-blue-200/70 font-medium text-xs md:text-[13px] leading-relaxed">
                      No stressful waiting periods. Your unique voucher string arrives by securely encrypted email and WhatsApp instantly upon payment.
                   </p>

@@ -37,7 +37,7 @@ export const faqs = [
    { q: "Is Fryment a legit site to buy PTE vouchers?", a: "Yes. Fryment sells Pearson-partnered voucher codes that work at any certified PTE test centre worldwide. The platform has served 8,000+ students with a 4.9/5 rating, verifies each code before sending it, and offers 24/7 WhatsApp support for booking issues." },
    { q: "How much does the PTE exam cost in India in 2026?", a: "The official PTE Academic fee in India is ₹18,900, inclusive of 18% GST. This applies to PTE Academic, PTE Academic UKVI, and PTE Core alike. PTE Home tests (A1, A2, B1) are priced slightly lower, around ₹15,300." },
    { q: "How much can I save using a Fryment voucher?", a: "Fryment vouchers start around ₹17,500 against the official ₹18,900 fee, applied in INR with no international currency conversion charges — a cost that adds up when Indian students pay Pearson directly with foreign-currency cards." },
-   { q: "How fast will I receive my voucher after paying?", a: "Fryment delivers voucher codes within 60 seconds of successful payment, sent by both email and WhatsApp. There's no waiting period or support ticket required to get started on your Pearson booking." },
+   { q: "How fast will I receive my voucher after paying?", a: "Fryment delivers voucher codes within 60 minutes of successful payment, sent by both email and WhatsApp. There's no waiting period or support ticket required to get started on your Pearson booking." },
    { q: "How long is a PTE voucher valid?", a: "A Fryment PTE voucher is valid for 12 months from the date of purchase. You can lock in the discount now and book your actual test date any time within that window." },
    { q: "Which is better — booking directly with Pearson or using a voucher?", a: "A voucher doesn't change anything about the actual exam, centre, or scoring — it only changes the price. Since the registration process is identical either way, using a verified voucher is strictly cheaper with no downside, as long as the code comes from a legitimate, verified source." },
    { q: "Should I choose PTE or Duolingo English Test?", a: "It depends on your target university's requirements. PTE is more widely accepted for visa and immigration purposes, while DET is often faster, cheaper, and taken from home. Check your university's official admissions page before deciding, since acceptance varies by institution." },
@@ -50,7 +50,7 @@ export const faqs = [
 
 export const comparisonPoints = [
    { feature: "Discount Savings", prestige: "Flat ₹2,800-₹3,000", others: "₹500-₹1,000" },
-   { feature: "Delivery Speed", prestige: "Instant (60 Sec)", others: "2-24 Hours" },
+   { feature: "Delivery Speed", prestige: "Instant (60 Min)", others: "2-24 Hours" },
    { feature: "Support Team", prestige: "24/7 Live WhatsApp", others: "Email Tickets Only" },
    { feature: "Payment Gateway", prestige: "Paytm (Official)", others: "Manual Bank Transfer" },
    { feature: "Voucher Type", prestige: "Official Pearson Grant", others: "Third-party Codes" },

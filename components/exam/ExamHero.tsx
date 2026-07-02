@@ -3,6 +3,7 @@
 import { INDIAN_STATES } from "@/data/pte/constants";
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { loadRazorpayScript } from "@/lib/razorpay";
 import { ExamConfig } from "@/data/pte/exams";
 import { BadgeCheck, Check, Star, CheckCircle, ChevronDown, ChevronsUpDown, Lock, Loader2 } from "lucide-react";
@@ -22,9 +23,8 @@ export default function ExamHero({ exam }: ExamHeroProps) {
       quantity: ""
    });
    const [loading, setLoading] = useState(false);
-   const [submitted, setSubmitted] = useState(false);
-   const [paymentId, setPaymentId] = useState<string | null>(null);
    const [error, setError] = useState<string | null>(null);
+   const router = useRouter();
 
    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -110,9 +110,7 @@ export default function ExamHero({ exam }: ExamHeroProps) {
 
                const verifyData = await verifyRes.json();
                if (verifyData.success) {
-                  setPaymentId(verifyData.paymentId);
-                  setSubmitted(true);
-                  setFormData({ fullName: "", phone: "", email: "", state: "", quantity: "" });
+                  router.push(`/thank-you?paymentId=${verifyData.paymentId}&orderId=${response.razorpay_order_id}&amount=${formData.quantity ? Number(formData.quantity) * exam.price : exam.price}`);
                } else {
                   setError("Payment received but verification failed. Contact support with your payment ID: " + response.razorpay_payment_id);
                }
@@ -225,33 +223,17 @@ export default function ExamHero({ exam }: ExamHeroProps) {
                            </div>
                         </div>
 
-                        {submitted ? (
-                           <div className="text-center py-10 space-y-5">
-                              <div className="w-20 h-20 bg-surface-dim text-primary rounded-full flex items-center justify-center mx-auto ring-8 ring-surface-dim/50">
-                                 <CheckCircle className="w-10 h-10" />
-                              </div>
-                              <h3 className="text-2xl font-black text-on-surface">Payment Successful!</h3>
-                              <p className="text-on-surface-variant text-base font-medium">Your {exam.name} voucher is being processed and will be sent to your email &amp; WhatsApp shortly.</p>
-                              <div className="pt-6">
-                                 <a href="https://wa.me/918369074846" target="_blank" rel="noopener noreferrer"
-                                    className="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] text-white px-8 py-4 rounded-xl font-bold text-base shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
-                                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.393 0 12.031c0 2.122.541 4.192 1.572 6.014L0 24l6.105-1.601a11.871 11.871 0 005.939 1.6h.005c6.635 0 12.032-5.394 12.035-12.034a11.84 11.84 0 00-3.517-8.503z" /></svg>
-                                    Track on WhatsApp
-                                 </a>
-                              </div>
-                           </div>
-                        ) : (
-                           <form onSubmit={handleSubmit} className="space-y-4">
-                              <input
-                                 name="fullName" value={formData.fullName} onChange={handleInputChange}
-                                 className="w-full bg-surface-dim border border-outline-variant rounded-xl px-5 py-4 text-base focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white transition-all text-on-surface placeholder:text-on-surface-variant/70 font-medium"
-                                 placeholder="Full Name *" required
-                              />
-                              <input
-                                 name="phone" value={formData.phone} onChange={handleInputChange}
-                                 className="w-full bg-surface-dim border border-outline-variant rounded-xl px-5 py-4 text-base focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white transition-all text-on-surface placeholder:text-on-surface-variant/70 font-medium"
-                                 placeholder="Mobile Number *" maxLength={10} required
-                              />
+                        <form onSubmit={handleSubmit} className="space-y-4">
+                           <input
+                              name="fullName" value={formData.fullName} onChange={handleInputChange}
+                              className="w-full bg-surface-dim border border-outline-variant rounded-xl px-5 py-4 text-base focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white transition-all text-on-surface placeholder:text-on-surface-variant/70 font-medium"
+                              placeholder="Full Name *" required
+                           />
+                           <input
+                              name="phone" value={formData.phone} onChange={handleInputChange}
+                              className="w-full bg-surface-dim border border-outline-variant rounded-xl px-5 py-4 text-base focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white transition-all text-on-surface placeholder:text-on-surface-variant/70 font-medium"
+                              placeholder="Mobile Number *" maxLength={10} required
+                           />
                               <input
                                  name="email" value={formData.email} onChange={handleInputChange}
                                  className="w-full bg-surface-dim border border-outline-variant rounded-xl px-5 py-4 text-base focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white transition-all text-on-surface placeholder:text-on-surface-variant/70 font-medium"
@@ -313,7 +295,6 @@ export default function ExamHero({ exam }: ExamHeroProps) {
                                  )}
                               </button>
                            </form>
-                        )}
                      </div>
                   </div>
                </div>

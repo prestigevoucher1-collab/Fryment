@@ -24,7 +24,7 @@ export default function ExamSeoContent() {
                   Buy a Genuine PTE Voucher in India and Save on Your Exam Fee
                </h2>
                <p className="text-lg md:text-xl text-on-surface-variant font-medium leading-relaxed">
-                  The official PTE Academic exam fee in India is ₹18,900. Fryment sells verified, Pearson-partnered PTE vouchers starting around ₹17,500, delivered by email and WhatsApp within 60 seconds of payment, valid for 12 months at any authorized test centre.
+                  The official PTE Academic exam fee in India is ₹18,900. Fryment sells verified, Pearson-partnered PTE vouchers starting around ₹17,500, delivered by email and WhatsApp within 60 minutes of payment, valid for 12 months at any authorized test centre.
                </p>
             </div>
 
@@ -83,7 +83,7 @@ export default function ExamSeoContent() {
                            <CreditCard className="w-5 h-5 text-primary-light shrink-0 mt-0.5" />
                            <div>
                               <span className="block text-xs text-primary-light font-bold uppercase tracking-wider mb-0.5">Delivery Time</span>
-                              <span className="font-semibold text-sm leading-tight">Under 60 seconds (Email + WA)</span>
+                              <span className="font-semibold text-sm leading-tight">Under 60 minutes (Email + WA)</span>
                            </div>
                         </li>
                         <li className="flex gap-3">
@@ -113,7 +113,7 @@ export default function ExamSeoContent() {
                </div>
 
                {/* Main Content Area (Text Flows naturally) */}
-               <div className="lg:col-span-8">
+               <div className="lg:col-span-8 min-w-0 w-full">
                   <div className="prose prose-lg prose-slate max-w-none 
                         prose-headings:text-on-surface prose-headings:font-bold prose-headings:tracking-tight 
                         prose-p:text-on-surface-variant prose-p:leading-relaxed 
@@ -157,7 +157,7 @@ export default function ExamSeoContent() {
                      <h3 className="text-2xl mt-10 mb-6">PTE Fee vs. IELTS vs. TOEFL in India</h3>
                      
                      {/* Custom Table Design */}
-                     <div className="not-prose overflow-x-auto rounded-2xl border border-outline-variant shadow-sm my-8">
+                     <div className="not-prose overflow-x-auto w-full rounded-2xl border border-outline-variant shadow-sm my-8">
                         <table className="w-full text-left text-sm md:text-base min-w-[600px] bg-white">
                            <thead className="bg-surface-dim text-on-surface border-b border-outline-variant">
                               <tr>
@@ -273,7 +273,7 @@ export default function ExamSeoContent() {
                            </div>
                            <div className="relative pl-8">
                               <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-2 border-primary"></div>
-                              <p className="text-on-surface-variant leading-relaxed text-[15px] md:text-base m-0"><strong>Receive your voucher code</strong> by email and WhatsApp within 60 seconds of successful payment.</p>
+                              <p className="text-on-surface-variant leading-relaxed text-[15px] md:text-base m-0"><strong>Receive your voucher code</strong> by email and WhatsApp within 60 minutes of successful payment.</p>
                            </div>
                            <div className="relative pl-8">
                               <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-2 border-primary"></div>
@@ -297,7 +297,7 @@ export default function ExamSeoContent() {
                      <h2 className="text-3xl mt-16 mb-6">Fryment vs. Booking Direct vs. Other Voucher Sellers</h2>
                      
                      {/* Custom Table Design */}
-                     <div className="not-prose overflow-x-auto rounded-2xl border border-outline-variant shadow-sm my-8">
+                     <div className="not-prose overflow-x-auto w-full rounded-2xl border border-outline-variant shadow-sm my-8">
                         <table className="w-full text-left text-sm md:text-base min-w-[800px] bg-white">
                            <thead className="bg-surface-dim text-on-surface border-b border-outline-variant">
                               <tr>
@@ -317,7 +317,7 @@ export default function ExamSeoContent() {
                               <tr className="hover:bg-surface-dim/50 transition-colors">
                                  <td className="py-4 px-6 font-medium text-on-surface border-r border-outline-variant">Delivery Time</td>
                                  <td className="py-4 px-6 text-on-surface-variant border-r border-outline-variant">Instant (full fee paid immediately)</td>
-                                 <td className="py-4 px-6 font-bold text-primary bg-primary/5 border-r border-outline-variant">Under 60 seconds</td>
+                                 <td className="py-4 px-6 font-bold text-primary bg-primary/5 border-r border-outline-variant">Under 60 minutes</td>
                                  <td className="py-4 px-6 text-on-surface-variant">Hours to days, if at all</td>
                               </tr>
                               <tr className="hover:bg-surface-dim/50 transition-colors">
@@ -356,7 +356,7 @@ export default function ExamSeoContent() {
                      <ol>
                         <li><strong>Land on the PTE page and check current pricing.</strong> Pricing can shift, so always confirm the live rate on the booking form rather than relying on a screenshot from a friend.</li>
                         <li><strong>Fill in your state and desired voucher quantity</strong>, then complete payment. If you're buying for a group — common with coaching batches or friends applying together — quantity discounts, if active, apply here.</li>
-                        <li><strong>Check WhatsApp and email immediately.</strong> Your code typically arrives within 60 seconds — if it doesn't, the support line is monitored 24/7 rather than routed through a ticket queue.</li>
+                        <li><strong>Check WhatsApp and email immediately.</strong> Your code typically arrives within 60 minutes — if it doesn't, the support line is monitored 24/7 rather than routed through a ticket queue.</li>
                         <li><strong>Watch the slot-booking walkthrough</strong> on the homepage before heading to Pearson's site. It shows exactly where the voucher field sits on the checkout page, which is the step most first-timers fumble.</li>
                         <li><strong>Book your Pearson slot and apply the code</strong>, then hold onto both your Fryment receipt and Pearson confirmation until after your exam date, in case you need to reference either for a rescheduling or refund query.</li>
                      </ol>
