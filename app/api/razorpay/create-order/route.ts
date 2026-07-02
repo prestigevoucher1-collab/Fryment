@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Razorpay from 'razorpay';
-import { EXAMS } from '@/data/pte/exams';
+import { getExamsWithPrices } from '@/data/pte/exams';
 
 const IS_TEST_MODE = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID?.startsWith('rzp_test_');
 
@@ -26,12 +26,11 @@ export async function POST(req: NextRequest) {
     let pricePerVoucherPaise = 100; // default test price
     
     if (!IS_TEST_MODE) {
-      if (!examId || !EXAMS[examId]) {
+      const examsConfig = await getExamsWithPrices();
+      if (!examId || !examsConfig[examId]) {
         return NextResponse.json({ error: 'Invalid or missing exam type.' }, { status: 400 });
       }
-      // TEMPORARY FOR TESTING: Force ₹1 on Live Mode
-      pricePerVoucherPaise = 100;
-      // TO REVERT: pricePerVoucherPaise = EXAMS[examId].price * 100;
+      pricePerVoucherPaise = examsConfig[examId].price * 100;
     }
 
     const amount = pricePerVoucherPaise * qty;
