@@ -1,14 +1,39 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ExamNavbar from "@/components/exam/ExamNavbar";
 import Footer from "@/components/pte/Footer";
-import { ArrowRight, Calendar, Clock, BookOpen } from "lucide-react";
+import { ArrowRight, Calendar, Clock, BookOpen, Loader2 } from "lucide-react";
 import Link from "next/link";
-import { blogPosts } from "@/data/blog/posts";
+import { supabase } from "@/lib/supabase";
 
 export default function BlogPage() {
    const [isMenuOpen, setIsMenuOpen] = useState(false);
+   const [blogPosts, setBlogPosts] = useState<any[]>([]);
+   const [isLoading, setIsLoading] = useState(true);
+
+   useEffect(() => {
+      const fetchBlogs = async () => {
+         const { data, error } = await supabase
+            .from('blogs')
+            .select('*')
+            .eq('published', true)
+            .order('created_at', { ascending: false });
+            
+         if (data) {
+            setBlogPosts(data);
+         }
+         setIsLoading(false);
+      };
+      
+      fetchBlogs();
+   }, []);
+
+   const formatDate = (dateString: string) => {
+      if (!dateString) return '';
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+   };
 
    return (
       <div className="min-h-screen bg-slate-50 flex flex-col font-body">
@@ -32,64 +57,90 @@ export default function BlogPage() {
                   </p>
                </div>
 
-               {/* Featured Article (First item) */}
-               <div className="mb-16 animate-in fade-in zoom-in-95 duration-700 delay-150">
-                  <Link href={`/blog/${blogPosts[0].id}`} className="group relative block bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-outline-variant">
-                     <div className="grid grid-cols-1 lg:grid-cols-2">
-                        <div className="h-64 lg:h-full w-full bg-surface-dim relative overflow-hidden flex items-center justify-center p-12 text-center border-r border-outline-variant/50">
-                           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-40 bg-primary/5 blur-3xl rounded-full pointer-events-none"></div>
-                           <h2 className="text-3xl md:text-4xl font-headline font-black text-on-surface relative z-10 leading-tight">
-                              {blogPosts[0].title}
-                           </h2>
-                        </div>
-                        <div className="p-8 md:p-12 flex flex-col justify-center">
-                           <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4">
-                              <span className="text-primary bg-primary/10 px-3 py-1 rounded-md">{blogPosts[0].category}</span>
-                              <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" /> {blogPosts[0].date}</span>
-                              <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" /> {blogPosts[0].readTime}</span>
+               {isLoading ? (
+                  <div className="flex justify-center items-center py-20">
+                     <Loader2 className="w-8 h-8 animate-spin text-primary" />
+                  </div>
+               ) : blogPosts.length > 0 ? (
+                  <>
+                     {/* Featured Article (First item) */}
+                     <div className="mb-16 animate-in fade-in zoom-in-95 duration-700 delay-150">
+                        <Link href={`/blog/${blogPosts[0].slug}`} className="group relative block bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-outline-variant">
+                           <div className="grid grid-cols-1 lg:grid-cols-2">
+                              <div className="h-64 lg:h-full w-full bg-surface-dim relative overflow-hidden flex items-center justify-center p-12 text-center border-r border-outline-variant/50">
+                                 {blogPosts[0].cover_image ? (
+                                    <img src={blogPosts[0].cover_image} alt={blogPosts[0].title} className="absolute inset-0 w-full h-full object-cover opacity-80" />
+                                 ) : (
+                                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-40 bg-primary/5 blur-3xl rounded-full pointer-events-none"></div>
+                                 )}
+                                 <h2 className="text-3xl md:text-4xl font-headline font-black text-on-surface relative z-10 leading-tight">
+                                    {!blogPosts[0].cover_image && blogPosts[0].title}
+                                 </h2>
+                              </div>
+                              <div className="p-8 md:p-12 flex flex-col justify-center">
+                                 <div className="flex flex-wrap items-center gap-4 text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4">
+                                    {blogPosts[0].category && (
+                                       <span className="text-primary bg-primary/10 px-3 py-1 rounded-md">{blogPosts[0].category}</span>
+                                    )}
+                                    <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" /> {formatDate(blogPosts[0].created_at)}</span>
+                                    {blogPosts[0].read_time && (
+                                       <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" /> {blogPosts[0].read_time}</span>
+                                    )}
+                                 </div>
+                                 <h3 className="text-2xl md:text-3xl font-bold text-on-surface mb-4 group-hover:text-primary transition-colors">
+                                    {blogPosts[0].title}
+                                 </h3>
+                                 <p className="text-on-surface-variant text-base leading-relaxed font-medium mb-8 line-clamp-3">
+                                    {blogPosts[0].excerpt}
+                                 </p>
+                                 <div className="inline-flex items-center gap-2 font-bold text-primary group-hover:gap-3 transition-all">
+                                    Read Full Article <ArrowRight className="w-4 h-4" />
+                                 </div>
+                              </div>
                            </div>
-                           <h3 className="text-2xl md:text-3xl font-bold text-on-surface mb-4 group-hover:text-primary transition-colors">
-                              {blogPosts[0].title}
-                           </h3>
-                           <p className="text-on-surface-variant text-base leading-relaxed font-medium mb-8">
-                              {blogPosts[0].excerpt}
-                           </p>
-                           <div className="inline-flex items-center gap-2 font-bold text-primary group-hover:gap-3 transition-all">
-                              Read Full Article <ArrowRight className="w-4 h-4" />
-                           </div>
-                        </div>
+                        </Link>
                      </div>
-                  </Link>
-               </div>
 
-               {/* Blog Grid */}
-               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {blogPosts.slice(1).map((post, index) => (
-                     <Link key={post.id} href={`/blog/${post.id}`} className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: `${(index + 1) * 100}ms` }}>
-                        <div className="h-48 w-full bg-surface-dim relative overflow-hidden flex items-center justify-center p-6 text-center border-b border-outline-variant/50">
-                           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#005b4a_1px,_transparent_1px)] opacity-[0.03] bg-[length:20px_20px]"></div>
-                           <h3 className="text-xl font-headline font-black text-on-surface relative z-10 leading-snug">
-                              {post.title}
-                           </h3>
-                        </div>
-                        <div className="p-6 md:p-8 flex flex-col flex-1">
-                           <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-4">
-                              <span className="text-primary">{post.category}</span>
-                              <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" /> {post.readTime}</span>
-                           </div>
-                           <h3 className="text-xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors line-clamp-2">
-                              {post.title}
-                           </h3>
-                           <p className="text-on-surface-variant text-sm leading-relaxed font-medium mb-6 line-clamp-3 flex-1">
-                              {post.excerpt}
-                           </p>
-                           <div className="inline-flex items-center gap-2 font-bold text-sm text-primary group-hover:gap-3 transition-all mt-auto pt-4 border-t border-outline-variant/50">
-                              Read Article <ArrowRight className="w-4 h-4" />
-                           </div>
-                        </div>
-                     </Link>
-                  ))}
-               </div>
+                     {/* Blog Grid */}
+                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {blogPosts.slice(1).map((post, index) => (
+                           <Link key={post.id} href={`/blog/${post.slug}`} className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: `${(index + 1) * 100}ms` }}>
+                              <div className="h-48 w-full bg-surface-dim relative overflow-hidden flex items-center justify-center p-6 text-center border-b border-outline-variant/50">
+                                 {post.cover_image ? (
+                                    <img src={post.cover_image} alt={post.title} className="absolute inset-0 w-full h-full object-cover opacity-80" />
+                                 ) : (
+                                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#005b4a_1px,_transparent_1px)] opacity-[0.03] bg-[length:20px_20px]"></div>
+                                 )}
+                                 <h3 className="text-xl font-headline font-black text-on-surface relative z-10 leading-snug">
+                                    {!post.cover_image && post.title}
+                                 </h3>
+                              </div>
+                              <div className="p-6 md:p-8 flex flex-col flex-1">
+                                 <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-4">
+                                    <span className="text-primary">{post.category || 'Blog'}</span>
+                                    {post.read_time && (
+                                       <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" /> {post.read_time}</span>
+                                    )}
+                                 </div>
+                                 <h3 className="text-xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                                    {post.title}
+                                 </h3>
+                                 <p className="text-on-surface-variant text-sm leading-relaxed font-medium mb-6 line-clamp-3 flex-1">
+                                    {post.excerpt}
+                                 </p>
+                                 <div className="inline-flex items-center gap-2 font-bold text-sm text-primary group-hover:gap-3 transition-all mt-auto pt-4 border-t border-outline-variant/50">
+                                    Read Article <ArrowRight className="w-4 h-4" />
+                                 </div>
+                              </div>
+                           </Link>
+                        ))}
+                     </div>
+                  </>
+               ) : (
+                  <div className="text-center py-20">
+                     <p className="text-on-surface-variant text-lg font-medium">No blog posts found.</p>
+                  </div>
+               )}
                
                {/* Call to Action */}
                <div className="mt-20 bg-surface-dim border border-outline-variant rounded-3xl p-10 md:p-14 text-center relative overflow-hidden shadow-xl shadow-primary/5">
